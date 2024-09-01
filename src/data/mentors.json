@@ -1,0 +1,206 @@
+{
+  "subjects": [
+    {
+      "subject_name": "DSA",
+      "mentors": [
+        {
+          "name": "John Doe",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg",
+          "qualification": "Ph.D. in Computer Science",
+          "rating": 4.8,
+          "description": "Specializes in algorithms and artificial intelligence."
+        },
+        {
+          "name": "Jane Smith",
+          "image": "https://img.freepik.com/free-photo/smiley-man-holding-camera-front-view_23-2149915895.jpg",
+          "qualification": "M.S. in Computer Engineering",
+          "rating": 4.5,
+          "description": "Expertise in software development and cybersecurity."
+        },
+        {
+          "name": "Emily Brown",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpABCsKQ0nlOBNbONJXlExkQT9VmXvH4Vdwa0OYehJ3JXZ-46twNqknctUxbzd_uHlVY&usqp=CAU",
+          "qualification": "Ph.D. in Data Structures",
+          "rating": 4.6,
+          "description": "Specializes in data structures and algorithms."
+        },
+        {
+          "name": "Alex Green",
+          "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+          "qualification": "M.S. in Software Engineering",
+          "rating": 4.3,
+          "description": "Expertise in backend development and databases."
+        },
+        {
+          "name": "Sam White",
+          "image": "https://thumbs.dreamstime.com/b/portrait-handsome-smiling-young-man-folded-arms-smiling-joyful-cheerful-men-crossed-hands-isolated-studio-shot-172869765.jpg",
+          "qualification": "B.Tech in Computer Science",
+          "rating": 4.1,
+          "description": "Specializes in frontend development and UI/UX."
+        }
+      ]
+    },
+    {
+      "subject_name": "Python",
+      "mentors": [
+        {
+          "name": "Michael Brown",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.Sc. in Mathematics",
+          "rating": 4.7,
+          "description": "Focuses on applied mathematics and statistical modeling."
+        },
+        {
+          "name": "Emily Johnson",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Pure Mathematics",
+          "rating": 4.9,
+          "description": "Specializes in abstract algebra and number theory."
+        },
+        {
+          "name": "John Doe",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Computer Science",
+          "rating": 4.8,
+          "description": "Specializes in algorithms and artificial intelligence."
+        },
+        {
+          "name": "Jane Smith",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Computer Engineering",
+          "rating": 4.5,
+          "description": "Expertise in software development and cybersecurity."
+        },
+        {
+          "name": "Emily Brown",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Data Structures",
+          "rating": 4.6,
+          "description": "Specializes in data structures and algorithms."
+        },
+        {
+          "name": "Alex Green",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Software Engineering",
+          "rating": 4.3,
+          "description": "Expertise in backend development and databases."
+        },
+        {
+          "name": "Sam White",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "B.Tech in Computer Science",
+          "rating": 4.1,
+          "description": "Specializes in frontend development and UI/UX."
+        }
+      ]
+    },
+    {
+      "subject_name": "Java",
+      "mentors": [
+        {
+          "name": "David Lee",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Physics",
+          "rating": 4.6,
+          "description": "Expert in theoretical physics and quantum mechanics."
+        },
+        {
+          "name": "Maria Garcia",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.Sc. in Astrophysics",
+          "rating": 4.4,
+          "description": "Specializes in cosmology and observational astronomy."
+        },
+        {
+          "name": "John Doe",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Computer Science",
+          "rating": 4.8,
+          "description": "Specializes in algorithms and artificial intelligence."
+        },
+        {
+          "name": "Jane Smith",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Computer Engineering",
+          "rating": 4.5,
+          "description": "Expertise in software development and cybersecurity."
+        },
+        {
+          "name": "Emily Brown",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Data Structures",
+          "rating": 4.6,
+          "description": "Specializes in data structures and algorithms."
+        },
+        {
+          "name": "Alex Green",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Software Engineering",
+          "rating": 4.3,
+          "description": "Expertise in backend development and databases."
+        },
+        {
+          "name": "Sam White",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "B.Tech in Computer Science",
+          "rating": 4.1,
+          "description": "Specializes in frontend development and UI/UX."
+        }
+      ]
+    },
+    {
+      "subject_name": "UI/UX",
+      "mentors": [
+        {
+          "name": "Mark Thompson",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in English Literature",
+          "rating": 4.8,
+          "description": "Expertise in Victorian literature and literary theory."
+        },
+        {
+          "name": "Anna Davis",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.A. in Comparative Literature",
+          "rating": 4.5,
+          "description": "Focuses on postcolonial literature and feminist studies."
+        },
+        {
+          "name": "John Doe",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Computer Science",
+          "rating": 4.8,
+          "description": "Specializes in algorithms and artificial intelligence."
+        },
+        {
+          "name": "Jane Smith",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Computer Engineering",
+          "rating": 4.5,
+          "description": "Expertise in software development and cybersecurity."
+        },
+        {
+          "name": "Emily Brown",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "Ph.D. in Data Structures",
+          "rating": 4.6,
+          "description": "Specializes in data structures and algorithms."
+        },
+        {
+          "name": "Alex Green",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "M.S. in Software Engineering",
+          "rating": 4.3,
+          "description": "Expertise in backend development and databases."
+        },
+        {
+          "name": "Sam White",
+          "image": "https://place-hold.it/200x250",
+          "qualification": "B.Tech in Computer Science",
+          "rating": 4.1,
+          "description": "Specializes in frontend development and UI/UX."
+        }
+      ]
+    }
+  ]
+}

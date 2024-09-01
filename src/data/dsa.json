@@ -1,0 +1,83 @@
+[
+	{
+		"id": 1,
+		"title": "Introduction to Programming with C++",
+		"subtopics": [
+			"Flowcharts & Pseudocode",
+			"Components",
+			"Variables & Data Types",
+			"Rules for variables",
+			"Different Data Types",
+			"Explain how the code actually runs",
+			"Print statement",
+			"Input and Output",
+			"Arithmetic operations",
+			"Area and perimeter",
+			"Type Conversion and Casting"
+		]
+	},
+	{
+		"id": 2,
+		"title": "Control Structures",
+		"subtopics": [
+			"Operators",
+			"Explain the types of operators",
+			"Conditional Statements",
+			"Explain with examples",
+			"Loops (Flow Control)",
+			"Explain with examples",
+			"Patterns"
+		]
+	},
+	{
+		"id": 3,
+		"title": "Functions and Exception Handling",
+		"subtopics": ["Functions & Scope", "Exception Handling and Files"]
+	},
+	{
+		"id": 4,
+		"title": "Data Structures Basics",
+		"subtopics": [
+			"Arrays & 2D Arrays",
+			"Strings",
+			"Pointers & Dynamic Allocation",
+			"Linked Lists",
+			"Stacks & Queues"
+		]
+	},
+	{
+		"id": 5,
+		"title": "Advanced Data Structures",
+		"subtopics": [
+			"Binary Trees",
+			"Binary Search Trees",
+			"Heaps (Priority Queue)",
+			"Hashmaps",
+			"Tries",
+			"Graph"
+		]
+	},
+	{
+		"id": 6,
+		"title": "Algorithms",
+		"subtopics": [
+			"Sorting Algorithms",
+			"Time & Space Complexity",
+			"Recursion & Backtracking",
+			"Divide & Conquer",
+			"Greedy Algorithms",
+			"Dynamic Programming",
+			"Segment Trees"
+		]
+	},
+	{
+		"id": 7,
+		"title": "Object-Oriented Programming (OOP)",
+		"subtopics": ["Object-Oriented Programming (OOPs)"]
+	},
+	{
+		"id": 8,
+		"title": "Standard Libraries and Templates",
+		"subtopics": ["Standard Template Library (STL)"]
+	}
+]
