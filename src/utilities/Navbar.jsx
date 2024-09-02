@@ -49,7 +49,7 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
   };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prev) => !prev); // Toggle the sidebar state
   };
 
   const handlesignout = () => {
@@ -145,15 +145,15 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
           </button>
         )}
       </span>
-      {isSidebarOpen && (
-        <Sidebar
-          activeLink={activeLink}
-          handleLinkClick={handleLinkClick}
-          toggleSidebar={toggleSidebar}
-          theme={theme}
-          handleThemeSwitch={handleThemeSwitch}
-        />
-      )}
+
+      <Sidebar
+        isOpen={isSidebarOpen}
+        activeLink={activeLink}
+        handleLinkClick={handleLinkClick}
+        toggleSidebar={toggleSidebar}
+        theme={theme}
+        handleThemeSwitch={handleThemeSwitch}
+      />
     </nav>
   );
 };
