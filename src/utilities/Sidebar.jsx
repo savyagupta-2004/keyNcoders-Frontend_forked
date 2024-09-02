@@ -49,6 +49,7 @@ const Sidebar = ({
   }, [isOpen, isClosing, toggleSidebar]);
 
   useEffect(() => {
+    console.log("closing the sidebar");
     setIsClosing(false);
   }, [isOpen]);
 
