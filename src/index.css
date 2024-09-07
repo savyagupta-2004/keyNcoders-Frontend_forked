@@ -11,3 +11,14 @@
     src: url(/fonts/Roboto.woff2) format("woff2");
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.hide-scroll{
+  overflow-y: scroll; 
+}
