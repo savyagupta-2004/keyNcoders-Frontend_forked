@@ -67,10 +67,10 @@ const Mentor = ({ theme, handleThemeSwitch }) => {
           <div className="flex justify-center items-center">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
               {currentMentors.map((mentor, index) => (
-                <div key={index} className="bg-card p-4 rounded-lg group hover:text-white` hover:bg-[linear-gradient(99.32deg,rgba(232,232,232,0.6)_0.56%,rgba(168,168,168,0.6)_59.52%,rgba(194,194,194,0.6)_117.27%)]" onClick={handleCardClick(mentor.name)}>
+                <div key={index} className="bg-card p-4 rounded-lg group hover:bg-[linear-gradient(99.32deg,rgba(232,232,232,0.6)_0.56%,rgba(168,168,168,0.6)_59.52%,rgba(194,194,194,0.6)_117.27%)]" onClick={handleCardClick(mentor.name)}>
                   <img src={mentor.image} alt={mentor.name} className="rounded-xl mb-2 object-cover w-60 h-60 sm:h-56 bg-contain bg-center" />
                   <h2 className="font-semibold text-xl">{mentor.name}</h2>
-                  <p className="text-sm  dark:white mb-2">Mentor</p>
+                  <p className="text-sm dark:text-gray-500 mb-2">Mentor</p>
                   <p className="text-sm opacity-0 group-hover:opacity-100">Rating: {mentor.rating}⭐</p>
                 </div>
               ))}
