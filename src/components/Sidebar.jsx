@@ -9,7 +9,6 @@ const Sidebar = () => {
   const [selectedVideo, setSelectedVideo] = useState("");
   const [selectedModule, setSelectedModule] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
   const toggleModule = (module) => {
     setExpandedModules((prev) => ({
       ...prev,
