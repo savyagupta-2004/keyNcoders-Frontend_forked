@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import PreLogin from "./pages/PreLogin.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Login from "./pages/Login.jsx";
+import CodeEditor from "./pages/CodeEditor.jsx";
 import Signup from "./pages/Signup.jsx";
 import Batches from "./pages/Batches.jsx";
 import MyBatches from "./pages/MyBatches.jsx";
@@ -181,6 +182,15 @@ const App = () => {
               }
             />
             <Route
+              path="/codeEditor"
+              element={
+                <CodeEditor
+                  theme={theme}
+                  handleThemeSwitch={handleThemeSwitch}
+                />
+              }
+            />
+            <Route
               path="/job-alerts"
               element={
                 <JobAlerts
@@ -207,6 +217,7 @@ const App = () => {
                 />
               }
             />
+
             <Route
               path="/forgotPass"
               element={<Forgotpassword notify={notify} />}
