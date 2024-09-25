@@ -13,7 +13,7 @@ const PostLogin = ({ theme, handleThemeSwitch }) => {
 
   return (
     <div
-      className={`flex flex-col w-full h-full overflow-x-hidden ${
+      className={`flex flex-col w-full h-full overflow-x-hidden min-w-fit ${
         theme === "dark" ? "bg-[#131313] text-white" : "bg-white text-black"
       }`}
     >
@@ -21,9 +21,9 @@ const PostLogin = ({ theme, handleThemeSwitch }) => {
 
       {showStats ? (
         <div>
-          <div className="mt-8 flex ">
+          <div className="mt-8  lg:flex xl:flex md:flex  ">
             <PostloginCard theme={theme} />
-            <div>
+            <div className="">
               <CustomCalendar theme={theme} />
             </div>
           </div>
@@ -70,13 +70,17 @@ const PostLogin = ({ theme, handleThemeSwitch }) => {
                 topic="Linked List"
                 img="dsa-postlogin"
                 play={true}
+                onPlayClick={() => console.log("Play button clicked!")}
+                onCodeClick={() => console.log("Code button clicked!")}
               />
               <PostloginCourseCard
                 theme={theme}
-                course="UI/UX"
-                topic="Auto Layout"
+                course="Questions"
+                topic="Linked List"
                 img="hack"
                 play={false}
+                onPlayClick={() => console.log("Play button clicked!")}
+                onCodeClick={() => console.log("Code button clicked!")}
               />
             </div>
           </div>

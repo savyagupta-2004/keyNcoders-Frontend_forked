@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 
 export default function Landing({ theme }) {
-  const [modal, showModal] = useState(true);
+  const [modal, showModal] = useState(false);
 
   useEffect(() => {
     showModal(true);
@@ -14,7 +14,7 @@ export default function Landing({ theme }) {
     showModal(false);
   };
 
-  const handlemodlacloseclick = () => {
+  const handleModalCloseClick = () => {
     showModal(false);
   };
 
@@ -56,7 +56,7 @@ export default function Landing({ theme }) {
 
               <button
                 className="mt-4 rounded-md bg-orange-600 w-16 h-10  text-white"
-                onClick={handlemodlacloseclick}
+                onClick={handleModalCloseClick}
               >
                 OK
               </button>

@@ -8,35 +8,35 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg",
           "qualification": "Ph.D. in Computer Science",
           "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
+          "description": "Dr. John Doe holds a Ph.D. in Computer Science, with a specialization in algorithms and optimization techniques. He has over 15 years of teaching experience and has guided numerous students through complex concepts in data structures and algorithms. His research focuses on improving the efficiency of algorithms, and he is well-versed in competitive programming, having mentored students for top programming competitions. Dr. Doe is dedicated to helping students understand the core principles of algorithm design, making complex concepts more accessible and practical."
         },
         {
           "name": "Jane Smith",
           "image": "https://img.freepik.com/free-photo/smiley-man-holding-camera-front-view_23-2149915895.jpg",
           "qualification": "M.S. in Computer Engineering",
           "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
+          "description": "Jane Smith is a seasoned software engineer with an M.S. in Computer Engineering. She has over 10 years of industry experience, particularly in developing secure and scalable software solutions. Jane specializes in cybersecurity and system architecture, and has a strong foundation in both front-end and back-end technologies. Her mentoring style emphasizes practical, real-world applications of data structures, making her an ideal mentor for students interested in integrating theoretical knowledge with practical software development skills."
         },
         {
           "name": "Emily Brown",
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpABCsKQ0nlOBNbONJXlExkQT9VmXvH4Vdwa0OYehJ3JXZ-46twNqknctUxbzd_uHlVY&usqp=CAU",
           "qualification": "Ph.D. in Data Structures",
           "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
+          "description": "Dr. Emily Brown holds a Ph.D. in Data Structures and is a renowned expert in both theoretical and applied computer science. Her research work on data structure optimization has been widely published, and she has been a part of several international conferences. Emily has been mentoring students for over 8 years, guiding them through the intricate details of both simple and complex data structures such as arrays, linked lists, trees, and graphs. Her approach emphasizes building a strong theoretical base and translating that into problem-solving abilities in coding interviews and real-world projects."
         },
         {
           "name": "Alex Green",
           "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
           "qualification": "M.S. in Software Engineering",
           "rating": 4.3,
-          "description": "Expertise in backend development and databases."
+          "description": "Alex Green has a Master’s degree in Software Engineering and over 5 years of experience in backend development and database design. His expertise lies in building scalable, efficient systems that can handle complex data structures. Alex’s mentoring focuses on helping students grasp the importance of system design principles and how data structures can be used to optimize performance in large-scale applications. He is passionate about teaching and enjoys making difficult topics simple and understandable for all levels of learners."
         },
         {
           "name": "Sam White",
           "image": "https://thumbs.dreamstime.com/b/portrait-handsome-smiling-young-man-folded-arms-smiling-joyful-cheerful-men-crossed-hands-isolated-studio-shot-172869765.jpg",
           "qualification": "B.Tech in Computer Science",
           "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
+          "description": "Sam White is a front-end developer with expertise in creating user-friendly interfaces. He graduated with a B.Tech in Computer Science and has worked extensively in UI/UX design, ensuring that systems not only function well but are also aesthetically pleasing. His focus on clean code and efficient use of data structures in frontend applications makes him a valuable mentor for students looking to improve their development skills and create seamless user experiences."
         }
       ]
     },
@@ -48,49 +48,49 @@
           "image": "https://place-hold.it/200x250",
           "qualification": "M.Sc. in Mathematics",
           "rating": 4.7,
-          "description": "Focuses on applied mathematics and statistical modeling."
+          "description": "Michael Brown has an M.Sc. in Mathematics with a focus on applied mathematics and statistical modeling. He has spent the last 8 years teaching Python to students and professionals, emphasizing its application in data analysis and machine learning. His background in mathematics allows him to approach Python from a logical and problem-solving perspective, making him a valuable mentor for those looking to leverage Python for numerical analysis, data science, or academic research."
         },
         {
           "name": "Emily Johnson",
           "image": "https://place-hold.it/200x250",
           "qualification": "Ph.D. in Pure Mathematics",
           "rating": 4.9,
-          "description": "Specializes in abstract algebra and number theory."
+          "description": "Dr. Emily Johnson holds a Ph.D. in Pure Mathematics, with a specialization in abstract algebra and number theory. With over 10 years of teaching experience, she has become known for her ability to break down complex mathematical concepts into understandable components. Dr. Johnson is also proficient in Python, using it to demonstrate practical applications of her mathematical research. Her mentorship focuses on using Python to explore advanced mathematical algorithms and theories, providing a unique interdisciplinary approach."
         },
         {
           "name": "John Doe",
           "image": "https://place-hold.it/200x250",
           "qualification": "Ph.D. in Computer Science",
           "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
+          "description": "With a Ph.D. in Computer Science, John Doe has a rich background in algorithms, machine learning, and artificial intelligence. He has developed Python-based systems that utilize AI and machine learning models for various industries. His 15 years of teaching and research experience make him an excellent mentor for students eager to explore Python’s use in AI, deep learning, and advanced algorithms."
         },
         {
           "name": "Jane Smith",
           "image": "https://place-hold.it/200x250",
           "qualification": "M.S. in Computer Engineering",
           "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
+          "description": "Jane Smith has a strong background in software development and cybersecurity, and she excels at teaching Python for web development and automation. Her courses focus on practical, real-world uses of Python, guiding students from basic scripting to building full-fledged web applications. With over 10 years of teaching and industry experience, Jane ensures her students are ready for industry challenges."
         },
         {
           "name": "Emily Brown",
           "image": "https://place-hold.it/200x250",
           "qualification": "Ph.D. in Data Structures",
           "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
+          "description": "Dr. Emily Brown’s expertise in data structures makes her an ideal Python mentor for students looking to master algorithmic efficiency. She teaches students how to implement and optimize complex data structures in Python, ensuring they can handle large-scale data challenges. Her focus on real-world applications prepares her students for careers in data science and software engineering."
         },
         {
           "name": "Alex Green",
           "image": "https://place-hold.it/200x250",
           "qualification": "M.S. in Software Engineering",
           "rating": 4.3,
-          "description": "Expertise in backend development and databases."
+          "description": "Alex Green specializes in backend development and has been using Python to build scalable systems for over 5 years. His mentorship is focused on teaching students how to use Python for server-side programming, with a special focus on performance optimization and database management. Alex is particularly skilled at explaining how Python can be used to build robust, enterprise-level applications."
         },
         {
           "name": "Sam White",
           "image": "https://place-hold.it/200x250",
           "qualification": "B.Tech in Computer Science",
           "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
+          "description": "Sam White is a Python developer with a strong focus on frontend development and UI/UX design. He has extensive experience using Python for web development, particularly with frameworks like Django and Flask. His approach emphasizes building efficient and visually appealing web applications, ensuring students gain both technical and creative skills."
         }
       ]
     },
@@ -102,105 +102,36 @@
           "image": "https://place-hold.it/200x250",
           "qualification": "Ph.D. in Physics",
           "rating": 4.6,
-          "description": "Expert in theoretical physics and quantum mechanics."
+          "description": "Dr. David Lee is a physicist by training but has extensive experience in computational physics using Java. His work in theoretical physics has driven the development of several simulation tools written in Java. Dr. Lee brings a unique interdisciplinary approach to teaching Java, helping students understand how this programming language can be applied to scientific research, simulations, and high-performance computing."
         },
         {
           "name": "Maria Garcia",
           "image": "https://place-hold.it/200x250",
           "qualification": "M.Sc. in Astrophysics",
           "rating": 4.4,
-          "description": "Specializes in cosmology and observational astronomy."
-        },
-        {
-          "name": "John Doe",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
+          "description": "Maria Garcia holds a master’s degree in Astrophysics and has a passion for both scientific research and programming. She has used Java in various scientific computing projects and focuses on teaching students how to apply Java for developing high-performance software. Maria’s mentorship is ideal for students who wish to combine their interest in science with programming, especially in fields like astronomy and physics."
         }
       ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Java Programming Certification",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit libero sed metus facilisis, at pellentesque erat congue. Quisque sed risus purus. Vivamus vel luctus ipsum.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Java_Programming.png/800px-Java_Programming.png",
+      "link": "#"
     },
     {
-      "subject_name": "UI/UX",
-      "mentors": [
-        {
-          "name": "Mark Thompson",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in English Literature",
-          "rating": 4.8,
-          "description": "Expertise in Victorian literature and literary theory."
-        },
-        {
-          "name": "Anna Davis",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.A. in Comparative Literature",
-          "rating": 4.5,
-          "description": "Focuses on postcolonial literature and feminist studies."
-        },
-        {
-          "name": "John Doe",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
-        }
-      ]
+      "title": "Python Developer Certification",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit libero sed metus facilisis, at pellentesque erat congue. Quisque sed risus purus. Vivamus vel luctus ipsum.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Cert_python.png/800px-Cert_python.png",
+      "link": "#"
+    },
+    {
+      "title": "DSA Expert Certification",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit libero sed metus facilisis, at pellentesque erat congue. Quisque sed risus purus. Vivamus vel luctus ipsum.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/DSA_certificate.png/800px-DSA_certificate.png",
+      "link": "#"
     }
   ]
 }

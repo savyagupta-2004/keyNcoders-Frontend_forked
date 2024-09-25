@@ -4,7 +4,6 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -27,7 +26,13 @@ const data = [
 
 const Statistics = ({ theme }) => {
   return (
-    <div className="w-full h-[300px] mt-3 ">
+    <div
+      className="w-[50rem] h-[300px] mt-3 rounded-2xl mb-6  text-white font-extrabold"
+      // style={{
+      //   background:
+      //     "linear-gradient(115.93deg, rgba(217, 217, 217, 0.152) 19.7%, rgba(115, 115, 115, 0.019) 139.96%)", // Match the background with CircularProgress
+      // }}
+    >
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -38,7 +43,6 @@ const Statistics = ({ theme }) => {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
