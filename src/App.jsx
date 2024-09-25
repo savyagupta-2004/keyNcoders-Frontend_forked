@@ -24,6 +24,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ResetPass from "./pages/Resetpass.jsx";
 import Spinner from "./components/Spinner.jsx";
+import Postlogin_testing from "./pages/Postlogin_testing.jsx";
+import Postlogin_temp from "./pages/Postlogin_temp.jsx";
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -111,7 +113,7 @@ const App = () => {
             <Route
               path="/user-postlogin"
               element={
-                <PostLogin
+                <Postlogin_temp
                   theme={theme}
                   handleThemeSwitch={handleThemeSwitch}
                 />

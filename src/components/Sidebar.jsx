@@ -10,7 +10,6 @@ const Sidebar = () => {
   const [selectedModule, setSelectedModule] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-
   const toggleModule = (module) => {
     setExpandedModules((prev) => ({
       ...prev,
@@ -30,22 +29,22 @@ const Sidebar = () => {
         {
           title: "Chapter 1",
           link: "https://www.youtube.com/watch?v=LXb3EKWsInQ",
-          description: "Introduction to the basics of the module."
+          description: "Introduction to the basics of the module.",
         },
         {
           title: "Chapter 2",
           link: "https://www.youtube.com/watch?v=xyz2",
-          description: "In-depth exploration of the first concept."
+          description: "In-depth exploration of the first concept.",
         },
         {
           title: "Chapter 3",
           link: "https://www.youtube.com/watch?v=xyz2",
-          description: "Detailed discussion on advanced topics."
+          description: "Detailed discussion on advanced topics.",
         },
         {
           title: "Chapter 4",
           link: "https://www.youtube.com/watch?v=xyz2",
-          description: "Summary and conclusion of the module."
+          description: "Summary and conclusion of the module.",
         },
       ],
     },
@@ -56,28 +55,26 @@ const Sidebar = () => {
         {
           title: "Chapter 1",
           link: "https://www.youtube.com/watch?v=xyz3",
-          description: "Overview of the main principles of the module."
+          description: "Overview of the main principles of the module.",
         },
         {
           title: "Chapter 2",
           link: "https://www.youtube.com/watch?v=xyz4",
-          description: "Explanation of key concepts and their applications."
+          description: "Explanation of key concepts and their applications.",
         },
         {
           title: "Chapter 3",
           link: "https://www.youtube.com/watch?v=xyz2",
-          description: "Advanced techniques and their implementations."
+          description: "Advanced techniques and their implementations.",
         },
         {
           title: "Chapter 4",
           link: "https://www.youtube.com/watch?v=xyz2",
-          description: "Review and wrap-up of the key points discussed."
+          description: "Review and wrap-up of the key points discussed.",
         },
       ],
     },
-
   ];
-  
 
   useEffect(() => {
     if (modules.length > 0 && modules[0].videos.length > 0) {
@@ -95,7 +92,7 @@ const Sidebar = () => {
     <div className="flex relative">
       {/* Toggle button for the sidebar */}
       {!isSidebarOpen && (
-          <button
+        <button
           className="p-2 bg-gray-900 text-white rounded"
           onClick={(event) => {
             toggleSidebar();
@@ -107,18 +104,21 @@ const Sidebar = () => {
 
       <aside
         id="sidebar-multi-level-sidebar"
-        className={`fixed top-0 left-0 overflow-y-scroll   z-40 w-64 lg:relative pt-12 h-full dark:bg-black transition-transform  transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+        className={`fixed top-0 left-0 overflow-y-scroll   z-40 w-64 lg:relative pt-12 h-full dark:bg-black transition-transform  transform duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0`}
         aria-label="Sidebar"
       >
         <div className="overflow-y-scroll h-[95vh] hide-scroll md:pt-10 px-3 py-3 bg-gray-50 dark:bg-black">
           <div className="flex justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-[#EF4444]">Modules</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-[#EF4444]">
+              Modules
+            </h2>
             <button
               onClick={toggleSidebar}
               className="text-gray-500 hover:text-gray-900 dark:text-red-400 dark:hover:text-white block lg:hidden"
             >
               <FaTimes />
-
             </button>
           </div>
           <ul className="space-y-2 font-medium mt-8">
@@ -129,14 +129,22 @@ const Sidebar = () => {
                   className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-[#EF4444] dark:hover:bg-gray-700"
                   onClick={() => toggleModule(module)}
                 >
-
-                  <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">{module.name}</span>
-                  <FontAwesomeIcon icon={expandedModules[module.name] ? faChevronUp : faChevronDown} />
+                  <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                    {module.name}
+                  </span>
+                  <FontAwesomeIcon
+                    icon={
+                      expandedModules[module.name] ? faChevronUp : faChevronDown
+                    }
+                  />
                 </button>
                 {expandedModules[module.name] && (
                   <ul className="pl-6 space-y-2">
                     {module.videos.map((video, idx) => (
-                      <li key={idx} onClick={() => handleVideoSelect(video.link, module)}>
+                      <li
+                        key={idx}
+                        onClick={() => handleVideoSelect(video.link, module)}
+                      >
                         <button className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                           {video.title}
                         </button>
@@ -154,12 +162,18 @@ const Sidebar = () => {
         <div className=" h-full rounded-lg">
           <div className="flex items-center h-[95%]  justify-center mb-4 rounded">
             {selectedVideo ? (
-              <ReactPlayer url={selectedVideo} controls={true} width="100%" height="100%" />
+              <ReactPlayer
+                url={selectedVideo}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
             ) : (
-              <div className="text-2xl text-gray-400">Select a video to play</div>
+              <div className="text-2xl text-gray-400">
+                Select a video to play
+              </div>
             )}
           </div>
-          
         </div>
       </div>
     </div>

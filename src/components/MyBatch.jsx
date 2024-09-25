@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function MyBatch({ theme, id }) {
   const navigate = useNavigate();
   const toCourse = () => {
-    navigate("/dsa");
+    navigate("/videos");
   };
   return (
     <>
@@ -18,7 +18,7 @@ function MyBatch({ theme, id }) {
             : ""
         } `}
       >
-        <h1 className="text-center font-bold text-3xl md:text-5xl mb-6 md:mb-10">
+        <h1 className="text-center font-bold text-3xl md:text-5xl mb-6 md:mb-10 mt-20">
           My Batches
         </h1>
         <div className="bg-white dark:bg-[#383232] dark:text-white text-black lg:mx-auto mx-5 lg:w-3/5 h-auto md:h-96 flex flex-col md:flex-row rounded-lg overflow-hidden relative">
@@ -63,25 +63,6 @@ function MyBatch({ theme, id }) {
             </div>
           </div>
         </div>
-        {theme === "dark" && (
-          <div className="relative">
-            <svg
-              width="100%"
-              height="100%"
-              id="svg"
-              viewBox="0 0 1440 310"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0,160L40,181.3C80,203,160,245,240,261.3C320,277,400,267,480,245.3C560,224,640,192,720,197.3C800,203,880,245,960,256C1040,267,1120,245,1200,218.7C1280,192,1360,160,1400,144L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#131313"
-                fillOpacity="1"
-              ></path>
-            </svg>
-          </div>
-        )}
       </section>
     </>
   );
