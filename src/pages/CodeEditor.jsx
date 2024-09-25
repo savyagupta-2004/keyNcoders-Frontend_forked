@@ -1,36 +1,50 @@
 import React, { useState, useRef } from 'react';
 import Navbar from '../utilities/Navbar';
 import Editor from '@monaco-editor/react';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const CodeEditor = ({ theme, handleThemeSwitch }) => {
-  const [currentView, setCurrentView] = useState('description'); // State to manage the current view
+  const [currentView, setCurrentView] = useState('description');
   const defaultCode = {
-    python: "# Python\nprint('Hello, World!')",
-    java: "// Java\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
-    c: "/* C */\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
-    cpp: "// C++\n#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
+    python: "# Python",
+    java: "// Java\npublic class HelloWorld {\n    public static void main(String[] args) {\n     \n }\n}",
+    c: "/* C */\n#include <stdio.h>\n\nint main() {\n       \n}",
+    cpp: "// C++\n#include <iostream>\n\nint main() {\n    \n}",
   };
 
+  const { questionName } = useParams();
   const editorRef = useRef(null);
-  const [language, setLanguage] = useState('java'); // Initial language state
-  const [code, setCode] = useState(defaultCode.java); // Initial code state
+  const [language, setLanguage] = useState('java');
+  const [code, setCode] = useState(defaultCode.java);
   const [ans, setAns] = useState(false);
+  const [data, setData] = useState('');
 
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
 
+  function submitData() {
+    localStorage.setItem('submittedCode', data);
+    setAns(data);
+    setCurrentView('submission');
+  }
+
+  const handleEditorChange = (value) => {
+    setData(value);
+  };
+
   function handleLanguageChange(event) {
     const selectedLanguage = event.target.value;
     setLanguage(selectedLanguage);
-    setCode(defaultCode[selectedLanguage]); // Update code based on selected language
+    setCode(defaultCode[selectedLanguage]);
   }
 
   const handleViewChange = (view) => {
     setCurrentView(view);
   };
 
-  const editorTheme = theme === 'dark' ? 'vs-dark' : 'vs-light'; // Dynamically set the editor theme
+  const editorTheme = theme === 'dark' ? 'vs-dark' : 'vs-light';
 
   const questions = [
     {
@@ -42,32 +56,40 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
         true: "Correct",
         false: "Incorrect",
       },
-      solution: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit iste error sequi ducimus dolores quidem numquam, magni ipsa amet quibusdam laborum laboriosam atque omnis saepe vero aspernatur, minima quas assumenda?",
-      exDes: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis, explicabo ducimus minima vitae ex tempora nisi dolor ipsa dignissimos iure facilis tempore! Neque veniam vel facere."
-    }
+      solution: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      exDes: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis.",
+    },
   ];
+
+  useEffect(() => {
+    const savedCode = localStorage.getItem('submittedCode');
+    if (savedCode) {
+      setAns(savedCode);
+      setCurrentView('submission');
+    }
+  }, []);
 
   return (
     <div>
       <Navbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <section>
-        <div className='grid grid-cols-2 bg-[#D9D9D9] gap-2 dark:bg-black '>
-          <div className='col-span-1 p-5 dark:bg-[#262626] bg-white h-screen'>
-            <div className="flex overflow-x-auto mt-16 whitespace-nowrap">
+        <div className='grid grid-cols-1 md:grid-cols-2 bg-[#D9D9D9] gap-2 sm:min-h-screen dark:bg-black'>
+          <div className='col-span-1 p-5 dark:bg-[#262626] bg-white h-auto md:h-screen'>
+            <div className="flex overflow-x-auto mt-4 md:mt-16 whitespace-nowrap">
               <button
-                className={`inline-flex items-center h-12 px-4 py-2 text-sm  text-center text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${currentView === 'description' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
+                className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${currentView === 'description' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
                 onClick={() => handleViewChange('description')}
               >
                 Description
               </button>
               <button
-                className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-black  border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${currentView === 'solution' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
-                onClick={() => handleViewChange('solution')}
+                className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${currentView === 'solution' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
+                // onClick={() => handleViewChange('solution')}
               >
                 Solution
               </button>
               <button
-                className={`inline-flex items-center h-12 px-4 py-2 text-sm text-center text-black  border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400 dark:hover:border-gray-300 ${currentView === 'submission' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
+                className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${currentView === 'submission' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
                 onClick={() => handleViewChange('submission')}
               >
                 Submission
@@ -79,49 +101,54 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                   {currentView === 'description' && (
                     <>
                       <h1 className="mt-4 text-2xl">{question.num}: {question.name}</h1>
-                      <p className="m-0 p-0">{question.des}</p>
-                      <h1 className="m-0 p-0 text-xl">{question.exnum} Example</h1>
-                      <p className="m-0 p-0">{question.exDes}</p>
+                      <p>{question.des}</p>
+                      <h1 className="text-xl">{question.exnum} Example</h1>
+                      <p>{question.exDes}</p>
                     </>
                   )}
-                  {currentView === 'solution' && <p className="m-0 pt-4">{question.solution}</p>}
+                  {currentView === 'solution' && <p className="pt-4">{question.solution}</p>}
                   {currentView === 'submission' && (
                     <div>
-                      {ans && <p className="m-0 pt-4">{question.submission.true}</p>}
-                      {!ans && <p className="m-0 pt-4">{question.submission.false}</p>}
+                      <pre className='p-4 overflow-auto'>
+                        <code>{ans}</code>
+                      </pre>
                     </div>
                   )}
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Right side (Editor) */}
           <div className='col-span-1 grid gap-2 grid-rows-3'>
             <div className='row-span-2 px-5 bg-white dark:bg-[#262626]'>
-              <div className='mt-20'>
-                <select value={language} onChange={handleLanguageChange} className="text-sm bg-white dark:bg-[#232222] ml-2 dark:border-gray-500 border hover:boder-black px-2 py-1 dark:text-white outline-none rounded-md h-full">
-                  <option>cpp</option>
-                  <option>c</option>
-                  <option>java</option>
-                  <option>python</option>
+              <div className='mt-10 md:mt-20'>
+                <select value={language} onChange={handleLanguageChange} className="text-sm bg-white dark:bg-[#232222] ml-2 dark:border-gray-500 border px-2 py-1 dark:text-white outline-none rounded-md">
+                  <option value="cpp">C++</option>
+                  <option value="c">C</option>
+                  <option value="java">Java</option>
+                  <option value="python">Python</option>
                 </select>
               </div>
               <div>
                 <Editor
-                  className='bg-[#232222] h-72 w-full m-2 dark:text-white outline-none rounded-md'
+                  className='h-60 md:h-72 w-full m-2 dark:text-white outline-none rounded-md'
                   language={language}
-                  theme={editorTheme} // Set editor theme dynamically
+                  theme={editorTheme}
                   value={code}
+                  onChange={handleEditorChange}
                   onMount={handleEditorDidMount}
-                  options={{ selectOnLineNumbers: true }} // Optional editor option
+                  //options={{ selectOnLineNumbers: true }}
                 />
               </div>
               <div className='flex gap-3 flex-row-reverse'>
-                <button className='border dark:border-gray-500 rounded-md dark:text-white px-2 py-1'>Submit</button>
-                <button className='border dark:border-gray-500 rounded-md dark:text-white px-2 py-1'>Run Code</button>
+                <button onClick={submitData} className='border dark:border-gray-500 rounded-md dark:text-white px-2 py-1'>Submit</button>
               </div>
             </div>
+
+            {/* Additional content area */}
             <div className='row-span-1 bg-white dark:bg-[#262626]'>
-              {/* You can add additional components or content here */}
+              {/* Optional content for future expansion */}
             </div>
           </div>
         </div>

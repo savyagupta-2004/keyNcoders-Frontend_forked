@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { faCircleChevronDown, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-
+import { Link } from "react-router-dom";
+import logo from "/favicon.ico"
 const QuestionsList = ({ stepNo, title, questions, theme }) => {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -56,6 +57,7 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                                     <th className='py-2 px-4 border border-gray-300'>Status</th>
                                     <th className='py-2 px-4 border border-gray-300'>Problem Name</th>
                                     <th className='py-2 px-4 border border-gray-300'>Practice Link</th>
+                                    <th className='py-2 px-4 border border-gray-300'>Leetcode Link</th>
                                     <th className='py-2 px-4 border border-gray-300'>Difficulty</th>
                                     <th className='py-2 px-4 border border-gray-300'>Flag</th>
                                 </tr>
@@ -70,7 +72,16 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                                                 onChange={() => toggleDone(index)}
                                             />
                                         </td>
-                                        <td className='py-2 px-4 border border-gray-300'>{question.name}</td>
+                                        <td  className='py-3 px-4 border border-gray-300'>{question.name}</td>
+                                        <td className='py-2 px-4 text-center border border-gray-300'>
+                                            <Link to="/codeEditor/{questions.name}" target='_blank' rel='noopener noreferrer'>
+                                                <img
+                                                    src={logo}
+                                                    alt='Practice Site Logo'
+                                                    className='h-6 inline'
+                                                />
+                                            </Link>
+                                        </td>
                                         <td className='py-2 px-4 text-center border border-gray-300'>
                                             <a href={question.link} target='_blank' rel='noopener noreferrer'>
                                                 <img
