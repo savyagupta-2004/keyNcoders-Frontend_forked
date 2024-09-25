@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(99.32deg, rgba(232, 232, 232, 0.6) 0.56%, rgba(168, 168, 168, 0.6) 59.52%, rgba(194, 194, 194, 0.6) 117.27%)',
+        "custom-gradient":
+          "linear-gradient(99.32deg, rgba(232, 232, 232, 0.6) 0.56%, rgba(168, 168, 168, 0.6) 59.52%, rgba(194, 194, 194, 0.6) 117.27%)",
       },
       boxShadow: {
         custom: "0 0 10px 2.5px rgba(255, 115, 0, 0.5)",

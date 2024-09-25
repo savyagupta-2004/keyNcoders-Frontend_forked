@@ -7,11 +7,7 @@ export default function Landing({ theme }) {
   const [modal, showModal] = useState(false);
 
   useEffect(() => {
-    const hasModalBeenShown = sessionStorage.getItem('modalShown');
-    if (!hasModalBeenShown) {
-      showModal(true);
-      sessionStorage.setItem('modalShown', 'true');
-    }
+    showModal(true);
   }, []);
 
   const handleCloseModal = () => {

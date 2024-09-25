@@ -12,7 +12,6 @@ const Sidebar = () => {
   const [selectedModule, setSelectedModule] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-
   const toggleModule = (module) => {
     setExpandedModules((prev) => ({
       ...prev,
@@ -320,9 +319,16 @@ const Sidebar = () => {
         <div className="flex-grow rounded-lg h-full mb-4">
           <div className="flex items-center lg:h-full h-[50vh] justify-center w-full mb-4 rounded">
             {selectedVideo ? (
-              <ReactPlayer url={selectedVideo} controls={true} width="100%" height="100%" />
+              <ReactPlayer
+                url={selectedVideo}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
             ) : (
-              <div className="text-2xl text-gray-400">Select a video to play</div>
+              <div className="text-2xl text-gray-400">
+                Select a video to play
+              </div>
             )}
           </div>
         </div>
