@@ -92,7 +92,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
               Lectures
             </Link>
             <Link
-              to="/my-batches"
+              to="/questions"
               className="hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 mt-8 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
             >
               Practice Questions
