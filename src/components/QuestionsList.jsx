@@ -74,7 +74,7 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                                         </td>
                                         <td  className='py-3 px-4 border border-gray-300'>{question.name}</td>
                                         <td className='py-2 px-4 text-center border border-gray-300'>
-                                            <Link to={`/codeEditor/${index}`} target='_blank' rel='noopener noreferrer'>
+                                            <Link to="/codeEditor/{questions.name}" target='_blank' rel='noopener noreferrer'>
                                                 <img
                                                     src={logo}
                                                     alt='Practice Site Logo'

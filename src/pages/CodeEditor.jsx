@@ -75,7 +75,7 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
       <section>
         <div className='grid grid-cols-1 md:grid-cols-2 bg-[#D9D9D9] gap-2 dark:bg-black min-h-screen'>
           <div className='col-span-1 p-5 dark:bg-[#262626] bg-white  md:h-auto'>
-            <div className="flex overflow-x-auto mt-10 md:mt-16  whitespace-nowrap">
+            <div className="flex overflow-x-auto mt-10 md:mt-16 whitespace-nowrap">
               <button
                 className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${currentView === 'description' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
                 onClick={() => handleViewChange('description')}
@@ -120,8 +120,8 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
           </div>
 
           {/* Right side (Editor) */}
-          <div className='col-span-1 grid gap-2 grid-rows-3  md:min-h-auto '>
-            <div className='row-span-2 px-5 bg-white dark:bg-[#262626] overflow-x-scroll   md:h-auto'>
+          <div className='col-span-1 grid gap-2 grid-rows-3  md:min-h-auto'>
+            <div className='row-span-2 px-5 bg-white dark:bg-[#262626] overflow-x-scroll  md:h-auto'>
               <div className='mt-10 md:mt-20'>
                 <select value={language} onChange={handleLanguageChange} className="text-sm bg-white dark:bg-[#232222] ml-2 dark:border-gray-500 border px-2 py-1 dark:text-white outline-none rounded-md">
                   <option value="cpp">C++</option>
