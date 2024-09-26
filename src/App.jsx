@@ -184,7 +184,7 @@ const App = () => {
               }
             />
             <Route
-              path="/codeEditor"
+              path="codeEditor/:questionId"
               element={
                 <CodeEditor
                   theme={theme}
@@ -229,6 +229,7 @@ const App = () => {
               path="/reset-password/:token"
               element={<ResetPass notify={notify} />}
             />
+
           </Routes>
         </BrowserRouter>
       </div>
