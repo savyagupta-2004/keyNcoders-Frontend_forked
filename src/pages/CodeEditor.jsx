@@ -13,7 +13,7 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
     cpp: "// C++\n#include <iostream>\n\nint main() {\n    \n}",
   };
 
-  const { questionName } = useParams();
+  const { questionId } = useParams();
   const editorRef = useRef(null);
   const [language, setLanguage] = useState('java');
   const [code, setCode] = useState(defaultCode.java);
@@ -70,12 +70,12 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
   }, []);
 
   return (
-    <div>
+    <div className=''>
       <Navbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <section>
-        <div className='grid grid-cols-1 md:grid-cols-2 bg-[#D9D9D9] gap-2 sm:min-h-screen dark:bg-black'>
-          <div className='col-span-1 p-5 dark:bg-[#262626] bg-white h-auto md:h-screen'>
-            <div className="flex overflow-x-auto mt-4 md:mt-16 whitespace-nowrap">
+        <div className='grid grid-cols-1 md:grid-cols-2 bg-[#D9D9D9] gap-2 dark:bg-black min-h-screen'>
+          <div className='col-span-1 p-5 dark:bg-[#262626] bg-white  md:h-auto'>
+            <div className="flex overflow-x-auto mt-10 md:mt-16  whitespace-nowrap">
               <button
                 className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${currentView === 'description' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'}`}
                 onClick={() => handleViewChange('description')}
@@ -120,8 +120,8 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
           </div>
 
           {/* Right side (Editor) */}
-          <div className='col-span-1 grid gap-2 grid-rows-3'>
-            <div className='row-span-2 px-5 bg-white dark:bg-[#262626]'>
+          <div className='col-span-1 grid gap-2 grid-rows-3  md:min-h-auto '>
+            <div className='row-span-2 px-5 bg-white dark:bg-[#262626] overflow-x-scroll   md:h-auto'>
               <div className='mt-10 md:mt-20'>
                 <select value={language} onChange={handleLanguageChange} className="text-sm bg-white dark:bg-[#232222] ml-2 dark:border-gray-500 border px-2 py-1 dark:text-white outline-none rounded-md">
                   <option value="cpp">C++</option>
@@ -132,13 +132,12 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
               </div>
               <div>
                 <Editor
-                  className='h-60 md:h-72 w-full m-2 dark:text-white outline-none rounded-md'
+                  className='h-60 md:h-72 w-full m-2 dark:text-white outline-none rounded-md overflow-x-scroll'
                   language={language}
                   theme={editorTheme}
                   value={code}
                   onChange={handleEditorChange}
                   onMount={handleEditorDidMount}
-                  //options={{ selectOnLineNumbers: true }}
                 />
               </div>
               <div className='flex gap-3 flex-row-reverse'>

@@ -184,7 +184,7 @@ const App = () => {
               }
             />
             <Route
-              path="codeEditor/:questionName"
+              path="codeEditor/:questionId"
               element={
                 <CodeEditor
                   theme={theme}
