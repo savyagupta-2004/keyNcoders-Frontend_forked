@@ -15,15 +15,12 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
   const [language, setLanguage] = useState('java'); // Initial language state
   const [code, setCode] = useState(defaultCode.java); // Initial code state
   const [ans,setans]=useState(false)
-
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
-
   function showValue() {
     alert(editorRef.current.getValue());
   }
-
   function handleLanguageChange(event) {
     const selectedLanguage = event.target.value;
     setLanguage(selectedLanguage);
@@ -126,7 +123,6 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                 </div>
             </div>
             <div className='row-span-1  bg-[#262626]'>
-
             </div>
           </div>
         </div>
