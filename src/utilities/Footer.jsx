@@ -13,7 +13,7 @@ function Footer({ theme }) {
   return (
     <footer
       className={`${
-        theme === "dark" ? "bg-[#232222] " : "bg-[#E6E6E6]"
+        theme === "dark" ? "bg-[#232222] " : "bg-white"
       } text-black dark:text-zinc-600 body-font`}
     >
       <div className="container mx-auto px-5 pt-[15px]">

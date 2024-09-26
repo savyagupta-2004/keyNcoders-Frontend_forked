@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "./Navbar";
+import PostloginNavbar from "./PostloginNavbar";
 const Videos = ({ theme, handleThemeSwitch }) => {
   return (
     <div
@@ -8,7 +9,7 @@ const Videos = ({ theme, handleThemeSwitch }) => {
         theme === "dark" ? "bg-[#1D1534] " : "bg-white"
       }`}
     >
-      <Navbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
+      <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <Sidebar />
     </div>
   );

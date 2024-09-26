@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import PreLogin from "./pages/PreLogin.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Login from "./pages/Login.jsx";
+import CodeEditor from "./pages/CodeEditor.jsx";
 import Signup from "./pages/Signup.jsx";
 import Batches from "./pages/Batches.jsx";
 import MyBatches from "./pages/MyBatches.jsx";
@@ -23,6 +24,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import ResetPass from "./pages/Resetpass.jsx";
 import Spinner from "./components/Spinner.jsx";
+import Postlogin_testing from "./pages/Postlogin_testing.jsx";
+import Postlogin_temp from "./pages/Postlogin_temp.jsx";
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -110,7 +113,7 @@ const App = () => {
             <Route
               path="/user-postlogin"
               element={
-                <PostLogin
+                <Postlogin_temp
                   theme={theme}
                   handleThemeSwitch={handleThemeSwitch}
                 />
@@ -181,6 +184,15 @@ const App = () => {
               }
             />
             <Route
+              path="codeEditor/:questionName"
+              element={
+                <CodeEditor
+                  theme={theme}
+                  handleThemeSwitch={handleThemeSwitch}
+                />
+              }
+            />
+            <Route
               path="/job-alerts"
               element={
                 <JobAlerts
@@ -207,6 +219,7 @@ const App = () => {
                 />
               }
             />
+
             <Route
               path="/forgotPass"
               element={<Forgotpassword notify={notify} />}
@@ -216,6 +229,7 @@ const App = () => {
               path="/reset-password/:token"
               element={<ResetPass notify={notify} />}
             />
+
           </Routes>
         </BrowserRouter>
       </div>
