@@ -2,7 +2,7 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const CircularProgress = ({ label, value, width, color }) => {
+const CircularProgress = ({ label, value, width, textColor }) => {
   const renderText = (value, label) => (
     <>
       <tspan x="50%" dy="-0.65em">{`${value}%`}</tspan>
@@ -25,7 +25,7 @@ const CircularProgress = ({ label, value, width, color }) => {
         text={renderText(value, label)}
         styles={buildStyles({
           pathColor: `rgb(249, 115, 22)`,
-          textColor: "black",
+          textColor: `${textColor}`,
           trailColor: "black",
           textSize: "14px", // Adjust this to fit both lines properly
         })}

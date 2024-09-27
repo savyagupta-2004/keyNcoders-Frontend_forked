@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Toggle from "./Toggle"; // Import the Toggle component
 import Sidebar from "./Sidebar";
 
-const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
+const Navbar = ({ theme, handleThemeSwitch }) => {
   const [activeLink, setActiveLink] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
@@ -49,7 +49,7 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
   };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prev) => !prev); // Toggle the sidebar state
   };
 
   const handlesignout = () => {
@@ -59,7 +59,7 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
   return (
     <nav
       ref={navRef}
-      className="top-0 fixed z-[9999] flex flex-col small:flex-row justify-between items-center backdrop-blur-md h-auto small:h-16 px-8 my-2 mt-0 w-full bg-white dark:bg-[#232222]"
+      className="fixed z-[9999] flex flex-col small:flex-row justify-between items-center backdrop-blur-md h-auto small:h-16 px-8 my-2 mt-0 w-full bg-[#E6E6E6] dark:bg-[#232222]"
     >
       <div className="flex items-center justify-between w-full small:w-auto">
         <span className="flex items-center gap-2">
@@ -93,10 +93,27 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
               } hover:text-orange-600`}
               onClick={handleLinkClick}
             >
-              About Us
+              About us
             </Link>
           </li>
-
+          <li>
+            <Link
+              to="/#courses"
+              className={`font-medium dark:text-white ${
+                activeLink === 1
+                  ? "text-orange-600 underline decoration-2 decoration-orange-400 underline-offset-8"
+                  : ""
+              } hover:text-orange-600`}
+              onClick={() => {
+                document
+                  .getElementById("courses")
+                  .scrollIntoView({ behavior: "smooth" });
+                handleLinkClick(); // Update activeLink or any other state
+              }}
+            >
+              Courses
+            </Link>
+          </li>
           <li>
             <Link
               to="/contact-us"
@@ -128,17 +145,17 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
           </button>
         )}
       </span>
-      {isSidebarOpen && (
-        <Sidebar
-          activeLink={activeLink}
-          handleLinkClick={handleLinkClick}
-          toggleSidebar={toggleSidebar}
-          theme={theme}
-          handleThemeSwitch={handleThemeSwitch}
-        />
-      )}
+
+      <Sidebar
+        isOpen={isSidebarOpen}
+        activeLink={activeLink}
+        handleLinkClick={handleLinkClick}
+        toggleSidebar={toggleSidebar}
+        theme={theme}
+        handleThemeSwitch={handleThemeSwitch}
+      />
     </nav>
   );
 };
 
-export default PostloginNavbar;
+export default Navbar;
