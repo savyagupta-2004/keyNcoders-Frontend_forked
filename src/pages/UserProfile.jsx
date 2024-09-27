@@ -1,11 +1,11 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive"; // Import a library to handle media queries
+import Slider from "react-slick"; // Ensure this is already imported in your component
 import ActivityGrid from "../components/ActivityGrid";
 import PostloginNavbar from "../utilities/PostloginNavbar";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+// import CircularProgress from "../components/CircularProgress";
 import Statistics from "../components/Statistics";
 import Footer from "../utilities/Footer";
-import { Link, useLocation } from "react-router-dom";
 import CircularProgress from "../components/CircularProgress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,8 +17,9 @@ import {
   faChartPie,
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
+
 const UserProfile = ({ theme, handleThemeSwitch }) => {
-  let percentage = 75;
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 1016px)" }); // Adjust this according to your breakpoints
   const activities = [
     {
       monthName: "Jan",
@@ -91,7 +92,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "March",
+      monthName: "Mar",
       daysActive: [
         true,
         true,
@@ -126,7 +127,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "April",
+      monthName: "Apr",
       daysActive: [
         true,
         true,
@@ -231,7 +232,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "June",
+      monthName: "Jully",
       daysActive: [
         true,
         true,
@@ -266,7 +267,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "June",
+      monthName: "Aug",
       daysActive: [
         true,
         true,
@@ -301,7 +302,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "June",
+      monthName: "Sept",
       daysActive: [
         true,
         true,
@@ -336,7 +337,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "June",
+      monthName: "Oct",
       daysActive: [
         true,
         true,
@@ -371,7 +372,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "June",
+      monthName: "Nov",
       daysActive: [
         true,
         true,
@@ -406,7 +407,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
       ],
     },
     {
-      monthName: "December",
+      monthName: "Dec",
       daysActive: [
         true,
         true,
@@ -442,49 +443,67 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
     },
   ];
 
+  const sliderSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    fade: true,
+  };
+  const analysisSliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
+
   return (
     <>
-      <div className="flex flex-col bg-[#0a0c10]  min-h-[180vh]">
-        <div>
-          <PostloginNavbar
-            handleThemeSwitch={handleThemeSwitch}
-            theme={theme}
-          />
-        </div>
+      <div className="flex flex-col bg-[#0a0c10] min-h-[80vh] sm:min-h-[80vh] md:min-h-[90vh] ">
+        <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
 
         {/* Main Section */}
-        <div className="flex flex-row justify-center space-x-6 p-8 items-center pt-36">
-          {/* Contributions Section */}
-          <div className="flex-grow p-8 flex justify-center ">
-            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-64 border border-white">
-              <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
-                My Mentor
-              </h3>
-              <div className="flex flex-col items-center">
-                <img
-                  width={177}
-                  src="/images/founder.png"
-                  alt="Founder"
-                  className="rounded-lg mb-4"
-                />
-                <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
-                <p className="text-[#8b949e]">
-                  hehe
-                  <span>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  </span>
-                </p>
+        {isSmallScreen ? (
+          <Slider
+            {...sliderSettings}
+            className="text-white   sm:w-[30rem] w-[22rem] mx-auto lg:w-fit lg:left-0 flex-col lg:mt-20"
+          >
+            {/* Slide for My Mentor */}
+            <div className="flex flex-row justify-center items-center pt-36">
+              <div className="bg-[#161b22] p-6 rounded-lg shadow-lg h-[27.4rem] border border-white">
+                <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
+                  My Mentor
+                </h3>
+                <div className="flex flex-col items-center">
+                  <img
+                    width={177}
+                    src="/images/founder.png"
+                    alt="Founder"
+                    className="rounded-lg mb-4"
+                  />
+                  <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
+                  <p className="text-[#8b949e]">
+                    hehe{" "}
+                    <span>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Contributions */}
-            <div>
-              <div className=" mb-12">
-                <h3 className="text-white mb-10 font-bold font-roboto   text-3xl text-center">
+            {/* Slide for My Contributions */}
+            <div className="flex flex-row justify-center items-center pt-36">
+              <div className="border border-white bg-[#161b22] text-[#c9d1d9] w-fit flex flex-col items-center h-fit rounded-xl p-8">
+                <h3 className="text-white font-bold font-roboto text-3xl text-center">
                   My contributions this year
                 </h3>
-              </div>
-              <div className="border border-white ml-8 bg-[#161b22] text-[#c9d1d9] w-fit overflow-auto flex flex-col items-center h-fit rounded-xl p-8">
                 <div className="flex flex-row justify-center items-center space-x-3 text-lg mb-6">
                   <div className="flex flex-col items-center">
                     <span>
@@ -503,9 +522,8 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                     </span>
                   </div>
                 </div>
-
                 {/* Activity Grids */}
-                <div className="grid grid-cols-6 gap-4">
+                <div className="grid grid-cols-6 gap-4 md:">
                   {activities.map((activity, index) => (
                     <div key={index} className="flex flex-col items-center">
                       <ActivityGrid
@@ -518,7 +536,94 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-64 border border-white ml-7">
+
+            {/* Slide for My Details */}
+            <div className="flex flex-row justify-center items-center pt-36">
+              <div className="bg-[#161b22] p-6 rounded-lg shadow-lg h-[27.4rem] border border-white">
+                <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
+                  My Details
+                </h3>
+                <div className="flex flex-col items-center">
+                  <img
+                    width={177}
+                    src="/images/founder.png"
+                    alt="Founder"
+                    className="rounded-lg mb-4"
+                  />
+                  <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
+                  <p className="text-[#8b949e]">
+                    hehe{" "}
+                    <span>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Slider>
+        ) : (
+          <div className="flex flex-row justify-between mx-5 mt-20 space-x-4">
+            {/* My Mentor */}
+            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-1/4 border border-white">
+              <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
+                My Mentor
+              </h3>
+              <div className="flex flex-col items-center">
+                <img
+                  width={177}
+                  src="/images/founder.png"
+                  alt="Founder"
+                  className="rounded-lg mb-4"
+                />
+                <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
+                <p className="text-[#8b949e]">
+                  hehe{" "}
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            {/* My Contributions */}
+            <div className="border border-white bg-[#161b22] text-[#c9d1d9] w-1/2 overflow-auto flex flex-col items-center h-fit rounded-xl p-8">
+              <h3 className="text-white font-bold font-roboto text-3xl text-center">
+                My contributions this year
+              </h3>
+              <div className="flex flex-row justify-center items-center space-x-3 text-lg mb-6">
+                <div className="flex flex-col items-center">
+                  <span>
+                    TOTAL ACTIVE DAYS:{" "}
+                    <span className="text-[#ffa657]">21</span>
+                  </span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span>
+                    STREAK: <span className="text-[#ffa657]">15</span>
+                  </span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span>
+                    🏆 <span className="text-[#ffa657]">25</span>
+                  </span>
+                </div>
+              </div>
+              {/* Activity Grids */}
+              <div className="grid grid-cols-6 gap-4">
+                {activities.map((activity, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <ActivityGrid
+                      daysActive={activity.daysActive}
+                      monthName={activity.monthName}
+                      boxSize="small"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* My Details */}
+            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-1/4 border border-white">
               <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
                 My Details
               </h3>
@@ -531,7 +636,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                 />
                 <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
                 <p className="text-[#8b949e]">
-                  hehe
+                  hehe{" "}
                   <span>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   </span>
@@ -539,70 +644,132 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Analysis and Statistics Section */}
-        <div className="flex flex-col justify-center items-center mb-10 mt-12 w-full ">
-          <h1 className="text-white mb-10 font-bold text-3xl">
+        <div className="flex flex-col justify-center items-center mb-10 mt-12 w-[20rem] mx-auto lg:w-full">
+          <h1 className="text-white mb-10 font-bold lg:ext-3xl md:text-2xl sm:text-xl text-xl">
             My progress and statistics
           </h1>
-          <div className="w-full max-w-7xl grid grid-cols-2 gap-8">
-            {/* Left Column: Circular Progress and Stats */}
-            <div className="grid grid-cols-2 gap-8">
-              {/* Circular Progress Components */}
-              <div className="bg-[#161b22] rounded-lg shadow-lg p-6 w-full text-center border border-white">
-                <FontAwesomeIcon
-                  icon={faChalkboardTeacher}
-                  className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
-                />
-                <h2 className="text-xl text-[#c9d1d9] mb-2">
-                  Lectures Watched
-                </h2>
-                <p className="font-bold text-4xl text-[#58a6ff]">890</p>
-              </div>
+          <div className="w-full max-w-7xl">
+            {/* Slider for small screens */}
+            {isSmallScreen ? (
+              <Slider
+                {...analysisSliderSettings}
+                className="grid grid-cols-1 gap-8"
+              >
+                {/* Circular Progress Components */}
+                <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white flex flex-col justify-center items-center h-48">
+                  <FontAwesomeIcon
+                    icon={faChalkboardTeacher}
+                    className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                  />
+                  <h2 className="text-xl text-[#c9d1d9] mb-2">
+                    Lectures Watched
+                  </h2>
+                  <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                </div>
 
-              <div className="bg-[#161b22] rounded-lg shadow-lg p-6 w-full flex flex-col items-center border border-white">
-                <h2 className="text-xl font-bold text-[#c9d1d9] mb-2 text-center">
-                  Productivity
-                </h2>
-                <CircularProgress
-                  label="Productivity"
-                  value="100"
-                  width="100"
-                  textColor="white"
-                />
-              </div>
+                <div className="border border-white bg-[#161b22] shadow-lg rounded-lg p-6 flex flex-col justify-center items-center h-48">
+                  <h2 className="text-xl font-bold mb-2 text-center text-white">
+                    Analysis
+                  </h2>
+                  <div className="flex justify-center">
+                    <CircularProgress
+                      label="Productivity"
+                      value="100"
+                      width="120"
+                      textColor="white"
+                    />
+                  </div>
+                </div>
 
-              {/* Additional Stats */}
-              <div className="bg-[#161b22] rounded-lg shadow-lg p-6 w-full text-center border border-white">
-                <FontAwesomeIcon
-                  icon={faQuestionCircle}
-                  className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
-                />
-                <h2 className="text-xl text-[#c9d1d9] mb-2">
-                  Questions Solved
-                </h2>
-                <p className="font-bold text-4xl text-[#58a6ff]">890</p>
-              </div>
-              <div className="bg-[#161b22] rounded-lg shadow-lg p-6 w-full flex flex-col items-center border border-white">
-                <h2 className="text-xl font-bold text-[#c9d1d9] mb-2 text-center ">
-                  Quiz
-                </h2>
-                <CircularProgress
-                  label="Quiz"
-                  value="75"
-                  width="100"
-                  textColor="white"
-                />
-              </div>
-            </div>
+                <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white flex flex-col justify-center items-center h-48">
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                  />
+                  <h2 className="text-xl text-[#c9d1d9] mb-2">
+                    Questions Solved
+                  </h2>
+                  <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                </div>
 
-            {/* Right Column: Statistics Component */}
-            <div className="h-full flex items-center justify-center border border-white">
-              <div className="bg-[#161b22] shadow-lg w-full h-full rounded-lg p-8 flex items-center justify-center">
-                <Statistics />
+                <div className="border border-white bg-[#161b22] rounded-lg shadow-lg p-6 flex flex-col justify-center items-center h-48">
+                  <h2 className="text-xl font-bold mb-2 text-center text-white">
+                    Analysis
+                  </h2>
+                  <div className="flex justify-center">
+                    <CircularProgress
+                      label="Quiz"
+                      value="75"
+                      width="120"
+                      textColor="white"
+                    />
+                  </div>
+                </div>
+              </Slider>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left Column: Circular Progress and Stats */}
+                <div className="grid grid-cols-2 gap-8">
+                  {/* Circular Progress Components */}
+                  <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white">
+                    <FontAwesomeIcon
+                      icon={faChalkboardTeacher}
+                      className="h-12 w-12 text-[#ffa657] mb-4"
+                    />
+                    <h2 className="text-xl text-[#c9d1d9] mb-2">
+                      Lectures Watched
+                    </h2>
+                    <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                  </div>
+
+                  <div className="border border-white bg-[#161b22] shadow-lg rounded-lg p-6 flex flex-col items-center">
+                    <h2 className="text-xl font-bold mb-2 text-center text-white">
+                      Analysis
+                    </h2>
+                    <CircularProgress
+                      label="Productivity"
+                      value="100"
+                      width="150"
+                      textColor="white"
+                    />
+                  </div>
+
+                  {/* Additional Stats */}
+                  <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white">
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                    />
+                    <h2 className="text-xl text-[#c9d1d9] mb-2">
+                      Questions Solved
+                    </h2>
+                    <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                  </div>
+
+                  <div className="border border-white bg-[#161b22] rounded-lg shadow-lg p-6 flex flex-col items-center">
+                    <h2 className="text-xl font-bold mb-2 text-center text-white">
+                      Analysis
+                    </h2>
+                    <CircularProgress
+                      label="Quiz"
+                      value="75"
+                      width="150"
+                      textColor="white"
+                    />
+                  </div>
+                </div>
+
+                {/* Right Column: Statistics Component */}
+                <div className="h-full flex items-center justify-center border border-white">
+                  <div className="bg-[#161b22] shadow-lg w-full h-full rounded-lg p-8 flex items-center justify-center">
+                    <Statistics />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
