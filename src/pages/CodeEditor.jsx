@@ -50,7 +50,6 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
   const handleEditorChange = (value) => {
     setData(value)
   }
-
   function handleLanguageChange(event) {
     const selectedLanguage = event.target.value
     setLanguage(selectedLanguage)
