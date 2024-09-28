@@ -1,61 +1,47 @@
 import React,{ useState } from "react"
 import { FiChevronDown } from 'react-icons/fi';
 import { FiChevronUp} from 'react-icons/fi';
+import { getJob } from "../api/jobAlerts";
+import { useEffect } from "react";
 
-const JobBoard=({})=>{
-    const members = [
-        {
-            company_icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-oD07Xuexpxwsxp6thcQkIz1nk3XuOBUdxA&s",
-            company_name: "Google",
-            job_title: "Full stack engineer",
-            job_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-            job_type: "Full-time",
-            location: "Remotely",
-            path: "javascript:void(0)"
-        }, {
-            company_icon:"https://banner2.cleanpng.com/20180320/dwq/av0pnqwyw.webp",
-            company_name: "Github",
-            job_title: "Web tools manager",
-            job_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-            job_type: "Part-time",
-            location: "USA, New york city",
-            path: "javascript:void(0)"
-        }, {
-            company_icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-oD07Xuexpxwsxp6thcQkIz1nk3XuOBUdxA&s",
-            company_name: "Figma",
-            job_title: "UI/UX Designer",
-            job_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-            job_type: "Full-time",
-            location: "Mauritania",
-            path: "javascript:void(0)",
-        }
-      ]
+
+const JobBoard=({selectedJob})=>{
+   
       const [showAll, setShowAll] = useState(false);
-    const visibleItems = showAll ? members : members.slice(0, 2);
-    const handleToggle = () => {
-        setShowAll(!showAll);
-      };   
+        const handleToggle = () => {
+            setShowAll(!showAll);
+        };   
 
-      const jobs = [
-        {
-            company_icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-oD07Xuexpxwsxp6thcQkIz1nk3XuOBUdxA&s",
-            company_name: "Google",
-            job_title: "Full stack engineer",
-            job_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-            job_type: "Full-time",
-            location: "Remotely",
-            path: "javascript:void(0)"
-        }, {
-            company_icon:"https://banner2.cleanpng.com/20180320/dwq/av0pnqwyw.webp",
-            company_name: "Github",
-            job_title: "Web tools manager",
-            job_description: "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-            job_type: "Part-time",
-            location: "USA, New york city",
-            path: "javascript:void(0)"
-        }, 
-      ]
-      
+      const [loading,setLoading]=useState(false);
+      const [members,setMembers]=useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try{
+        setLoading(true);
+      const data = await getJob()
+      setMembers(data) 
+    }catch(err){
+      console.log(err);
+    }finally{
+      setLoading(false);
+    }
+    }
+    fetchData();
+  }, [])
+  var visibleItems;
+  if(selectedJob){
+     visibleItems = showAll 
+        ? members.filter(member => member.title.includes(selectedJob) || member.company.includes(selectedJob)) 
+        : members.filter(member => member.title.includes(selectedJob) || member.company.includes(selectedJob)).slice(0, 2);
+  }
+  else{
+     visibleItems=showAll? members:members.slice(0,2);
+  }
+        
+      const jobs= members.slice(0, 2);
+     
+
       return (
         <section className="py-28">
             <div className="max-w-screen-lg dark:text-white mx-auto px-4 md:px-8">
@@ -70,15 +56,15 @@ const JobBoard=({})=>{
                                 <a href={item.path} className="space-y-3">
                                     <div className="flex items-center gap-x-3">
                                         <div className=" w-14 h-14  rounded-full flex items-center justify-center">
-                                            <img src={item.company_icon}/>
+                                            <img src={item.logo}/>
                                         </div>
                                         <div>
-                                            <span className="block text-sm dark:text-white font-medium">{item.company_name}</span>
-                                            <h3 className="text-base dark:text-white font-semibold mt-1">{item.job_title}</h3>
+                                            <span className="block text-sm dark:text-white font-medium">{item.company}</span>
+                                            <h3 className="text-base dark:text-white font-semibold mt-1">{item.title}</h3>
                                         </div>
                                     </div>
                                     <p className="dark:text-white-600 sm:text-sm">
-                                        {item.job_description}
+                                        {item.description}
                                     </p>
                                     <div className="text-sm dark:text-white-600 flex items-center gap-6">
                                         <span className="flex items-center gap-2">
@@ -86,7 +72,7 @@ const JobBoard=({})=>{
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V5C6 3.34315 7.34315 2 9 2H11C12.6569 2 14 3.34315 14 5V6H16C17.1046 6 18 6.89543 18 8V11.5708C15.5096 12.4947 12.8149 12.9999 10 12.9999C7.18514 12.9999 4.49037 12.4947 2 11.5707V8C2 6.89543 2.89543 6 4 6H6ZM8 5C8 4.44772 8.44772 4 9 4H11C11.5523 4 12 4.44772 12 5V6H8V5ZM9 10C9 9.44772 9.44772 9 10 9H10.01C10.5623 9 11.01 9.44772 11.01 10C11.01 10.5523 10.5623 11 10.01 11H10C9.44772 11 9 10.5523 9 10Z" fill="#9CA3AF" />
                                                 <path d="M2 13.6923V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V13.6923C15.4872 14.5404 12.7964 14.9999 10 14.9999C7.20363 14.9999 4.51279 14.5404 2 13.6923Z" fill="#9CA3AF" />
                                             </svg>
-                                            {item.job_type}
+                                            {item.type}
                                         </span>
                                         <span className="flex items-center gap-2">
                                             <svg className="w-5 h-5 dark:text-white" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +104,7 @@ const JobBoard=({})=>{
                         }
                     {/* {showAll ? 'Show Less ' : 'Show More'}<FiChevronDown className="pt-1"/> */}
                     </button>
-      </div>
+                </div>
                 </div>
             <div className="max-w-screen-lg mt-12 dark:text-white mx-auto px-4 md:px-8">
                 <div className="max-w-md">
@@ -132,15 +118,15 @@ const JobBoard=({})=>{
                                 <a href={item.path} className="space-y-3">
                                     <div className="flex items-center gap-x-3">
                                         <div className=" w-14 h-14  rounded-full flex items-center justify-center">
-                                               <img src={item.company_icon}/>
+                                               <img src={item.logo}/>
                                         </div>
                                         <div>
-                                            <span className="block text-sm dark:text-white font-medium">{item.company_name}</span>
-                                            <h3 className="text-base dark:text-white font-semibold mt-1">{item.job_title}</h3>
+                                            <span className="block text-sm dark:text-white font-medium">{item.company}</span>
+                                            <h3 className="text-base dark:text-white font-semibold mt-1">{item.title}</h3>
                                         </div>
                                     </div>
                                     <p className="dark:text-white-600 sm:text-sm">
-                                        {item.job_description}
+                                        {item.description}
                                     </p>
                                     <div className="text-sm dark:text-white-600 flex items-center gap-6">
                                         <span className="flex items-center gap-2">
@@ -148,7 +134,7 @@ const JobBoard=({})=>{
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6 6V5C6 3.34315 7.34315 2 9 2H11C12.6569 2 14 3.34315 14 5V6H16C17.1046 6 18 6.89543 18 8V11.5708C15.5096 12.4947 12.8149 12.9999 10 12.9999C7.18514 12.9999 4.49037 12.4947 2 11.5707V8C2 6.89543 2.89543 6 4 6H6ZM8 5C8 4.44772 8.44772 4 9 4H11C11.5523 4 12 4.44772 12 5V6H8V5ZM9 10C9 9.44772 9.44772 9 10 9H10.01C10.5623 9 11.01 9.44772 11.01 10C11.01 10.5523 10.5623 11 10.01 11H10C9.44772 11 9 10.5523 9 10Z" fill="#9CA3AF" />
                                                 <path d="M2 13.6923V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V13.6923C15.4872 14.5404 12.7964 14.9999 10 14.9999C7.20363 14.9999 4.51279 14.5404 2 13.6923Z" fill="#9CA3AF" />
                                             </svg>
-                                            {item.job_type}
+                                            {item.type}
                                         </span>
                                         <span className="flex items-center gap-2">
                                             <svg className="w-5 h-5 dark:text-white" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

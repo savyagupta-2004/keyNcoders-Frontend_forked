@@ -4,7 +4,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 import ReactPlayer from "react-player";
 import { getVideos } from "../api/videos"; 
-import Spinner from "./Spinner"
+import Spinner from "./Spinner";
 const Sidebar = () => {
   const [expandedModules, setExpandedModules] = useState({});
   const [expandedVideos, setExpandedVideos] = useState({});
@@ -24,7 +24,7 @@ const Sidebar = () => {
   const toggleChapter = (chapter) => {
     setExpandedVideos((prev) => ({
       ...prev,
-      [chapter._id]: !prev[chapter._id], // Use chapter._id to track each chapter
+      [chapter._id]: !prev[chapter._id],
     }));
   };
 

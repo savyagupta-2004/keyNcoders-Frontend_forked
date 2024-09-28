@@ -5,23 +5,40 @@ import { faCircleChevronDown, faPenToSquare } from "@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PostloginNavbar from '../utilities/PostloginNavbar'
 import { getQuestions } from '../api/questions'
+import Spinner from '../components/Spinner';
+
 
 const QuestionPage = ({ theme, handleThemeSwitch }) => {
   const [modules, setModules] = useState([])
   const [isVisible, setIsVisible] = useState(false);
+  const [loading,setLoading]=useState(false);
+
   const toggleVisibility = () => {
       setIsVisible(!isVisible);
   };
 
+  
+
   useEffect(() => {
     async function fetchData() {
+      try{
+        setLoading(true);
       const data = await getQuestions()
-      setModules(data) // Set the modules data from the API response
+      setModules(data) 
+    }catch(err){
+      console.log(err);
+    }finally{
+      setLoading(false);
+    }
     }
     fetchData();
   }, [])
 
   return (
+    <>
+    { loading? <div className="w-full bg-black  justify-center items-center flex h-screen">
+      <Spinner/>
+      </div>:
     <div className={`flex flex-col w-full min-h-screen overflow-x-hidden ${theme === 'dark' ? 'bg-[#131313] text-white' : 'bg-[#f1f1f1] text-black'}`}>
       <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <section className="mt-16 md:mt-24">
@@ -62,8 +79,12 @@ const QuestionPage = ({ theme, handleThemeSwitch }) => {
             
           </div>
         ))}
+        
+      
       </section>
     </div>
+      }
+      </>
   )
 }
 

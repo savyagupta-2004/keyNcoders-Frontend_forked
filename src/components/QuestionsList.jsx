@@ -1,27 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { faCircleChevronDown, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import logo from "/favicon.ico"
+import logo from "/favicon.ico";
+
 const QuestionsList = ({ stepNo, title, questions, theme }) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [questionsState, setQuestionsState] = useState(questions);
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
     };
 
-    const [questionsState, setQuestionsState] = useState(questions);
+    // Function to load question states from localStorage
+    const loadQuestionsState = () => {
+        const storedState = localStorage.getItem(`questionsState_${stepNo}`);
+        return storedState ? JSON.parse(storedState) : questions.map(question => ({ ...question, done: false }));
+    };
+
+    // Function to save question states to localStorage
+    const saveQuestionsState = (updatedQuestions) => {
+        localStorage.setItem(`questionsState_${stepNo}`, JSON.stringify(updatedQuestions));
+    };
+
+    useEffect(() => {
+        const initialQuestionsState = loadQuestionsState();
+        setQuestionsState(initialQuestionsState);
+    }, [stepNo]);
+    const toggleFlagged = (index) => {
+        const newQuestions = [...questionsState];
+        newQuestions[index].flagged = !newQuestions[index].flagged;
+        setQuestionsState(newQuestions);
+    };
+
 
     const toggleDone = (index) => {
         const newQuestions = [...questionsState];
         newQuestions[index].done = !newQuestions[index].done;
         setQuestionsState(newQuestions);
-    };
-
-    const toggleFlagged = (index) => {
-        const newQuestions = [...questionsState];
-        newQuestions[index].flagged = !newQuestions[index].flagged;
-        setQuestionsState(newQuestions);
+        saveQuestionsState(newQuestions); // Save the updated state to localStorage
     };
 
     return (
@@ -35,16 +52,16 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                 <h1 className="dark:text-white text-black font-bold text-lg md:text-xl">
                     Step {stepNo} : {title}
                 </h1>
-								<span className='flex items-center'>
-									<p className='border border-white rounded-full bg-gray-900 w-12 md:w-20 text-center px-2 py-1 text-sm md:text-base'>
-											{questionsState.filter((q) => q.done).length} / {questionsState.length}
-									</p>
-									<span
-											className='border dark:border-white border-black rounded-md font-semibold text-orange-400 px-[5px] cursor-pointer ml-2'
-											onClick={toggleVisibility}>
-											<FontAwesomeIcon icon={faCircleChevronDown} />
-									</span>
-							</span>
+                <span className='flex items-center'>
+                    <p className='border border-white rounded-full bg-gray-900 w-12 md:w-20 text-center px-2 py-1 text-sm md:text-base'>
+                        {questionsState.filter((q) => q.done).length} / {questionsState.length}
+                    </p>
+                    <span
+                        className='border dark:border-white border-black rounded-md font-semibold text-orange-400 px-[5px] cursor-pointer ml-2'
+                        onClick={toggleVisibility}>
+                        <FontAwesomeIcon icon={faCircleChevronDown} />
+                    </span>
+                </span>
             </div>
 
             {isVisible && (
@@ -72,9 +89,9 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                                                 onChange={() => toggleDone(index)}
                                             />
                                         </td>
-                                        <td  className='py-3 px-4 border border-gray-300'>{question.name}</td>
+                                        <td className='py-3 px-4 border border-gray-300'>{question.name}</td>
                                         <td className='py-2 px-4 text-center border border-gray-300'>
-                                            <Link to="/codeEditor/{questions.name}" target='_blank' rel='noopener noreferrer'>
+                                            <Link to={`/codeEditor/${question.name}`} target='_blank' rel='noopener noreferrer'>
                                                 <img
                                                     src={logo}
                                                     alt='Practice Site Logo'
@@ -99,9 +116,7 @@ const QuestionsList = ({ stepNo, title, questions, theme }) => {
                                         <td className='py-2 px-4 border border-gray-300 text-center'>
                                             <FontAwesomeIcon
                                                 icon={faPenToSquare}
-                                                className={`cursor-pointer ${
-                                                    question.flagged ? "text-green-500" : "text-red-500"
-                                                }`}
+                                                className={`cursor-pointer ${question.flagged ? "text-green-500" : "text-red-500"}`}
                                                 onClick={() => toggleFlagged(index)}
                                             />
                                         </td>
