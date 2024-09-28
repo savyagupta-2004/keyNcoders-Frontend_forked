@@ -20,6 +20,26 @@ import {
 
 const UserProfile = ({ theme, handleThemeSwitch }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1016px)" }); // Adjust this according to your breakpoints
+
+  const badges = [
+    {
+      title: "Top Performer",
+      description: "Awarded for exceptional performance in 2023",
+      image: "/images/founder.png",
+    },
+    {
+      title: "Quiz Master",
+      description: "Completed all quizzes with a 100% score",
+      image: "/images/founder.png",
+    },
+    {
+      title: "Mentor Award",
+      description: "Recognized for mentoring new users",
+      image: "/images/founder.png",
+    },
+    // Add more badges as needed
+  ];
+
   const activities = [
     {
       monthName: "Jan",
@@ -465,14 +485,14 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
 
   return (
     <>
-      <div className="flex flex-col bg-[#0a0c10] min-h-[80vh] sm:min-h-[80vh] md:min-h-[90vh] ">
+      <div className="flex flex-col bg-[#0a0c10] min-h-[80vh] sm:min-h-[80vh] md:min-h-[90vh]">
         <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
 
         {/* Main Section */}
         {isSmallScreen ? (
           <Slider
             {...sliderSettings}
-            className="text-white   sm:w-[30rem] w-[22rem] mx-auto lg:w-fit lg:left-0 flex-col lg:mt-20"
+            className="text-white sm:w-[30rem] w-[22rem] mx-auto lg:w-fit lg:left-0 flex-col lg:mt-20"
           >
             {/* Slide for My Mentor */}
             <div className="flex flex-row justify-center items-center pt-36">
@@ -501,7 +521,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
             {/* Slide for My Contributions */}
             <div className="flex flex-row justify-center items-center pt-36">
               <div className="border border-white bg-[#161b22] text-[#c9d1d9] w-fit flex flex-col items-center h-fit rounded-xl p-8">
-                <h3 className="text-white font-bold font-roboto text-3xl text-center">
+                <h3 className="text-white font-bold font-roboto lg:text-3xl md:text-2xl sm:text-xl text-xl mb-5 text-center">
                   My contributions this year
                 </h3>
                 <div className="flex flex-row justify-center items-center space-x-3 text-lg mb-6">
@@ -523,7 +543,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                   </div>
                 </div>
                 {/* Activity Grids */}
-                <div className="grid grid-cols-6 gap-4 md:">
+                <div className="grid grid-cols-6 gap-4">
                   {activities.map((activity, index) => (
                     <div key={index} className="flex flex-col items-center">
                       <ActivityGrid
@@ -587,7 +607,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
 
             {/* My Contributions */}
             <div className="border border-white bg-[#161b22] text-[#c9d1d9] w-1/2 overflow-auto flex flex-col items-center h-fit rounded-xl p-8">
-              <h3 className="text-white font-bold font-roboto text-3xl text-center">
+              <h3 className="text-white font-bold font-roboto lg:text-3xl md:text-2xl sm:text-xl text-xl text-center">
                 My contributions this year
               </h3>
               <div className="flex flex-row justify-center items-center space-x-3 text-lg mb-6">
@@ -648,11 +668,10 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
 
         {/* Analysis and Statistics Section */}
         <div className="flex flex-col justify-center items-center mb-10 mt-12 w-[20rem] mx-auto lg:w-full">
-          <h1 className="text-white mb-10 font-bold lg:ext-3xl md:text-2xl sm:text-xl text-xl">
+          <h1 className="text-white mb-10 font-bold lg:text-3xl md:text-2xl sm:text-xl text-xl">
             My progress and statistics
           </h1>
           <div className="w-full max-w-7xl">
-            {/* Slider for small screens */}
             {isSmallScreen ? (
               <Slider
                 {...analysisSliderSettings}
@@ -770,10 +789,105 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                 </div>
               </div>
             )}
+
+            {/* Leaderboard Section */}
+            <div className="mt-12 bg-[#161b22] p-6 rounded-lg shadow-lg border border-white">
+              <h3 className="text-2xl text-[#c9d1d9] font-bold text-center mb-4">
+                Leaderboard
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-[#0a0c10]">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[#c9d1d9] uppercase tracking-wider">
+                        Rank
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[#c9d1d9] uppercase tracking-wider">
+                        User
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-[#c9d1d9] uppercase tracking-wider">
+                        Score
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-[#161b22] divide-y divide-gray-200">
+                    {/* Dummy users for initial display */}
+                    {Array.from({ length: 10 }, (_, index) => (
+                      <tr key={index}>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#ffa657]">
+                          {index + 1}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#c9d1d9]">
+                          User {index + 1}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-[#58a6ff]">
+                          Score {Math.floor(Math.random() * 1000)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Badges and Achievements Section */}
+            <div className="mt-12 bg-[#161b22] p-6 rounded-lg shadow-lg border border-white flex flex-col items-center">
+              <h3 className="text-2xl text-[#c9d1d9] font-bold text-center mb-4">
+                My Badges and Achievements
+              </h3>
+              <div className="overflow-x-auto">
+                {isSmallScreen ? (
+                  <Slider
+                    {...sliderSettings}
+                    className="text-white w-[18rem] sm:w-[20rem]  lg:w-full"
+                  >
+                    {badges.map((badge, index) => (
+                      <div
+                        key={index}
+                        className="bg-[#22272e] rounded-lg shadow-lg p-4 flex flex-col items-center border border-white w-40 mx-auto"
+                      >
+                        <img
+                          src={badge.image}
+                          alt={badge.title}
+                          className="h-16 w-16 mb-2"
+                        />
+                        <h4 className="text-[#c9d1d9] font-bold text-lg text-center">
+                          {badge.title}
+                        </h4>
+                        <p className="text-[#8b949e] text-sm text-center">
+                          {badge.description}
+                        </p>
+                      </div>
+                    ))}
+                  </Slider>
+                ) : (
+                  <div className="flex space-x-4 py-4 justify-center">
+                    {badges.map((badge, index) => (
+                      <div
+                        key={index}
+                        className="bg-[#22272e] rounded-lg shadow-lg p-4 flex flex-col items-center border border-white w-40"
+                      >
+                        <img
+                          src={badge.image}
+                          alt={badge.title}
+                          className="h-16 w-16 mb-2"
+                        />
+                        <h4 className="text-[#c9d1d9] font-bold text-lg text-center">
+                          {badge.title}
+                        </h4>
+                        <p className="text-[#8b949e] text-sm text-center">
+                          {badge.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+        <Footer theme={theme} />
       </div>
-      <Footer theme={theme} />
     </>
   );
 };

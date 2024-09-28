@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.0",
+    "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
@@ -19,7 +19,9 @@
     "@leenguyen/react-flip-clock-countdown": "^1.6.0",
     "@monaco-editor/react": "^4.6.0",
     "@mui/icons-material": "^5.16.4",
-    "@mui/material": "^5.16.4",
+    "@mui/material": "^5.16.7",
+    "@mui/styled-engine-sc": "^6.1.1",
+    "@mui/x-date-pickers": "^7.18.0",
     "axios": "^1.7.7",
     "cora": "^0.1.0",
     "cors": "^2.8.5",
@@ -45,6 +47,7 @@
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.13",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
