@@ -21,11 +21,15 @@ import QuestionPage from "./pages/QuestionsPage.jsx";
 import Forgotpassword from "./pages/Forgotpassword.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { AuthProvider } from "./authContext.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 import ResetPass from "./pages/Resetpass.jsx";
 import Spinner from "./components/Spinner.jsx";
 import Postlogin_testing from "./pages/Postlogin_testing.jsx";
 import Postlogin_temp from "./pages/Postlogin_temp.jsx";
+import Explorepage from "./pages/Explorepage.jsx";
+import Projectidea1 from "./pages/Projectidea1.jsx";
+import Projects from "./pages/Projects.jsx";
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
@@ -86,152 +90,226 @@ const App = () => {
         }
       `}</style>
       <div>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PreLogin theme={theme} handleThemeSwitch={handleThemeSwitch} />
-              }
-            />
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PreLogin
+                    theme={theme}
+                    handleThemeSwitch={handleThemeSwitch}
+                  />
+                }
+              />
 
-            <Route
-              path="/batches"
-              element={
-                <Batches theme={theme} handleThemeSwitch={handleThemeSwitch} />
-              }
-            />
-            <Route
-              path="/my-batches"
-              element={
-                <MyBatches
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/user-postlogin"
-              element={
-                <Postlogin_temp
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/dsa"
-              element={
-                <DsaCourse
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/nextjs"
-              element={
-                <NextjsCourse
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
+              <Route
+                path="/batches"
+                element={
+                  <ProtectedRoute>
+                    <Batches
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/my-batches"
+                element={
+                  <ProtectedRoute>
+                    <MyBatches
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-postlogin"
+                element={
+                  <ProtectedRoute>
+                    <Postlogin_temp
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dsa"
+                element={
+                  <DsaCourse
+                    theme={theme}
+                    handleThemeSwitch={handleThemeSwitch}
+                  />
+                }
+              />
+              <Route
+                path="/nextjs"
+                element={
+                  <NextjsCourse
+                    theme={theme}
+                    handleThemeSwitch={handleThemeSwitch}
+                  />
+                }
+              />
 
-            <Route
-              path="/login"
-              element={<Login theme={theme} notify={notify} />}
-            />
-            <Route
-              path="/signup"
-              element={<Signup theme={theme} notify={notify} />}
-            />
-            <Route
-              path="/about"
-              element={
-                <AboutUs handleThemeSwitch={handleThemeSwitch} theme={theme} />
-              }
-            />
-            <Route
-              path="/contact-us"
-              element={
-                <ContactUs
-                  handleThemeSwitch={handleThemeSwitch}
-                  theme={theme}
-                  notify={notify}
-                />
-              }
-            />
-            <Route
-              path="/videos"
-              element={
-                <Videos theme={theme} handleThemeSwitch={handleThemeSwitch} />
-              }
-            />
-            <Route
-              path="/mentor-connect"
-              element={
-                <Mentor theme={theme} handleThemeSwitch={handleThemeSwitch} />
-              }
-            />
-            <Route
-              path="/mentor-profile/:mentorName"
-              element={
-                <MentorProfile
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="codeEditor/:questionName"
-              element={
-                <CodeEditor
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/job-alerts"
-              element={
-                <JobAlerts
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/questions"
-              element={
-                <QuestionPage
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
-            <Route
-              path="/user-profile"
-              element={
-                <UserProfile
-                  theme={theme}
-                  handleThemeSwitch={handleThemeSwitch}
-                />
-              }
-            />
+              <Route
+                path="/login"
+                element={<Login theme={theme} notify={notify} />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup theme={theme} notify={notify} />}
+              />
+              <Route
+                path="/about"
+                element={
+                  <AboutUs
+                    handleThemeSwitch={handleThemeSwitch}
+                    theme={theme}
+                  />
+                }
+              />
+              <Route
+                path="/contact-us"
+                element={
+                  <ContactUs
+                    handleThemeSwitch={handleThemeSwitch}
+                    theme={theme}
+                    notify={notify}
+                  />
+                }
+              />
+              <Route
+                path="/videos"
+                element={
+                  <ProtectedRoute>
+                    <Videos
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/explore"
+                element={
+                  <ProtectedRoute>
+                    <Explorepage
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/projects1"
+                element={
+                  <ProtectedRoute>
+                    <Projectidea1
+                      handleThemeSwitch={handleThemeSwitch}
+                      theme={theme}
+                    />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/forgotPass"
-              element={<Forgotpassword notify={notify} />}
-            />
-            <Route path="*" element={<ErrorPage />} />
-            <Route
-              path="/reset-password/:token"
-              element={<ResetPass notify={notify} />}
-            />
+              <Route
+                path="/projects"
+                element={
+                  <ProtectedRoute>
+                    <Projects
+                      handleThemeSwitch={handleThemeSwitch}
+                      theme={theme}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/mentor-connect"
+                element={
+                  <ProtectedRoute>
+                    <Mentor
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/mentor-profile/:mentorName"
+                element={
+                  <ProtectedRoute>
+                    <MentorProfile
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="codeEditor/:questionName"
+                element={
+                  <ProtectedRoute>
+                    <CodeEditor
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/job-alerts"
+                element={
+                  <ProtectedRoute>
+                    <JobAlerts
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/questions"
+                element={
+                  <ProtectedRoute>
+                    <QuestionPage
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/user-profile"
+                element={
+                  <ProtectedRoute>
+                    <UserProfile
+                      theme={theme}
+                      handleThemeSwitch={handleThemeSwitch}
+                    />
+                  </ProtectedRoute>
+                }
+              />
 
-          </Routes>
-        </BrowserRouter>
+              <Route
+                path="/forgotPass"
+                element={
+                  <ProtectedRoute>
+                    <Forgotpassword notify={notify} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<ErrorPage />} />
+              <Route
+                path="/reset-password/:token"
+                element={<ResetPass notify={notify} />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
       </div>
 
       <ToastContainer />

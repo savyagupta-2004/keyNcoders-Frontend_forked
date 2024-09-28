@@ -8,6 +8,14 @@ import LaptopSlider from "../components/LaptopSlider";
 import { Link, useLocation } from "react-router-dom";
 import Footer from "../utilities/Footer";
 import { useNavigate } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
+
 import {
   faBug,
   faCodeBranch,
@@ -19,6 +27,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PostloginNavbar from "../utilities/PostloginNavbar";
 const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+
+    autoplaySpeed: 2000,
+
+    responsive: [
+      {
+        breakpoint: 1030,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   const data = [1, 2, , 3, 4, 5, 6, 7, 8];
   const [showStats, setShowstats] = useState(true);
   const [userdetails, setuserdetails] = useState({});
@@ -82,55 +110,54 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
     <>
       <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       {showStats ? (
-        <div className="flex min-h-screen bg-[#E6E6E6] overflow-hidden">
+        <div className="flex max-h-screen bg-[#0a0c10] text-white overflow-hidden">
           {/* Sidebar - Leftmost section */}
-          <div className="mt-10 lg:w-1/5  lg:p-4 p-1  min-h-[150vh] bg-white space-y-6 lg:text-xl md:text-[18px] sm:text-[15px] text-[8px]   ">
+          <div className="mt-10 lg:w-1/5 fixed lg:p-4 p-1 min-h-screen bg-[#161b22] space-y-6 lg:text-xl md:text-[18px] sm:text-[15px] text-[8px]">
             <Link
               to="/videos"
-              className=" hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 mt-8 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
+              className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 mt-8 hover:underline hover:decoration-white hover:underline-offset-8"
             >
               Lectures
             </Link>
             <Link
-              to="/my-batches"
-              className="hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 mt-8 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
+              to="/questions"
+              className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 mt-8 hover:underline hover:decoration-white hover:underline-offset-8"
             >
               Practice Questions
             </Link>
             <Link
               to="/my-batches"
-              className="hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 mt-8 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
+              className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 mt-8 hover:underline hover:decoration-white hover:underline-offset-8"
             >
               My Batches
             </Link>
             <Link
               to="/job-alerts"
-              className="hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
+              className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8"
             >
               Job Alerts
             </Link>
             <Link
               to="/mentor-connect"
-              className="hover:bg-orange-500 hover:text-white font-medium rounded-md bg-[#E6E6E6] w-full block text-center p-3 text-black  hover:underline hover:decoration-white hover:underline-offset-8"
+              className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8"
             >
               Mentor Connect
             </Link>
 
-            <div className="font-medium text-center border-2 border-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white focus:outline-none">
+            <div className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
               <Link to="/user-profile">My Profile</Link>
             </div>
           </div>
 
           {/* Main content - Right section */}
-          <div className="flex-1 mt-10 overflow-x-hidden  ">
+          <div className="flex-col justify-end mt-10 lg:ml-[20%] ml-[25%] overflow-x-hidden w-full">
             {/* Navigation */}
-            <nav className="relative ">
+            <nav className="relative">
               <div className="absolute flex justify-between px-12 py-5 w-full mt-8">
                 <div>
                   <h1 className="font-bold lg:text-3xl md:text-[34px] sm:text-[30px] text-[18px]">
                     Welcome back{" "}
                     <span className="text-orange-500">
-                      {" "}
                       {userdetails.name || "User"}
                     </span>
                   </h1>
@@ -155,16 +182,27 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                     </span>
                   ) : (
                     <>
-                      <div className="bg-white  rounded-lg shadow-lg p-6 sm:text-center text-center">
+                      {/* Lectures Watched */}
+                      <div className="bg-[#161b22] rounded-lg shadow-lg p-6 sm:text-center text-center">
                         <FontAwesomeIcon
                           icon={faChalkboardTeacher}
                           className="h-12 w-12 text-orange-500 mx-auto mb-4"
                         />
                         <h2 className="text-xl mb-2">Lectures Watched</h2>
-                        <p className="font-bold text-4xl">890</p>
+                        <p className="font-bold text-4xl mb-4">890</p>
+                        {/* Progress bar */}
+                        <div className="w-full bg-gray-300 rounded-full h-4">
+                          <div
+                            className="bg-orange-500 h-4 rounded-full"
+                            style={{ width: "75%" }} // Adjust this width dynamically if needed
+                          ></div>
+                        </div>
+                        <p className="mt-2 text-sm">75% completed</p>{" "}
+                        {/* Adjust percentage dynamically */}
                       </div>
 
-                      <div className="bg-white shadow-lg rounded-lg p-6 items-center flex justify-center">
+                      {/* Analysis (Circular Progress) */}
+                      <div className="bg-[#161b22] shadow-lg rounded-lg p-6 items-center flex justify-center">
                         <div>
                           <h2 className="text-xl font-bold mb-2 text-center">
                             Analysis
@@ -173,20 +211,32 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                             label="Productivity"
                             value="100"
                             width="150"
+                            textColor="white"
                           />
                         </div>
                       </div>
 
-                      <div className="bg-white sm:text-center text-center shadow-lg rounded-lg p-6">
+                      {/* Questions Solved */}
+                      <div className="bg-[#161b22] sm:text-center text-center shadow-lg rounded-lg p-6">
                         <FontAwesomeIcon
                           icon={faQuestionCircle}
                           className="h-12 w-12 text-orange-500 mx-auto mb-4"
                         />
                         <h2 className="text-xl mb-2">Questions Solved</h2>
-                        <p className="font-bold text-4xl">890</p>
+                        <p className="font-bold text-4xl mb-4">890</p>
+                        {/* Progress bar */}
+                        <div className="w-full bg-gray-300 rounded-full h-4">
+                          <div
+                            className="bg-orange-500 h-4 rounded-full"
+                            style={{ width: "50%" }} // Adjust this width dynamically if needed
+                          ></div>
+                        </div>
+                        <p className="mt-2 text-sm">50% completed</p>{" "}
+                        {/* Adjust percentage dynamically */}
                       </div>
 
-                      <div className="bg-white rounded-lg shadow-lg p-6 items-center flex justify-center">
+                      {/* Another Analysis (Circular Progress) */}
+                      <div className="bg-[#161b22] rounded-lg shadow-lg p-6 items-center flex justify-center">
                         <div>
                           <h2 className="text-xl font-bold mb-2 text-center">
                             Analysis
@@ -195,6 +245,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                             label="Quiz"
                             value="75"
                             width="150"
+                            textColor="white"
                           />
                         </div>
                       </div>
@@ -207,8 +258,20 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                     Your Statistics
                   </h1>
 
-                  <div className="lg:bg-white md:bg-white sm:bg-white max-w-[55rem] w-[19rem] lg:w-full sm:w-[28rem] rounded-lg mt-4 p-6 flex items-center justify-center">
+                  <div className="lg:bg-[#161b22] md:bg-[#161b22] sm:bg-[#161b22] max-w-[55rem] w-[19rem] lg:w-full sm:w-[28rem] rounded-lg mt-4 p-6 flex items-center justify-center">
                     <Statistics />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <StaticDatePicker
+                        displayStaticWrapperAs="desktop"
+                        defaultValue={dayjs("2022-04-17")}
+                        slotProps={{
+                          toolbar: {
+                            toolbarFormat: "ddd DD MMMM",
+                            hidden: false,
+                          },
+                        }}
+                      />
+                    </LocalizationProvider>
                   </div>
                 </div>
 
@@ -217,7 +280,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                 </h1>
                 <div className="lg:flex lg:space-x-4 lg:ml-4">
                   {/* First Card */}
-                  <div className="rounded-md bg-white w-full">
+                  <div className="rounded-md w-full">
                     <PostloginCourseCard
                       theme={theme}
                       course="DSA"
@@ -230,7 +293,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                   </div>
 
                   {/* Second Card */}
-                  <div className="w-full rounded-md bg-white">
+                  <div className="w-full rounded-md">
                     <PostloginCourseCard
                       theme={theme}
                       course="Questions"
@@ -279,7 +342,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                     <Link target="_blank" to="https://rzp.io/l/y1Eux1i">
                       <button
                         // onClick={handleNavigatehome}
-                        className="dark:bg-orange-600 bg-orange-500 shadow-lg hover:bg-orange-600 dark:hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-lg md:mt-0 mt-5 ml-0 md:mb-10 mb-6 sm:mb-8 md:ml-0 lg:ml-0 flex justify-center items-center"
+                        className="dark:bg-orange-600 bg-orange-500 shadow-lg hover:bg-orange-600  text-white font-bold py-2 px-4 rounded-lg md:mt-0 mt-5 ml-0 md:mb-10 mb-6 sm:mb-8 md:ml-0 lg:ml-0 flex justify-center items-center"
                       >
                         Join Now
                       </button>
@@ -297,12 +360,11 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                   </div>
                 </div>
               </div>
-              <Footer theme={theme} />
             </div>
           </div>
         </>
       )}
-      <Footer theme={theme} />
+      {/* <Footer theme={theme} /> */}
     </>
   );
 };

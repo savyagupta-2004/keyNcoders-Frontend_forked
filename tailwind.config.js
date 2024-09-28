@@ -29,7 +29,10 @@ export default {
       backgroundImage: {
         "custom-gradient": "linear-gradient(to right,#212121,#313131, #616161)",
       },
+      
     },
   },
   plugins: [],
 };
+
+

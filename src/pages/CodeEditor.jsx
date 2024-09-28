@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
-import Navbar from '../utilities/Navbar'
-import Editor from '@monaco-editor/react'
-import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useRef } from "react";
+
+import Editor from "@monaco-editor/react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import PostloginNavbar from "../utilities/PostloginNavbar";
 
 // export default function App() {
 //   const BASE_URL="https://fakestoreapi.com"
@@ -19,90 +20,95 @@ import axios from 'axios'
 //   )
 // }
 
-const BASE_URL = 'https://key-n-coder-be-merge.vercel.app/'
+const BASE_URL = "https://key-n-coder-be-merge.vercel.app/";
 
 const CodeEditor = ({ theme, handleThemeSwitch }) => {
-  const [currentView, setCurrentView] = useState('description')
+  const [currentView, setCurrentView] = useState("description");
   const defaultCode = {
-    python: '# Python',
-    java: '// Java\npublic class HelloWorld {\n    public static void main(String[] args) {\n     \n }\n}',
-    c: '/* C */\n#include <stdio.h>\n\nint main() {\n       \n}',
-    cpp: '// C++\n#include <iostream>\n\nint main() {\n    \n}',
-  }
+    python: "# Python",
+    java: "// Java\npublic class HelloWorld {\n    public static void main(String[] args) {\n     \n }\n}",
+    c: "/* C */\n#include <stdio.h>\n\nint main() {\n       \n}",
+    cpp: "// C++\n#include <iostream>\n\nint main() {\n    \n}",
+  };
 
-  const { questionId } = useParams()
-  const editorRef = useRef(null)
-  const [language, setLanguage] = useState('java')
-  const [code, setCode] = useState(defaultCode.java)
-  const [ans, setAns] = useState(false)
-  const [data, setData] = useState('')
+  const { questionId } = useParams();
+  const editorRef = useRef(null);
+  const [language, setLanguage] = useState("java");
+  const [code, setCode] = useState(defaultCode.java);
+  const [ans, setAns] = useState(false);
+  const [data, setData] = useState("");
 
   function handleEditorDidMount(editor, monaco) {
-    editorRef.current = editor
+    editorRef.current = editor;
   }
 
   function submitData() {
-    localStorage.setItem('submittedCode', data)
-    setAns(data)
-    setCurrentView('submission')
+    localStorage.setItem("submittedCode", data);
+    setAns(data);
+    setCurrentView("submission");
   }
 
   const handleEditorChange = (value) => {
-    setData(value)
-  }
+    setData(value);
+  };
   function handleLanguageChange(event) {
-    const selectedLanguage = event.target.value
-    setLanguage(selectedLanguage)
-    setCode(defaultCode[selectedLanguage])
+    const selectedLanguage = event.target.value;
+    setLanguage(selectedLanguage);
+    setCode(defaultCode[selectedLanguage]);
   }
 
   const handleViewChange = (view) => {
-    setCurrentView(view)
-  }
+    setCurrentView(view);
+  };
 
-  const editorTheme = theme === 'dark' ? 'vs-dark' : 'vs-light'
+  const editorTheme = theme === "dark" ? "vs-dark" : "vs-light";
 
   const questions = [
     {
-      num: '1.1',
-      name: 'Longest Subsequence',
-      des: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis, explicabo ducimus minima vitae ex tempora nisi dolor ipsa dignissimos iure facilis tempore! Neque veniam vel facere.',
-      exnum: '1.1.1',
+      num: "1.1",
+      name: "Longest Subsequence",
+      des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis, explicabo ducimus minima vitae ex tempora nisi dolor ipsa dignissimos iure facilis tempore! Neque veniam vel facere.",
+      exnum: "1.1.1",
       submission: {
-        true: 'Correct',
-        false: 'Incorrect',
+        true: "Correct",
+        false: "Incorrect",
       },
-      solution: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
-      exDes: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis.',
+      solution: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      exDes:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati sapiente laborum error nobis.",
     },
-  ]
+  ];
 
   useEffect(() => {
-    const savedCode = localStorage.getItem('submittedCode')
+    const savedCode = localStorage.getItem("submittedCode");
     if (savedCode) {
-      setAns(savedCode)
-      setCurrentView('submission')
+      setAns(savedCode);
+      setCurrentView("submission");
     }
-  }, [])
+  }, []);
 
   return (
     <div className="">
-      <Navbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
+      <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 bg-[#D9D9D9] gap-2 dark:bg-black min-h-screen">
           <div className="col-span-1 p-5 dark:bg-[#262626] bg-white  md:h-auto">
             <div className="flex overflow-x-auto mt-10 md:mt-16 whitespace-nowrap">
               <button
                 className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${
-                  currentView === 'description' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'
+                  currentView === "description"
+                    ? "dark:border-gray-500 rounded-t-md border border-b-0"
+                    : "bg-transparent"
                 }`}
-                onClick={() => handleViewChange('description')}
+                onClick={() => handleViewChange("description")}
               >
                 Description
               </button>
               <button
                 className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${
-                  currentView === 'solution' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'
+                  currentView === "solution"
+                    ? "dark:border-gray-500 rounded-t-md border border-b-0"
+                    : "bg-transparent"
                 }`}
                 // onClick={() => handleViewChange('solution')}
               >
@@ -110,9 +116,11 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
               </button>
               <button
                 className={`inline-flex items-center h-12 px-4 py-2 text-sm text-black border-b border-gray-300 sm:text-base dark:border-gray-500 dark:text-white ${
-                  currentView === 'submission' ? 'dark:border-gray-500 rounded-t-md border border-b-0' : 'bg-transparent'
+                  currentView === "submission"
+                    ? "dark:border-gray-500 rounded-t-md border border-b-0"
+                    : "bg-transparent"
                 }`}
-                onClick={() => handleViewChange('submission')}
+                onClick={() => handleViewChange("submission")}
               >
                 Submission
               </button>
@@ -120,7 +128,7 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
             <div className="dark:text-white text-black">
               {questions.map((question, index) => (
                 <div key={index} className="space-y-2">
-                  {currentView === 'description' && (
+                  {currentView === "description" && (
                     <>
                       <h1 className="mt-4 text-2xl">
                         {question.num}: {question.name}
@@ -130,8 +138,10 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                       <p>{question.exDes}</p>
                     </>
                   )}
-                  {currentView === 'solution' && <p className="pt-4">{question.solution}</p>}
-                  {currentView === 'submission' && (
+                  {currentView === "solution" && (
+                    <p className="pt-4">{question.solution}</p>
+                  )}
+                  {currentView === "submission" && (
                     <div>
                       <pre className="p-4 overflow-auto">
                         <code>{ans}</code>
@@ -169,19 +179,24 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                 />
               </div>
               <div className="flex gap-3 flex-row-reverse">
-                <button onClick={submitData} className="border dark:border-gray-500 rounded-md dark:text-white px-2 py-1">
+                <button
+                  onClick={submitData}
+                  className="border dark:border-gray-500 rounded-md dark:text-white px-2 py-1"
+                >
                   Submit
                 </button>
               </div>
             </div>
 
             {/* Additional content area */}
-            <div className="row-span-1 bg-white dark:bg-[#262626]">{/* Optional content for future expansion */}</div>
+            <div className="row-span-1 bg-white dark:bg-[#262626]">
+              {/* Optional content for future expansion */}
+            </div>
           </div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default CodeEditor
+export default CodeEditor;
