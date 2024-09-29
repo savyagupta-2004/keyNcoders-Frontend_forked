@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import PostloginNavbar from "../utilities/PostloginNavbar";
 import Footer from "../utilities/Footer";
-const Contest = ({ theme, handleThemeSwitch }) => {
+const Projectidea1 = ({ theme, handleThemeSwitch }) => {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
 
@@ -217,4 +217,4 @@ const Contest = ({ theme, handleThemeSwitch }) => {
   );
 };
 
-export default Contest;
+export default Projectidea1;

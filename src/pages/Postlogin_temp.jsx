@@ -260,7 +260,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
 
                   <div className="lg:bg-[#161b22] md:bg-[#161b22] sm:bg-[#161b22] max-w-[55rem] w-[19rem] lg:w-full sm:w-[28rem] rounded-lg mt-4 p-6 flex items-center justify-center">
                     <Statistics />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <StaticDatePicker
                         displayStaticWrapperAs="desktop"
                         defaultValue={dayjs("2022-04-17")}
@@ -271,7 +271,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                           },
                         }}
                       />
-                    </LocalizationProvider>
+                    </LocalizationProvider> */}
                   </div>
                 </div>
 
