@@ -7,7 +7,7 @@ export default function StudentsReview() {
       name: "Shaswat Kumar",
       company: "IIT kharagpur",
       image: "../images/pfp.jpg",
-      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.png",
+      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.webp",
       testimony:
         "As a college student, I found this DSA course with C++ on KeynCoders incredibly helpful. It covers everything we’ve been learning in class but in a much more detailed and understandable way. The examples are practical, and the coding problems are very similar to what we get in our assignments. I feel much more prepared for my coding exams now.",
     },

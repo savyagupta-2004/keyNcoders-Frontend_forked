@@ -23,12 +23,12 @@ const SliderComponent = () => {
     },
     {
       id: 2,
-      image: "/images/DSA.png",
+      image: "/images/DSA.webp",
       caption: "Join millions of learners worldwide",
     },
     {
       id: 3,
-      image: "/images/educate.png",
+      image: "/images/educate.webp",
       caption: "Upgrade your career with online courses",
     },
   ];

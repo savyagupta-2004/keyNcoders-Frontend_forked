@@ -8,21 +8,21 @@ const courses = [
     id: 1,
     title: "React - The Complete Guide",
     description: "Learn React from scratch and build amazing web applications.",
-    image: "/images/educate.png", // Update with your image path
+    image: "/images/educate.webp", // Update with your image path
     price: "$29.99",
   },
   {
     id: 2,
     title: "JavaScript: Understanding the Weird Parts",
     description: "Master JavaScript with this deep dive into its mechanics.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$19.99",
   },
   {
     id: 3,
     title: "Python for Data Science and Machine Learning",
     description: "Learn Python for data science, machine learning, and AI.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$39.99",
   },
   {
@@ -30,28 +30,28 @@ const courses = [
     title: "The Complete Web Developer Bootcamp",
     description:
       "Become a full-stack web developer with this comprehensive course.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$49.99",
   },
   {
     id: 1,
     title: "React - The Complete Guide",
     description: "Learn React from scratch and build amazing web applications.",
-    image: "/images/educate.png", // Update with your image path
+    image: "/images/educate.webp", // Update with your image path
     price: "$29.99",
   },
   {
     id: 2,
     title: "JavaScript: Understanding the Weird Parts",
     description: "Master JavaScript with this deep dive into its mechanics.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$19.99",
   },
   {
     id: 3,
     title: "Python for Data Science and Machine Learning",
     description: "Learn Python for data science, machine learning, and AI.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$39.99",
   },
   {
@@ -59,28 +59,28 @@ const courses = [
     title: "The Complete Web Developer Bootcamp",
     description:
       "Become a full-stack web developer with this comprehensive course.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$49.99",
   },
   {
     id: 1,
     title: "React - The Complete Guide",
     description: "Learn React from scratch and build amazing web applications.",
-    image: "/images/educate.png", // Update with your image path
+    image: "/images/educate.webp", // Update with your image path
     price: "$29.99",
   },
   {
     id: 2,
     title: "JavaScript: Understanding the Weird Parts",
     description: "Master JavaScript with this deep dive into its mechanics.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$19.99",
   },
   {
     id: 3,
     title: "Python for Data Science and Machine Learning",
     description: "Learn Python for data science, machine learning, and AI.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$39.99",
   },
   {
@@ -88,21 +88,21 @@ const courses = [
     title: "The Complete Web Developer Bootcamp",
     description:
       "Become a full-stack web developer with this comprehensive course.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$49.99",
   },
   {
     id: 1,
     title: "React - The Complete Guide",
     description: "Learn React from scratch and build amazing web applications.",
-    image: "/images/educate.png", // Update with your image path
+    image: "/images/educate.webp", // Update with your image path
     price: "$29.99",
   },
   {
     id: 2,
     title: "JavaScript: Understanding the Weird Parts",
     description: "Master JavaScript with this deep dive into its mechanics.",
-    image: "/images/educate.png",
+    image: "/images/educate.webp",
     price: "$19.99",
   },
 ];
@@ -127,28 +127,28 @@ const Explorepage = () => {
         <Slider {...sliderSettings} className="w-full">
           <div>
             <img
-              src="/images/educate.png"
+              src="/images/educate.webp"
               alt="Slide 1"
               className="slider-image"
             />
           </div>
           <div>
             <img
-              src="/images/educate.png"
+              src="/images/educate.webp"
               alt="Slide 2"
               className="slider-image"
             />
           </div>
           <div>
             <img
-              src="/images/educate.png"
+              src="/images/educate.webp"
               alt="Slide 3"
               className="slider-image"
             />
           </div>
           <div>
             <img
-              src="/images/educate.png"
+              src="/images/educate.webp"
               alt="Slide 4"
               className="slider-image"
             />

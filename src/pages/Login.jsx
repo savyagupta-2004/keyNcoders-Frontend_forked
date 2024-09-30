@@ -23,10 +23,10 @@ function Login({ theme, notify }) {
   const showpass = () => {
     if (passRef.current.type === "password") {
       passRef.current.type = "text";
-      imgRef.current.src = "../images/Eyecross.png";
+      imgRef.current.src = "../images/Eyecross.webp";
     } else {
       passRef.current.type = "password";
-      imgRef.current.src = "../images/Eyeopen.png";
+      imgRef.current.src = "../images/Eyeopen.webp";
     }
   };
 
@@ -84,7 +84,9 @@ function Login({ theme, notify }) {
           <img
             loading="lazy"
             src={
-              theme === "dark" ? "/images/login_dark.png" : "/images/login.png"
+              theme === "dark"
+                ? "/images/login_dark.webp"
+                : "/images/login.webp"
             }
             alt="Login"
             className="h-[100%] w-fit mt-6 m-auto object-cover rounded-3xl"
@@ -142,7 +144,7 @@ function Login({ theme, notify }) {
                 <img
                   ref={imgRef}
                   width={24}
-                  src="../images/Eyeopen.png"
+                  src="../images/Eyeopen.webp"
                   alt="Eye"
                 />
               </span>

@@ -85,10 +85,10 @@ function Signup({ theme, notify }) {
   const showPass = () => {
     if (passRef.current.type === "password") {
       passRef.current.type = "text";
-      imgRef.current.src = "../images/Eyecross.png";
+      imgRef.current.src = "../images/Eyecross.webp";
     } else {
       passRef.current.type = "password";
-      imgRef.current.src = "../images/Eyeopen.png";
+      imgRef.current.src = "../images/Eyeopen.webp";
     }
   };
 
@@ -195,7 +195,7 @@ function Signup({ theme, notify }) {
         <div className="left max-w-md h-96 w-fit bg-white-300 flex-1 relative">
           <img
             loading="lazy"
-            src={"/images/signup.png"}
+            src={"/images/signup.webp"}
             alt="SignUp"
             className="h-[100%] w-fit mt-6 m-auto object-cover rounded-3xl"
           />
@@ -271,7 +271,7 @@ function Signup({ theme, notify }) {
                   <img
                     ref={imgRef}
                     width={24}
-                    src="../images/Eyeopen.png"
+                    src="../images/Eyeopen.webp"
                     alt="Eye"
                   />
                 </span>

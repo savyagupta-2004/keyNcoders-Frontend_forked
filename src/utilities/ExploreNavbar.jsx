@@ -45,7 +45,9 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
           <Link to="/user-postlogin">
             <img
               src={
-                theme === "light" ? "/images/logo.png" : "/images/logolight.png"
+                theme === "light"
+                  ? "/images/logo.webp"
+                  : "/images/logolight.webp"
               }
               alt=""
               className="w-40 h-10"

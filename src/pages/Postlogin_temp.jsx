@@ -350,7 +350,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                   </div>
                   <div className=" relative w-[110%] -ml-3 mx-auto  sm:w-[70%] sm:ml-20  md:w-[500%] md:justify-center max-w-md">
                     <img
-                      src="../images/laptop.png"
+                      src="../images/laptop.webp"
                       alt="Laptop Slider"
                       className="w-full h-auto rounded-lg "
                     />

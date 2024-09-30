@@ -25,17 +25,17 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
     {
       title: "Top Performer",
       description: "Awarded for exceptional performance in 2023",
-      image: "/images/founder.png",
+      image: "/images/founder.webp",
     },
     {
       title: "Quiz Master",
       description: "Completed all quizzes with a 100% score",
-      image: "/images/founder.png",
+      image: "/images/founder.webp",
     },
     {
       title: "Mentor Award",
       description: "Recognized for mentoring new users",
-      image: "/images/founder.png",
+      image: "/images/founder.webp",
     },
     // Add more badges as needed
   ];
@@ -503,7 +503,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                 <div className="flex flex-col items-center">
                   <img
                     width={177}
-                    src="/images/founder.png"
+                    src="/images/founder.webp"
                     alt="Founder"
                     className="rounded-lg mb-4"
                   />
@@ -566,7 +566,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                 <div className="flex flex-col items-center">
                   <img
                     width={177}
-                    src="/images/founder.png"
+                    src="/images/founder.webp"
                     alt="Founder"
                     className="rounded-lg mb-4"
                   />
@@ -591,7 +591,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
               <div className="flex flex-col items-center">
                 <img
                   width={177}
-                  src="/images/founder.png"
+                  src="/images/founder.webp"
                   alt="Founder"
                   className="rounded-lg mb-4"
                 />
@@ -650,7 +650,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
               <div className="flex flex-col items-center">
                 <img
                   width={177}
-                  src="/images/founder.png"
+                  src="/images/founder.webp"
                   alt="Founder"
                   className="rounded-lg mb-4"
                 />

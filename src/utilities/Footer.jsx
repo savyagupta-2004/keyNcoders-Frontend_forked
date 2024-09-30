@@ -30,8 +30,8 @@ function Footer({ theme }) {
             <img
               src={
                 theme === "dark"
-                  ? "../images/logolight.png"
-                  : "../images/logo.png"
+                  ? "../images/logolight.webp"
+                  : "../images/logo.webp"
               }
               alt="Logo"
               className="w-40 h-10"
