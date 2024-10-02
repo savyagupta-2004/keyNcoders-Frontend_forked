@@ -8,6 +8,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { getConsistency } from "../api/postLogin";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const data = [
   { month: "Jan", modules: 1 },
@@ -24,7 +27,25 @@ const data = [
   { month: "Dec", modules: 3.5 },
 ];
 
+
+
 const Statistics = ({ theme }) => {
+  const [consistencyGraph,setConsistencyGraph]=useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getConsistency();
+        console.log(data);
+        setConsistencyGraph(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+      }
+    }
+    fetchData();
+  }, []);
+
+
   return (
     <div
       className="w-[50rem] h-[300px] mt-3 rounded-2xl mb-6  text-white font-extrabold"
@@ -35,7 +56,7 @@ const Statistics = ({ theme }) => {
     >
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={consistencyGraph}
           margin={{
             top: 5,
             right: 30,

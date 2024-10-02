@@ -37,7 +37,7 @@ const Mentor = ({ theme, handleThemeSwitch }) => {
 
   // Filter the mentors based on the selected subject
   const selectedMentors = selectedSubject
-    ? data.subjects.find((subject) => subject.subject_name === selectedSubject).mentors
+    ? data?.subjects?.find((subject) => subject.subject_name === selectedSubject).mentors
     : []
 
   // Pagination logic

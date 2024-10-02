@@ -15,7 +15,9 @@ import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-
+import { getConsistency } from "../api/postLogin";
+import Spinner from "../components/Spinner";
+import { getModulesCompleted } from "../api/postLogin";
 import {
   faBug,
   faCodeBranch,
@@ -26,6 +28,9 @@ import {
   faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import PostloginNavbar from "../utilities/PostloginNavbar";
+
+
+
 const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
   const settings = {
     infinite: true,
@@ -47,11 +52,30 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
       },
     ],
   };
+  const [modulesCompleted,setModulesCompleted]=useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+   async function fetchData() {
+     try {
+       setLoading(true);
+       const data = await getModulesCompleted();
+       console.log(data);
+       setModulesCompleted(data);
+     } catch (err) {
+       console.log(err);
+     } finally {
+       setLoading(false);
+     }
+   }
+   fetchData();
+ }, []);
+
   const data = [1, 2, , 3, 4, 5, 6, 7, 8];
   const [showStats, setShowstats] = useState(true);
   const [userdetails, setuserdetails] = useState({});
   const navigate = useNavigate();
-  const backendUrl = "https://keyncoders-main-backend.vercel.app";
+  const backendUrl = "https://key-n-coder-be-merge.vercel.app/";
   const handlesignout = () => {
     localStorage.removeItem("token");
   };
@@ -88,6 +112,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
       console.error("Error fetching showStats:", error);
     }
   };
+
 
   const debouncedFetchShowStats = useCallback(
     debounce(fetchShowStats, 300),
@@ -147,6 +172,8 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
             <div className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
               <Link to="/user-profile">My Profile</Link>
             </div>
+
+            
           </div>
 
           {/* Main content - Right section */}

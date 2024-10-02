@@ -7,10 +7,13 @@ import PostloginNavbar from "../utilities/PostloginNavbar";
 import PostloginCourseCard from "../utilities/PostloginCourseCard";
 import LaptopSlider from "../components/LaptopSlider";
 import Footer from "../utilities/Footer";
+import { useEffect } from "react";
+import Spinner from "../components/Spinner";
+
 
 const PostLogin = ({ theme, handleThemeSwitch }) => {
   const [showStats, setShowstats] = useState(true);
-
+  
   return (
     <div
       className={`flex flex-col w-full h-full overflow-x-hidden min-w-fit ${

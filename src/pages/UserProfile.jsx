@@ -3,11 +3,23 @@ import { useMediaQuery } from "react-responsive"; // Import a library to handle 
 import Slider from "react-slick"; // Ensure this is already imported in your component
 import ActivityGrid from "../components/ActivityGrid";
 import PostloginNavbar from "../utilities/PostloginNavbar";
+import debounce from "lodash.debounce";
+import { useCallback } from "react";
 // import CircularProgress from "../components/CircularProgress";
 import Statistics from "../components/Statistics";
 import Footer from "../utilities/Footer";
 import CircularProgress from "../components/CircularProgress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getConsistency } from "../api/postLogin";
+import Spinner from "../components/Spinner";
+import { getModulesCompleted } from "../api/postLogin";
+import { useState } from "react";
+import { useEffect } from "react";
+import UpdateProfileModal from "../components/updateUserProfile";
+
+
+{/* */}
+
 import {
   faBug,
   faCodeBranch,
@@ -20,7 +32,65 @@ import {
 
 const UserProfile = ({ theme, handleThemeSwitch }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1016px)" }); // Adjust this according to your breakpoints
+  const [userdetails, setuserdetails] = useState({});
+  const [showStats, setShowstats] = useState(true);
+  const backendUrl = "https://key-n-coder-be-merge.vercel.app";
+  const [isModalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+  const fetchShowStats = async () => {
+    const savedUser = JSON.parse(localStorage.getItem("savedUser"));
+    const userId = savedUser._id; // Access _id directly from savedUser object
+    console.log(userId);
+    const user_resetId = savedUser.resetPasswordToken;
+    console.log(user_resetId);
 
+    const courseId = "66b501e92bc0fdcb012c1449";
+    const token = localStorage.getItem("token");
+  
+    try {
+      // Verify endpoint
+      const response = await fetch(`${backendUrl}/course/checkCourses`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include token in Authorization header
+        },
+        body: JSON.stringify({ userId, courseId }),
+      });
+
+      
+
+      const json = await response.json();
+      // console.log(json);
+
+      if (response.status === 200) {
+        setShowstats(true);
+      } else {
+        setShowstats(false);
+      }
+    } catch (error) {
+      console.error("Error fetching showStats:", error);
+    }
+  };
+
+
+  const debouncedFetchShowStats = useCallback(
+    debounce(fetchShowStats, 300),
+    []
+  );
+  useEffect(() => {
+    const savedUser = localStorage.getItem("savedUser");
+    if (savedUser) {
+      setuserdetails(JSON.parse(savedUser));
+      // debouncedFetchShowStats();
+    } else {
+      setShowstats(false);
+    }
+    return () => {
+      // debouncedFetchShowStats.cancel();
+    };
+  }, [debouncedFetchShowStats]);
   const badges = [
     {
       title: "Top Performer",
@@ -39,6 +109,44 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
     },
     // Add more badges as needed
   ];
+
+
+
+  const [modulesCompleted,setModulesCompleted]=useState([]);
+  const [consistencyGraph,setConsistencyGraph]=useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+   async function fetchData() {
+     try {
+       setLoading(true);
+       const data = await getModulesCompleted();
+       console.log(data);
+       setModulesCompleted(data);
+     } catch (err) {
+       console.log(err);
+     } finally {
+       setLoading(false);
+     }
+   }
+   fetchData();
+ }, []);
+
+ useEffect(() => {
+  async function fetchData() {
+    try {
+      setLoading(true);
+      const data = await getConsistency();
+      console.log(data);
+      setConsistencyGraph(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }
+  fetchData();
+}, []);
 
   const activities = [
     {
@@ -570,7 +678,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                     alt="Founder"
                     className="rounded-lg mb-4"
                   />
-                  <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
+                  <p className="font-bold text-lg text-[#c9d1d9]">{userdetails.name}</p>
                   <p className="text-[#8b949e]">
                     hehe{" "}
                     <span>
@@ -578,6 +686,10 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                     </span>
                   </p>
                 </div>
+                <div className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
+                  <button onClick={openModal}>Update My Profile</button>
+                </div>
+            <UpdateProfileModal isOpen={isModalOpen} onClose={closeModal} className="z-30"/>
               </div>
             </div>
           </Slider>
@@ -643,7 +755,7 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
             </div>
 
             {/* My Details */}
-            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-1/4 border border-white">
+            <div className="bg-[#161b22] p-6 rounded-lg shadow-lg w-1/4 border flex flex-col items-center border-white">
               <h3 className="font-bold text-2xl text-[#c9d1d9] text-center mb-4">
                 My Details
               </h3>
@@ -654,14 +766,19 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
                   alt="Founder"
                   className="rounded-lg mb-4"
                 />
-                <p className="font-bold text-lg text-[#c9d1d9]">Jane Doe</p>
+                <p className="font-bold text-lg text-[#c9d1d9]">{userdetails.name}</p>
                 <p className="text-[#8b949e]">
                   hehe{" "}
                   <span>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   </span>
                 </p>
+
               </div>
+              <div className="bg-orange-500 mt-3 text-white font-medium rounded-md w-64 block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
+                  <button onClick={openModal}>Update My Profile</button>
+              </div>
+            <UpdateProfileModal isOpen={isModalOpen} onClose={closeModal} className="z-30"/>
             </div>
           </div>
         )}
