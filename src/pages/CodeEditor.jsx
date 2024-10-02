@@ -6,20 +6,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import PostloginNavbar from "../utilities/PostloginNavbar";
 
-// export default function App() {
-//   const BASE_URL="https://fakestoreapi.com"
-//   useEffect(async ()=>{
-//     const response= await axios.get(`${BASE_URL}/products`,{});
-//     console.log(response);
-//   },[])
-
-//   return (
-//     <h1 className="text-3xl font-bold underline">
-
-//     </h1>
-//   )
-// }
-
 const BASE_URL = "https://key-n-coder-be-merge.vercel.app/";
 
 const CodeEditor = ({ theme, handleThemeSwitch }) => {
