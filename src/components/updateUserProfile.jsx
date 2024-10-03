@@ -34,8 +34,7 @@ function UpdateProfileModal({ isOpen, onClose }) {
         <p className="text-xl font-bold mb-4 text-center">Update Profile</p>
         <form onSubmit={handleSubmit} className="space-y-4 pt-4">
           {/* Input fields in pairs (two per row) */}
-          <div className="flex space-x-4">
-            <div className="w-1/2">
+            <div className="">
               <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
               <input
                 type="text"
@@ -46,34 +45,13 @@ function UpdateProfileModal({ isOpen, onClose }) {
                 placeholder="Enter your name"
               />
             </div>
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input
-                type="text"
-                name="Password"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your password"
-              />
-            </div>
+ 
 
             
-          </div>
-          <div className="">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your email"
-              />
-            </div>
+          
 
-          <div className="flex space-x-4">
-            <div className="w-1/2">
+
+            <div className="">
               <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
               <input
                 type="tel"
@@ -84,7 +62,7 @@ function UpdateProfileModal({ isOpen, onClose }) {
                 placeholder="Enter your phone number"
               />
             </div>
-            <div className="w-1/2">
+            <div className="">
               <label className="block text-sm font-medium text-gray-700 mb-1">College</label>
               <input
                 type="text"
@@ -95,10 +73,9 @@ function UpdateProfileModal({ isOpen, onClose }) {
                 placeholder="Enter your college name"
               />
             </div>
-          </div>
+          
 
-          <div className="flex space-x-4">
-            <div className="w-1/2">
+            <div className="">
               <label className="block text-sm font-medium text-gray-700 mb-1">Year of Graduation</label>
               <input
                 type="number"
@@ -109,7 +86,7 @@ function UpdateProfileModal({ isOpen, onClose }) {
                 placeholder="Enter your year of graduation"
               />
             </div>
-            <div className="w-1/2">
+            <div className="">
               <label className="block text-sm font-medium text-gray-700 mb-1">Program Enrolled</label>
               <input
                 type="text"
@@ -120,7 +97,6 @@ function UpdateProfileModal({ isOpen, onClose }) {
                 placeholder="Enter your program"
               />
             </div>
-          </div>
 
           {/* Update button */}
           <div className="flex justify-end mt-4">

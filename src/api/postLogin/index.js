@@ -59,4 +59,47 @@ export const getModulesCompleted = async () => {
   }
 };
 
+export const consistency = async () => {
+    try {
+      const access_token= localStorage.getItem("token");
+   
+          if (!access_token) {
+              throw new Error("Token not found in localStorage");
+          }
+  
+          const decodedToken = jwtDecode(access_token);
+          const user_id = decodedToken?.id; 
+  
+   
+          if (!user_id) {
+              throw new Error("User ID not found in the decoded token");
+          }
+   
+        const response = await axios.get(`${BASE_URL}/code/${user_id}/consistency`, {
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+                'Content-Type': 'application/json'
+            }
+          
+        });
+       return response.data;
+    } catch (err) {
+        console.error(err);
+    }
+  };
+
+export const getleaderboard = async () => {
+    try {
+  
+ 
+   
+        const response = await axios.get(`https://knbe.vercel.app/leaderboard`, {
+          
+        });
+       return response.data;
+    } catch (err) {
+        console.error(err);
+    }
+  };
+
 
