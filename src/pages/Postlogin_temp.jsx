@@ -18,6 +18,7 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { getConsistency } from "../api/postLogin";
 import Spinner from "../components/Spinner";
 import { getModulesCompleted } from "../api/postLogin";
+import { getConsistencyPercentage } from "../api/postLogin";
 import {
   faBug,
   faCodeBranch,
@@ -64,18 +65,19 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
     async function fetchData() {
       try {
         setLoading(true);
-        const data = await consistency();
+        const data = await getConsistencyPercentage();
         console.log(data);
         setconsistancy(data);
+
       } catch (err) {
         console.log(err);
       } finally {
         setLoading(false);
       }
+      console.log(consistency)
     }
     fetchData();
   }, []);
-  console.log(consistency.consistency)
 
   useEffect(() => {
    async function fetchData() {

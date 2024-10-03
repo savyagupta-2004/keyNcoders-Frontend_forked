@@ -59,7 +59,7 @@ export const getModulesCompleted = async () => {
   }
 };
 
-export const consistency = async () => {
+export const getConsistencyPercentage = async () => {
     try {
       const access_token= localStorage.getItem("token");
    

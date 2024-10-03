@@ -17,7 +17,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import UpdateProfileModal from "../components/updateUserProfile";
 import { getleaderboard } from "../api/postLogin";
-import { consistency } from "../api/postLogin";
+import { getConsistencyPercentage } from "../api/postLogin";
 
 {/* */}
 
@@ -172,7 +172,7 @@ useEffect(() => {
   async function fetchData() {
     try {
       setLoading(true);
-      const data = await consistency();
+      const data = await getConsistencyPercentage();
       console.log(data);
       setconsistancy(data);
     } catch (err) {
@@ -853,13 +853,13 @@ useEffect(() => {
                         <div className="w-full bg-gray-300 rounded-full h-4">
                           <div
                             className="bg-orange-500 h-4 rounded-full"
-                            style={{ width: `${( totalLectures)}%` }} // Dynamic width based on percentage
+                            style={{ width: `${( lecturesCompleted)}%` }} // Dynamic width based on percentage
                           ></div>
                         </div>
 
                         {/* Display completion percentage dynamically */}
                         <p className="mt-2 text-sm">
-                          {Math.round((totalLectures))}% completed
+                          {Math.round((lecturesCompleted))}% completed
                         </p>
                       </div>
 
@@ -871,7 +871,7 @@ useEffect(() => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Productivity"
-                            value={totalProductivity}
+                            value={lecturesCompleted}
                             width="150"
                             textColor="white"
                           />
@@ -885,18 +885,18 @@ useEffect(() => {
                           className="h-12 w-12 text-orange-500 mx-auto mb-4"
                         />
                         <h2 className="text-xl mb-2">Questions Solved</h2>
-                        <p className="font-bold text-4xl mb-4">{totalQuestionsSolved}</p>
+                        <p className="font-bold text-4xl mb-4">{assignmentsCompleted}</p>
                         {/* Progress bar */}
                         <div className="w-full bg-gray-300 rounded-full h-4">
                           <div
                             className="bg-orange-500 h-4 rounded-full"
                             style={{
-                              width: `${(totalQuestionsSolved / 1000) * 100}%`, // Assuming 1000 as a max for demonstration
+                              width: `${(assignmentsCompleted / 1000) * 100}%`, // Assuming 1000 as a max for demonstration
                             }}
                           ></div>
                         </div>
                         <p className="mt-2 text-sm">
-                          {((totalQuestionsSolved / 1000) * 100).toFixed(0)}% completed
+                          {((assignmentsCompleted/ 1000) * 100).toFixed(0)}% completed
                         </p>
                       </div>
 
@@ -906,7 +906,7 @@ useEffect(() => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Quiz"
-                            value={totalQuizValue}
+                            value={consistency}
                             width="150"
                             textColor="white"
                           />
@@ -981,7 +981,7 @@ useEffect(() => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Quiz"
-                            value={consistency}
+                            value={consistency.consistency}
                             width="150"
                             textColor="white"
                           />
