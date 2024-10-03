@@ -38,7 +38,7 @@ function MyBatch({ theme, id }) {
             style={{ marginLeft: "12px" }}
           >
             <img
-              src="./images/dsaCourse.png"
+              src="./images/dsaCourse.webp"
               alt="Course Image"
               className="object-cover h-full w-full rounded-lg"
             />

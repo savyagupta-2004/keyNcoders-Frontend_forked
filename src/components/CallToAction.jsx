@@ -18,7 +18,7 @@ function CallToAction({ theme }) {
         <div className="flex justify-center mt-1 w-full h-[90px] dark:bg-[#645B5B] bg-white">
           <LazyLoad height={200} offset={100}>
             <img
-              src="../images/companie.png"
+              src="../images/companie.webp"
               alt="Companies"
               className="object-cover w-full"
             />

@@ -20,7 +20,7 @@ const LaptopSlider = () => {
       <div>
         <LazyLoad height={200} offset={100}>
           <img
-            src="../images/slider-CE.png"
+            src="../images/slider-CE.webp"
             alt="Slide 1"
             className="w-full h-auto rounded-lg"
           />
@@ -29,7 +29,7 @@ const LaptopSlider = () => {
       <div>
         <LazyLoad height={200} offset={100}>
           <img
-            src="../images/slider-VE.png"
+            src="../images/slider-VE.webp"
             alt="Slide 2"
             className="w-full h-auto rounded-lg"
           />
@@ -38,7 +38,7 @@ const LaptopSlider = () => {
       <div>
         <LazyLoad height={200} offset={100}>
           <img
-            src="../images/slider_Profile.png"
+            src="../images/slider_Profile.webp"
             alt="Slide 3"
             className="w-full h-auto rounded-lg"
           />

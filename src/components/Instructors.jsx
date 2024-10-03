@@ -6,8 +6,8 @@ export default function Instructors() {
     {
       name: "JULIE",
       surname: "HOWART",
-      image: "../images/JULIE.png",
-      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.png",
+      image: "../images/JULIE.webp",
+      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.webp",
       testimony: "Professional Programmar and Educator",
       educator: "Mary",
       reviews: "97,102 Reviews",
@@ -17,7 +17,7 @@ export default function Instructors() {
     {
       name: "ROB",
       surname: "ROWAN",
-      image: "../images/Rob.png",
+      image: "../images/Rob.webp",
       logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
       testimony: "Certified Java Software Engineer",
       educator: "Mary",
@@ -28,7 +28,7 @@ export default function Instructors() {
     {
       name: "Marry",
       surname: "SMITH",
-      image: "../images/Marry.png",
+      image: "../images/Marry.webp",
       logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
       testimony: "Certified c++ Software Engineer",
       educator: "Mary",

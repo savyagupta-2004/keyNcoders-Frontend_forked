@@ -24,7 +24,7 @@ const PostloginCourseCard = ({ theme, course, topic, img, play }) => {
     >
       <div className="flex">
         <img
-          src={`../images/${img}.png`}
+          src={`../images/${img}.webp`}
           alt=""
           className="w-16 h-12 lg:mr-8 mr-2"
         />

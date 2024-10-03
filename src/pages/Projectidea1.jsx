@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import PostloginNavbar from "../utilities/PostloginNavbar";
 import Footer from "../utilities/Footer";
-const Contest = ({ theme, handleThemeSwitch }) => {
+const Projectidea1 = ({ theme, handleThemeSwitch }) => {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
 
@@ -33,7 +33,7 @@ const Contest = ({ theme, handleThemeSwitch }) => {
             Data Structure and Algorithm (DSA) Project Ideas
           </h1>
           <img
-            src="images/todolist.png" // Replace with your image path
+            src="images/todolist.webp" // Replace with your image path
             alt="DSA Project"
             className="mx-auto my-4 w-1/2 rounded-lg shadow-md"
           />
@@ -217,4 +217,4 @@ const Contest = ({ theme, handleThemeSwitch }) => {
   );
 };
 
-export default Contest;
+export default Projectidea1;

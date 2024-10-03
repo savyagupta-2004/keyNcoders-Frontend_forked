@@ -32,7 +32,7 @@ export default function Landing({ theme }) {
             <div className="flex flex-col items-center">
               <LazyLoad height={200} offset={100}>
                 <img
-                  src="../images/modal_alt.png"
+                  src="../images/modal_alt.webp"
                   alt="Modal Image"
                   className="w-fit h-fit rounded-t-lg"
                 />
@@ -94,7 +94,7 @@ export default function Landing({ theme }) {
           <LazyLoad height={200} offset={100}>
             <img
               loading="lazy"
-              src="../images/hero2.png"
+              src="../images/hero2.webp"
               alt="Person pointing"
               className="max-w-xs md:max-w-lg lg:max-w-xl m-6 md:m-2 rounded-lg"
             />

@@ -170,7 +170,7 @@ export default function Landing({ theme }) {
             <img
               loading="lazy"
               className="h-auto w-auto"
-              src="../images/teacher_video.png"
+              src="../images/teacher_video.webp"
               alt="Teacher"
             />
           </div>
@@ -183,7 +183,7 @@ export default function Landing({ theme }) {
           <div className="w-full mx-auto">
             <img
               className="h-full"
-              src="../images/WHY.png"
+              src="../images/WHY.webp"
               alt="Why take this course"
             />
           </div>

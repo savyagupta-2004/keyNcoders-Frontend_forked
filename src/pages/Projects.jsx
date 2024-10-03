@@ -5,13 +5,13 @@ const projects = [
     title: "To-do List App",
     description:
       "An easy project to implement CRUD operations and understand data structures such as arrays and lists.",
-    image: "/images/todolist.png", // Replace with actual image path
+    image: "/images/todolist.webp", // Replace with actual image path
   },
   {
     title: "Sorting Visualizer",
     description:
       "This project helps to understand various sorting algorithms by visualizing them in real-time.",
-    image: "/images/sorting.png", // Replace with actual image path
+    image: "/images/sorting.webp", // Replace with actual image path
   },
   // Add more projects as needed
 ];

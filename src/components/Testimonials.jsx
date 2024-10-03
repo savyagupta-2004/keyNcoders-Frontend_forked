@@ -10,8 +10,8 @@ const testimonials_student = [
     name: "Kumar Pranjal",
     // will use after few years
     // company: "IBM",
-    image: "./images/pranjal.jpg",
-    logo: "./images/ibmwithoutbg.png",
+    image: "./images/pranjal.webp",
+    logo: "./images/ibmwithoutbg.webp",
     // logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
     testimony:
       "I’d say just go for it—you’ll find it really valuable. This course covers everything you need in DSA to help you crack your interviews.",
@@ -20,8 +20,8 @@ const testimonials_student = [
   {
     name: "Riti Kumari",
     // company: "Apple",
-    image: "./images/girlmodel.jpg",
-    logo: "./images/microsoft.png",
+    image: "./images/girlmodel.webp",
+    logo: "./images/microsoft.webp",
     // logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
     testimony:
       "The content is really good—no fancy words, just simple, everyday examples. It’s perfect for anyone who genuinely wants to learn. Get it—it’s all you’ll need to ace the tech rounds of any company.",
@@ -30,8 +30,8 @@ const testimonials_student = [
   {
     name: "Abishek Kumar",
     // company: "Apple",
-    image: "./images/boymodel.jpg",
-    logo: "./images/amazon.png",
+    image: "./images/boymodel.webp",
+    logo: "./images/amazon.webp",
     // logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
     testimony:
       "The best part of this course is how it sticks to the basics—no complex words, just easy-to-follow examples. For anyone aiming to learn and prepare for tech rounds, this course will give you all you need.",
@@ -40,8 +40,8 @@ const testimonials_student = [
   {
     name: "Santosh Kumar",
     // company: "Apple",
-    image: "./images/boymodel.jpg",
-    logo: "./images/microsoft.png",
+    image: "./images/boymodel.webp",
+    logo: "./images/microsoft.webp",
     // logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
     testimony:
       "What I love about this course is the simplicity. There’s no unnecessary jargon, just straightforward content with practical examples. If you’re serious about learning DSA, this course has you covered everything.",
@@ -52,22 +52,22 @@ const testimonials = [
   {
     text: "As a college student, I found this DSA course with C++ on KeynCoders incredibly helpful. It covers everything we’ve been learning in class but in a much more detailed and understandable way. The examples are practical, and the coding problems are very similar to what we get in our assignments. I feel much more prepared for my coding exams now.",
     name: "Neelarghya Kundu (IIT-KGP)",
-    image: "./images/nellu.jpeg",
+    image: "./images/nellu.webp",
   },
   {
     text: "I’ve taken a few other online courses on DSA, but this one on KeynCoders offers the best value for the price. The content is thorough, the instructors are knowledgeable, and the platform is user-friendly. The C++ examples are spot-on, and the assignments really push you to apply what you’ve learned. Definitely worth the investment!",
     name: "Shaswat Kumar (IIT-K)",
-    image: "./images/shaswat.jpg",
+    image: "./images/shaswat.webp",
   },
   {
     text: "What I really appreciate about this course is Ayush’s focus on quality content. Unlike other courses that rely on catchy phrases and gimmicks, this DSA course is straightforward and to the point.I’ve learned so much, and it’s all thanks to the clear, practical examples provided.",
     name: "Arpita (VIT-V)",
-    image: "./images/girlmodel.jpg",
+    image: "./images/girlmodel.webp",
   },
   {
     text: "At first, I wasn’t sure about this course, but after starting it, I’ve got mixed feelings—mostly good ones! The content is really solid, so you won't miss out on anything important. The combination of theory and practice questions is excellent, and the educator explains things in a simple, easy way. Initially, I found it a bit boring, but later on, I realized I’m actually getting the best learning experience.",
     name: "Rishek Raj (DTU)",
-    image: "./images/boymodel.jpg",
+    image: "./images/boymodel.webp",
   },
 ];
 

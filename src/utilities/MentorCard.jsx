@@ -8,7 +8,7 @@ function MentorCard() {
         >
           <img
             className="h-full w-full object-cover"
-            src="/images/mentor_ayush.jpeg"
+            src="/images/mentor_ayush.webp"
             alt="ayush mentor"
           />
         </div>
