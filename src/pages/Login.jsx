@@ -2,10 +2,11 @@
 import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
-
+import { AuthContext } from "../authContext";
 // import { login } from "../api/Login"; no need to Import the login function
 
 function Login({ theme, notify }) {
+  const { setIsAuthenticated } = useContext(AuthContext);
   const imgRef = useRef();
   const passRef = useRef();
   const backendUrl = "https://keyncoders-main-backend.vercel.app"; // Change to http
@@ -22,10 +23,10 @@ function Login({ theme, notify }) {
   const showpass = () => {
     if (passRef.current.type === "password") {
       passRef.current.type = "text";
-      imgRef.current.src = "../images/Eyecross.png";
+      imgRef.current.src = "../images/Eyecross.webp";
     } else {
       passRef.current.type = "password";
-      imgRef.current.src = "../images/Eyeopen.png";
+      imgRef.current.src = "../images/Eyeopen.webp";
     }
   };
 
@@ -54,7 +55,7 @@ function Login({ theme, notify }) {
         localStorage.setItem("savedUser", JSON.stringify(json.user));
 
         // Retrieve savedUser from localStorage and parse it back to an object
-
+        setIsAuthenticated(true);
         navigate("/user-postlogin");
 
         notify("welcome back!");
@@ -83,7 +84,9 @@ function Login({ theme, notify }) {
           <img
             loading="lazy"
             src={
-              theme === "dark" ? "/images/login_dark.png" : "/images/login.png"
+              theme === "dark"
+                ? "/images/login_dark.webp"
+                : "/images/login.webp"
             }
             alt="Login"
             className="h-[100%] w-fit mt-6 m-auto object-cover rounded-3xl"
@@ -141,7 +144,7 @@ function Login({ theme, notify }) {
                 <img
                   ref={imgRef}
                   width={24}
-                  src="../images/Eyeopen.png"
+                  src="../images/Eyeopen.webp"
                   alt="Eye"
                 />
               </span>

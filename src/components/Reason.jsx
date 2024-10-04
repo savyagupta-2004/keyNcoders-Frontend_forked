@@ -61,7 +61,7 @@ function Reason({ theme }) {
             For brilliant minds,we’ve crafted the perfect platform
           </p>
           <img
-            src="../images/reasons_upadetaed_bold.png"
+            src="../images/reasons_upadetaed_bold.webp"
             alt=""
             className=" mt-16 mb-0 w-[300px] sm:w-[500px] md:w-[600px] lg:w-[700px]"
           />

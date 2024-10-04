@@ -1,26 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Toggle from "./Toggle"; // Import the Toggle component
 import Sidebar from "./Sidebar";
+import { AuthContext } from "../authContext";
 
-const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
+const Navbar = ({ theme, handleThemeSwitch }) => {
   const [activeLink, setActiveLink] = useState(null);
+  const { setIsAuthenticated } = useContext(AuthContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
   const navRef = useRef(null);
+  let navigate = useNavigate();
 
   useEffect(() => {
     // Set the active link based on the current path
     switch (location.pathname) {
-      case "/my-batches":
+      case "/about":
         setActiveLink(0);
         break;
-      case "/job-alerts":
+      case "/#courses":
         setActiveLink(1);
         break;
-      case "/mentor-connect":
+      case "/contact-us":
         setActiveLink(2);
         break;
       default:
@@ -48,20 +51,27 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
   };
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen((prev) => !prev); // Toggle the sidebar state
   };
 
+  const handlesignout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    navigate("/");
+  };
   return (
     <nav
       ref={navRef}
-      className="fixed z-[9999] flex flex-col small:flex-row justify-between items-center backdrop-blur-md h-auto small:h-16 px-8 my-2 mt-0 w-full bg-[#E6E6E6] dark:bg-[#232222]"
+      className="fixed z-[9999] top-0 flex flex-col small:flex-row justify-between items-center backdrop-blur-md h-auto small:h-16 px-8 my-2 mt-0 w-full bg-[#E6E6E6] dark:bg-[#232222]"
     >
       <div className="flex items-center justify-between w-full small:w-auto">
         <span className="flex items-center gap-2">
           <Link to="/user-postlogin">
             <img
               src={
-                theme === "light" ? "/images/logo.png" : "/images/logolight.png"
+                theme === "light"
+                  ? "/images/logo.webp"
+                  : "/images/logolight.webp"
               }
               alt=""
               className="w-40 h-10"
@@ -76,11 +86,11 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
           )}
         </span>
       </div>
-      <span className="hidden small:flex items-center gap-5">
+      <span className="hidden small:flex items-center gap-10">
         <ul className="flex gap-7">
           <li>
             <Link
-              to="/my-batches"
+              to="/about"
               className={`font-medium dark:text-white ${
                 activeLink === 0
                   ? "text-orange-600 underline decoration-2 decoration-orange-400 underline-offset-8"
@@ -88,25 +98,30 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
               } hover:text-orange-600`}
               onClick={handleLinkClick}
             >
-              My Batches
+              About us
             </Link>
           </li>
           <li>
             <Link
-              to="/job-alerts"
+              to="/#courses"
               className={`font-medium dark:text-white ${
                 activeLink === 1
                   ? "text-orange-600 underline decoration-2 decoration-orange-400 underline-offset-8"
                   : ""
               } hover:text-orange-600`}
-              onClick={handleLinkClick}
+              onClick={() => {
+                document
+                  .getElementById("courses")
+                  .scrollIntoView({ behavior: "smooth" });
+                handleLinkClick(); // Update activeLink or any other state
+              }}
             >
-              Job Alerts
+              Courses
             </Link>
           </li>
           <li>
             <Link
-              to="/mentor-connect"
+              to="/contact-us"
               className={`font-medium dark:text-white ${
                 activeLink === 2
                   ? "text-orange-600 underline decoration-2 decoration-orange-400 underline-offset-8"
@@ -114,34 +129,38 @@ const PostloginNavbar = ({ theme, handleThemeSwitch }) => {
               } hover:text-orange-600`}
               onClick={handleLinkClick}
             >
-              Mentor Connect
+              Contact Us
             </Link>
           </li>
         </ul>
         {/* Replace theme switch button with Toggle component */}
-        <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} />
-        <Link to="/user-profile">
-          <button className="font-medium dark:text-white rounded-lg hover:underline focus:outline-none ">
-            Profile
+        {/* <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} /> */}
+        {!localStorage.getItem("token") ? (
+          <Link to="/login">
+            <button className="font-medium dark:text-white border-2 border-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white focus:outline-none">
+              SignIn
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={handlesignout}
+            className="font-medium dark:text-white border-2 border-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white focus:outline-none"
+          >
+            SignOut
           </button>
-        </Link>
-        <Link to="/">
-          <button className="font-medium dark:text-white border-2 border-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white focus:outline-none">
-            Logout
-          </button>
-        </Link>
+        )}
       </span>
-      {isSidebarOpen && (
-        <Sidebar
-          activeLink={activeLink}
-          handleLinkClick={handleLinkClick}
-          toggleSidebar={toggleSidebar}
-          theme={theme}
-          handleThemeSwitch={handleThemeSwitch}
-        />
-      )}
+
+      <Sidebar
+        isOpen={isSidebarOpen}
+        activeLink={activeLink}
+        handleLinkClick={handleLinkClick}
+        toggleSidebar={toggleSidebar}
+        theme={theme}
+        handleThemeSwitch={handleThemeSwitch}
+      />
     </nav>
   );
 };
 
-export default PostloginNavbar;
+export default Navbar;

@@ -71,7 +71,7 @@ export default function StartingCourseCard({
             </svg>
           </div>
           <div>
-            <img src="public/play.png" alt="" />
+            <img src="public/play.webp" alt="" />
           </div>
           <div className="text-black font-extrabold">{reviews}</div>
           <div className="text-black font-extrabold">{Students}</div>

@@ -5,17 +5,17 @@ export default function Starting_courses() {
   const testimonialData = [
     {
       name: "NextJs",
-      image: "../images/Nextjs.png",
-      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.png",
+      image: "../images/Nextjs.webp",
+      logo: "https://developer.microsoft.com/_devcom/images/logo-ms-social.webp",
       testimony1: "The complete guide to build a full-stack app with Next.js",
       testimony2:
         "how to build a complete full stack web dev app using next.js,prism orm,tailwind,NextUi and NextAuth",
       educator: "Mary",
       rating: 4.9,
-    },  
+    },
     {
       name: "DSA",
-      image: "../images/DSA.png",
+      image: "../images/DSA.webp",
       logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0mpcTWy4WSOrDf5m5M1x4fCNM9VhpaHvMnOCDk8YNKeGlrC31yNo4RSomQ3mTojQuEw&usqp=CAU",
       testimony1: "The complete guide to build a full-stack app with Next.js",
       testimony2:

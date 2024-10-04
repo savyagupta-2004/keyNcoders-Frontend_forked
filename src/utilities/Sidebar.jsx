@@ -110,7 +110,7 @@ const Sidebar = ({
         </li>
         <li className="flex flex-row mx-[9px] justify-between ">
           <span>Theme:</span>
-          <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} />
+          {/* <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} /> */}
         </li>
       </ul>
       <div className="bg-zinc-900 flex flex-col items-center p-5 border-t border-zinc-700">

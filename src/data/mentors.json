@@ -1,206 +1,92 @@
-{
-  "subjects": [
-    {
-      "subject_name": "DSA",
-      "mentors": [
-        {
-          "name": "John Doe",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://img.freepik.com/free-photo/smiley-man-holding-camera-front-view_23-2149915895.jpg",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFpABCsKQ0nlOBNbONJXlExkQT9VmXvH4Vdwa0OYehJ3JXZ-46twNqknctUxbzd_uHlVY&usqp=CAU",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://thumbs.dreamstime.com/b/portrait-handsome-smiling-young-man-folded-arms-smiling-joyful-cheerful-men-crossed-hands-isolated-studio-shot-172869765.jpg",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
-        }
-      ]
+[
+  {
+    "_id": {
+      "$oid": "77cd8fcb592db198e9d81f12"
     },
-    {
-      "subject_name": "Python",
-      "mentors": [
-        {
-          "name": "Michael Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.Sc. in Mathematics",
-          "rating": 4.7,
-          "description": "Focuses on applied mathematics and statistical modeling."
-        },
-        {
-          "name": "Emily Johnson",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Pure Mathematics",
-          "rating": 4.9,
-          "description": "Specializes in abstract algebra and number theory."
-        },
-        {
-          "name": "John Doe",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
-        }
-      ]
+    "name": "Liam Turner",
+    "qualification": "PhD in Machine Learning",
+    "mentorBio": "Liam has a deep understanding of machine learning and AI models.",
+    "about": "Passionate about exploring the potential of AI to transform industries.",
+    "certification": "AWS Certified Machine Learning Specialist",
+    "totalCourses": 8,
+    "ratings": 4.8,
+    "ratingsCount": 200,
+    "experiences": "Worked at Google, Amazon, and various AI startups.",
+    "graduated": true,
+    "language": "Spanish",
+    "profilePictureUrl": "https://example.com/profile/liamturner.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "88de9fcb603ec209f9e92f23"
     },
-    {
-      "subject_name": "Java",
-      "mentors": [
-        {
-          "name": "David Lee",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Physics",
-          "rating": 4.6,
-          "description": "Expert in theoretical physics and quantum mechanics."
-        },
-        {
-          "name": "Maria Garcia",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.Sc. in Astrophysics",
-          "rating": 4.4,
-          "description": "Specializes in cosmology and observational astronomy."
-        },
-        {
-          "name": "John Doe",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
-        }
-      ]
+    "name": "Sophia Johnson",
+    "qualification": "Bachelor's in Computer Science",
+    "mentorBio": "Sophia is an expert in front-end development and UI/UX design.",
+    "about": "Enjoys helping students create user-friendly web applications.",
+    "certification": "Google Certified Mobile Web Specialist",
+    "totalCourses": 12,
+    "ratings": 4.9,
+    "ratingsCount": 300,
+    "experiences": "Worked at Facebook, Uber, and various tech startups.",
+    "graduated": true,
+    "language": "French",
+    "profilePictureUrl": "https://example.com/profile/sophiajohnson.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "99ef0fdc714ed31afbfae334"
     },
-    {
-      "subject_name": "UI/UX",
-      "mentors": [
-        {
-          "name": "Mark Thompson",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in English Literature",
-          "rating": 4.8,
-          "description": "Expertise in Victorian literature and literary theory."
-        },
-        {
-          "name": "Anna Davis",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.A. in Comparative Literature",
-          "rating": 4.5,
-          "description": "Focuses on postcolonial literature and feminist studies."
-        },
-        {
-          "name": "John Doe",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Computer Science",
-          "rating": 4.8,
-          "description": "Specializes in algorithms and artificial intelligence."
-        },
-        {
-          "name": "Jane Smith",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Computer Engineering",
-          "rating": 4.5,
-          "description": "Expertise in software development and cybersecurity."
-        },
-        {
-          "name": "Emily Brown",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "Ph.D. in Data Structures",
-          "rating": 4.6,
-          "description": "Specializes in data structures and algorithms."
-        },
-        {
-          "name": "Alex Green",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "M.S. in Software Engineering",
-          "rating": 4.3,
-          "description": "Expertise in backend development and databases."
-        },
-        {
-          "name": "Sam White",
-          "image": "https://place-hold.it/200x250",
-          "qualification": "B.Tech in Computer Science",
-          "rating": 4.1,
-          "description": "Specializes in frontend development and UI/UX."
-        }
-      ]
-    }
-  ]
-}
+    "name": "James Wilson",
+    "qualification": "Master's in Software Engineering",
+    "mentorBio": "James is a full-stack developer with a focus on cloud solutions.",
+    "about": "Dedicated to teaching scalable application development.",
+    "certification": "Azure Solutions Architect Expert",
+    "totalCourses": 7,
+    "ratings": 4.6,
+    "ratingsCount": 180,
+    "experiences": "Worked at Microsoft, IBM, and Accenture.",
+    "graduated": true,
+    "language": "English",
+    "profilePictureUrl": "https://example.com/profile/jameswilson.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "aaff10ec825fe42bd00bf445"
+    },
+    "name": "Olivia Davis",
+    "qualification": "Master's in Artificial Intelligence",
+    "mentorBio": "Olivia is passionate about AI research and its real-world applications.",
+    "about": "Loves to guide students in advanced AI techniques.",
+    "certification": "Google Cloud Professional Data Engineer",
+    "totalCourses": 10,
+    "ratings": 4.7,
+    "ratingsCount": 250,
+    "experiences": "Worked at OpenAI, NVIDIA, and various AI labs.",
+    "graduated": true,
+    "language": "German",
+    "profilePictureUrl": "https://example.com/profile/oliviadavis.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "bb1021fd936ff53ce11df556"
+    },
+    "name": "Mason Taylor",
+    "qualification": "Master's in Cybersecurity",
+    "mentorBio": "Mason is a cybersecurity expert with years of experience in ethical hacking.",
+    "about": "Passionate about educating people on protecting digital assets.",
+    "certification": "Certified Information Systems Security Professional (CISSP)",
+    "totalCourses": 6,
+    "ratings": 4.4,
+    "ratingsCount": 140,
+    "experiences": "Worked at Cisco, Palo Alto Networks, and Symantec.",
+    "graduated": true,
+    "language": "Japanese",
+    "profilePictureUrl": "https://example.com/profile/masontaylor.jpg",
+    "__v": 0
+  }
+]

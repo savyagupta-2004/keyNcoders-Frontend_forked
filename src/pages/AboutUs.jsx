@@ -64,7 +64,7 @@ function AboutUs({ handleThemeSwitch, theme }) {
         <div className="flex flex-col md:flex-row p-10 md:p-20 justify-around">
           <div className="flex-col sm:flex md:flex lg:flex-row">
             <img
-              src="/images/about.png"
+              src="/images/about.webp"
               alt="Founders"
               className="h-[200px] md:h-[500px] w-full md:w-[600px] rounded-3xl bg-gray-200 dark:bg-gray-700 "
             ></img>
@@ -181,7 +181,7 @@ function AboutUs({ handleThemeSwitch, theme }) {
           </div>
           <img
             width={277}
-            src="/images/founder.png"
+            src="/images/founder.webp"
             alt="Founder"
             className="rounded-lg mt-16"
           />
@@ -295,8 +295,8 @@ function AboutUs({ handleThemeSwitch, theme }) {
           <img
             src={
               theme === "dark"
-                ? "./images/vitWhite.png"
-                : "./images/vitBlack.png"
+                ? "./images/vitWhite.webp"
+                : "./images/vitBlack.webp"
             }
             alt="VIT Logo"
             className="h-32 sm:h-36 md:h-40 object-contain"
@@ -304,8 +304,8 @@ function AboutUs({ handleThemeSwitch, theme }) {
           <img
             src={
               theme === "dark"
-                ? "./images/microsoftWhite.png"
-                : "./images/microsoftBlack.png"
+                ? "./images/microsoftWhite.webp"
+                : "./images/microsoftBlack.webp"
             }
             alt="Microsoft Logo"
             className="h-32 sm:h-36 md:h-40 object-contain"

@@ -66,7 +66,9 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
           <Link to="/">
             <img
               src={
-                theme === "light" ? "/images/logo.png" : "/images/logolight.png"
+                theme === "light"
+                  ? "/images/logo.webp"
+                  : "/images/logolight.webp"
               }
               alt=""
               className="w-40 h-10"
@@ -129,7 +131,7 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
           </li>
         </ul>
         {/* Replace theme switch button with Toggle component */}
-        <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} />
+        {/* <Toggle toggled={theme === "dark"} onClick={handleThemeSwitch} /> */}
         {!localStorage.getItem("token") ? (
           <Link to="/login">
             <button className="font-medium dark:text-white border-2 border-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white focus:outline-none">

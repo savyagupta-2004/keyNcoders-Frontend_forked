@@ -6,37 +6,54 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Footer({ theme }) {
+  const [token, setToken] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
   return (
     <footer
-      className={`${
-        theme === "dark" ? "bg-[#232222] " : "bg-[#E6E6E6]"
+      className={` ${
+        theme === "dark" ? "bg-[#232222] " : "bg-white"
       } text-black dark:text-zinc-600 body-font`}
     >
-      <div className="container mx-auto px-5 pt-[15px]">
+      <div className="container mx-auto px-5 pt-[15px] bottom-0 ">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p className="text-black font-bold text-base md:text-lg text-center md:text-left mb-4 md:mb-0">
             <img
               src={
                 theme === "dark"
-                  ? "../images/logolight.png"
-                  : "../images/logo.png"
+                  ? "../images/logolight.webp"
+                  : "../images/logo.webp"
               }
               alt="Logo"
               className="w-40 h-10"
             />
           </p>
           <span className="inline-flex mt-2 md:mt-0">
-            <Link
-              target="_blank"
-              to="https://rzp.io/l/y1Eux1i"
-              className="text-sm md:text-base text-white px-3 py-1 md:px-4 md:py-2 bg-[#111B47] rounded-lg hover:bg-[#0E1840]"
-            >
-              Purchase Now
-            </Link>
+            {token ? (
+              <Link
+                target="_blank"
+                to="https://rzp.io/l/y1Eux1i"
+                className="text-sm md:text-base text-white px-3 py-1 md:px-4 md:py-2 bg-[#111B47] rounded-lg hover:bg-[#0E1840]"
+              >
+                Purchase Now
+              </Link>
+            ) : (
+              <Link
+                to="/signup"
+                className="text-sm md:text-base text-white px-3 py-1 md:px-4 md:py-2 bg-[#111B47] rounded-lg hover:bg-[#0E1840]"
+              >
+                Purchase Now
+              </Link>
+            )}
           </span>
         </div>
         <hr className="w-full mt-3 border-0 h-[1px] bg-gray-900 dark:bg-gray-300" />
@@ -98,8 +115,7 @@ function Footer({ theme }) {
             /> */}
             <Link
               target="_blank"
-              to="https://youtube.com/@keyncoders?feature=shared
-"
+              to="https://youtube.com/@keyncoders?feature=shared"
               type="button"
             >
               <FontAwesomeIcon

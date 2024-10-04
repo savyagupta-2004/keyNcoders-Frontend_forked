@@ -1,22 +1,22 @@
 [
-	{
-		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
-		"name": "Aaron Dessner",
-		"image": "./images/Aaron.png"
-	},
-	{
-		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
-		"name": "Kesh Werawil",
-		"image": "./images/Kesh.png"
-	},
-	{
-		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
-		"name": "Alan Yarsar",
-		"image": "./images/Kesh.png"
-	},
-	{
-		"text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
-		"name": "Peter Quill",
-		"image": "./images/Kesh.png"
-	}
+  {
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
+    "name": "Aaron Dessner",
+    "image": "./images/Aaron.webp"
+  },
+  {
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
+    "name": "Kesh Werawil",
+    "image": "./images/Kesh.webp"
+  },
+  {
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
+    "name": "Alan Yarsar",
+    "image": "./images/Kesh.webp"
+  },
+  {
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, molestias numquam voluptates voluptas temporibus recusandae sed ullam laborum dolores quos ut. Exercitationem quae eius eligendi expedita magni, neque eum perferendis eos voluptates repellat. Quia!",
+    "name": "Peter Quill",
+    "image": "./images/Kesh.webp"
+  }
 ]
