@@ -1,14 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaUserCircle } from "react-icons/fa";
+import debounce from "lodash.debounce";
 
 function UpdateProfileModal({ isOpen, onClose }) {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showStats, setShowstats] = useState(true);
+  const [userdetails, setuserdetails] = useState({});
   const [formData, setFormData] = useState({
-    name: 'Aamuktha',
-    email: 'aamukthasetty2005@gmail.com',
-    phone: '+1334567890',
-    college: 'Technology Institute',
-    yearOfGraduation: 2025,
-    programmeEnrolled: 'MTech',
+    name: '',
+    phone: '',
+    college: '',
+    yearOfGraduation: 0,
+    programmeEnrolled: '',
   });
+
+  // Handle file selection
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/svg+xml" || file.type === "image/webp")) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result); // Save the image data URL
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Fetch and update showStats (optional if needed)
+  const fetchShowStats = async () => {
+    const savedUser = JSON.parse(localStorage.getItem("savedUser"));
+    const userId = savedUser._id;
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(`${backendUrl}/course/checkCourses`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userId, courseId: "66b501e92bc0fdcb012c1449" }),
+      });
+      const json = await response.json();
+      setShowstats(response.status === 200);
+    } catch (error) {
+      console.error("Error fetching showStats:", error);
+    }
+  };
+
+  const debouncedFetchShowStats = useCallback(debounce(fetchShowStats, 300), []);
+
+  // Effect to load userdetails into formData
+  useEffect(() => {
+    const savedUser = localStorage.getItem("savedUser");
+    if (savedUser) {
+      const userData = JSON.parse(savedUser);
+      setuserdetails(userData);
+      setFormData({
+        name: userData.name || '',
+        phone: userData.phone || '',
+        college: userData.college || '',
+        yearOfGraduation: userData.yearOfGraduation || 0,
+        programmeEnrolled: userData.programmeEnrolled || '',
+      });
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,100 +81,93 @@ function UpdateProfileModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-100">
       <div className="bg-white p-4 rounded-md w-11/12 md:w-1/3 relative max-h-[80vh] overflow-auto">
-        {/* Cross button to close the modal */}
         <button onClick={onClose} className="absolute top-4 right-6 text-gray-500 hover:text-black">
           ✖
         </button>
-
         <p className="text-xl font-bold mb-4 text-center">Update Profile</p>
         <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-          {/* Input fields in pairs (two per row) */}
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <div className="flex items-center justify-center w-full">
+            <label
+              htmlFor="dropzone-file"
+              className="relative flex flex-col items-center justify-center w-40 h-40 border-2 border-gray-300 rounded-full cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              {selectedImage ? (
+                <img
+                  src={selectedImage}
+                  alt="Selected"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center">
+                  <FaUserCircle className="w-16 h-16 text-gray-500 dark:text-gray-400" />
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span className="font-semibold">Click to upload</span>
+                  </p>
+                </div>
+              )}
               <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your name"
+                id="dropzone-file"
+                type="file"
+                accept=".jpg,.jpeg,.png,.svg,.webp"
+                onChange={handleFileChange}
+                className="hidden"
               />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input
-                type="text"
-                name="Password"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your password"
-              />
-            </div>
-
-            
+            </label>
           </div>
           <div className="">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your email"
-              />
-            </div>
-
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your phone number"
-              />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">College</label>
-              <input
-                type="text"
-                name="college"
-                value={formData.college}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your college name"
-              />
-            </div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              placeholder="Enter your name"
+            />
           </div>
-
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Year of Graduation</label>
-              <input
-                type="number"
-                name="yearOfGraduation"
-                value={formData.yearOfGraduation}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your year of graduation"
-              />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Program Enrolled</label>
-              <input
-                type="text"
-                name="programmeEnrolled"
-                value={formData.programmeEnrolled}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter your program"
-              />
-            </div>
+          <div className="">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div className="">
+            <label className="block text-sm font-medium text-gray-700 mb-1">College</label>
+            <input
+              type="text"
+              name="college"
+              value={formData.college}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              placeholder="Enter your college name"
+            />
+          </div>
+          <div className="">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Year of Graduation</label>
+            <input
+              type="number"
+              name="yearOfGraduation"
+              value={formData.yearOfGraduation}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              placeholder="Enter your year of graduation"
+            />
+          </div>
+          <div className="">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Program Enrolled</label>
+            <input
+              type="text"
+              name="programmeEnrolled"
+              value={formData.programmeEnrolled}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              placeholder="Enter your program"
+            />
           </div>
 
           {/* Update button */}
