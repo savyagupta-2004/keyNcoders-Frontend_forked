@@ -906,7 +906,7 @@ useEffect(() => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Quiz"
-                            value={consistency}
+                            value={consistency.consistency?consistency.consistency:0}
                             width="150"
                             textColor="white"
                           />
@@ -981,7 +981,7 @@ useEffect(() => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Quiz"
-                            value={consistency.consistency}
+                            value={consistency.consistency?consistency.consistency:0}
                             width="150"
                             textColor="white"
                           />
