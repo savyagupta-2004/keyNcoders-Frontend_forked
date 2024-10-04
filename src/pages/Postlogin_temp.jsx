@@ -311,7 +311,7 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                           <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
                           <CircularProgress
                             label="Quiz"
-                            value={consistency.consistency}
+                            value={consistency.consistency?consistency.consistency:0}
                             width="150"
                             textColor="white"
                           />
