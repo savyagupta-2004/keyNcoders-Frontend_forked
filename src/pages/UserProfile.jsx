@@ -16,8 +16,7 @@ import { getModulesCompleted } from "../api/postLogin";
 import { useState } from "react";
 import { useEffect } from "react";
 import UpdateProfileModal from "../components/updateUserProfile";
-import { getleaderboard } from "../api/postLogin";
-import { getConsistencyPercentage } from "../api/postLogin";
+
 
 {/* */}
 
@@ -37,12 +36,8 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
   const [showStats, setShowstats] = useState(true);
   const backendUrl = "https://key-n-coder-be-merge.vercel.app";
   const [isModalOpen, setModalOpen] = useState(false);
-  const [topStudents,setLeaderboard]=useState([]);
-  const [consistency,setconsistancy]=useState([]);
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-
-
   const fetchShowStats = async () => {
     const savedUser = JSON.parse(localStorage.getItem("savedUser"));
     const userId = savedUser._id; // Access _id directly from savedUser object
@@ -141,40 +136,9 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
   async function fetchData() {
     try {
       setLoading(true);
-      const data = await getleaderboard();
-      console.log(data);
-      setLeaderboard(data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-  fetchData();
-}, []);
- useEffect(() => {
-  async function fetchData() {
-    try {
-      setLoading(true);
       const data = await getConsistency();
       console.log(data);
       setConsistencyGraph(data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-  fetchData();
-}, []);
-
-useEffect(() => {
-  async function fetchData() {
-    try {
-      setLoading(true);
-      const data = await getConsistencyPercentage();
-      console.log(data);
-      setconsistancy(data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -627,15 +591,6 @@ useEffect(() => {
     autoplaySpeed: 2000,
   };
 
-  const lecturesCompleted =
-  userdetails.coursesAccessed && userdetails.coursesAccessed.length > 0
-    ? userdetails.coursesAccessed[0].lecturescompleted
-    : 0;
-
-  const assignmentsCompleted =
-  userdetails.coursesAccessed && userdetails.coursesAccessed.length > 0
-      ? userdetails.coursesAccessed[0].assignmentscompleted
-      : 0;
   return (
     <>
       <div className="flex flex-col bg-[#0a0c10] min-h-[80vh] sm:min-h-[80vh] md:min-h-[90vh]">
@@ -840,153 +795,107 @@ useEffect(() => {
                 className="grid grid-cols-1 gap-8"
               >
                 {/* Circular Progress Components */}
-                <div className="bg-[#161b22] rounded-lg shadow-lg p-6 sm:text-center text-center">
-                        <FontAwesomeIcon
-                          icon={faChalkboardTeacher}
-                          className="h-12 w-12 text-orange-500 mx-auto mb-4"
-                        />
-                        <h2 className="text-xl mb-2">Lectures Watched</h2>
+                <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white flex flex-col justify-center items-center h-48">
+                  <FontAwesomeIcon
+                    icon={faChalkboardTeacher}
+                    className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                  />
+                  <h2 className="text-xl text-[#c9d1d9] mb-2">
+                    Lectures Watched
+                  </h2>
+                  <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                </div>
 
-                        {/* Display the number of lectures completed dynamically */}
+                <div className="border border-white bg-[#161b22] shadow-lg rounded-lg p-6 flex flex-col justify-center items-center h-48">
+                  <h2 className="text-xl font-bold mb-2 text-center text-white">
+                    Analysis
+                  </h2>
+                  <div className="flex justify-center">
+                    <CircularProgress
+                      label="Productivity"
+                      value="100"
+                      width="120"
+                      textColor="white"
+                    />
+                  </div>
+                </div>
 
-                        {/* Progress bar */}
-                        <div className="w-full bg-gray-300 rounded-full h-4">
-                          <div
-                            className="bg-orange-500 h-4 rounded-full"
-                            style={{ width: `${( lecturesCompleted)}%` }} // Dynamic width based on percentage
-                          ></div>
-                        </div>
+                <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white flex flex-col justify-center items-center h-48">
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                  />
+                  <h2 className="text-xl text-[#c9d1d9] mb-2">
+                    Questions Solved
+                  </h2>
+                  <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                </div>
 
-                        {/* Display completion percentage dynamically */}
-                        <p className="mt-2 text-sm">
-                          {Math.round((lecturesCompleted))}% completed
-                        </p>
-                      </div>
-
-
-
-                      {/* Analysis (Circular Progress) */}
-                      <div className="bg-[#161b22] shadow-lg rounded-lg p-6 items-center flex justify-center">
-                        <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
-                          <CircularProgress
-                            label="Productivity"
-                            value={lecturesCompleted}
-                            width="150"
-                            textColor="white"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Questions Solved */}
-                      <div className="bg-[#161b22] sm:text-center text-center shadow-lg rounded-lg p-6">
-                        <FontAwesomeIcon
-                          icon={faQuestionCircle}
-                          className="h-12 w-12 text-orange-500 mx-auto mb-4"
-                        />
-                        <h2 className="text-xl mb-2">Questions Solved</h2>
-                        <p className="font-bold text-4xl mb-4">{assignmentsCompleted}</p>
-                        {/* Progress bar */}
-                        <div className="w-full bg-gray-300 rounded-full h-4">
-                          <div
-                            className="bg-orange-500 h-4 rounded-full"
-                            style={{
-                              width: `${(assignmentsCompleted / 1000) * 100}%`, // Assuming 1000 as a max for demonstration
-                            }}
-                          ></div>
-                        </div>
-                        <p className="mt-2 text-sm">
-                          {((assignmentsCompleted/ 1000) * 100).toFixed(0)}% completed
-                        </p>
-                      </div>
-
-                      {/* Another Analysis (Circular Progress) */}
-                      <div className="bg-[#161b22] rounded-lg shadow-lg p-6 items-center flex justify-center">
-                        <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
-                          <CircularProgress
-                            label="Quiz"
-                            value={consistency}
-                            width="150"
-                            textColor="white"
-                          />
-                        </div>
-                      </div>
-
+                <div className="border border-white bg-[#161b22] rounded-lg shadow-lg p-6 flex flex-col justify-center items-center h-48">
+                  <h2 className="text-xl font-bold mb-2 text-center text-white">
+                    Analysis
+                  </h2>
+                  <div className="flex justify-center">
+                    <CircularProgress
+                      label="Quiz"
+                      value="75"
+                      width="120"
+                      textColor="white"
+                    />
+                  </div>
+                </div>
               </Slider>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left Column: Circular Progress and Stats */}
                 <div className="grid grid-cols-2 gap-8">
                   {/* Circular Progress Components */}
-                  <div className="bg-[#161b22] rounded-lg shadow-lg p-6 sm:text-center text-center">
-                        <FontAwesomeIcon
-                          icon={faChalkboardTeacher}
-                          className="h-12 w-12 text-orange-500 mx-auto mb-4"
-                        />
-                        <h2 className="text-xl mb-2">Lectures Watched</h2>
+                  <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white">
+                    <FontAwesomeIcon
+                      icon={faChalkboardTeacher}
+                      className="h-12 w-12 text-[#ffa657] mb-4"
+                    />
+                    <h2 className="text-xl text-[#c9d1d9] mb-2">
+                      Lectures Watched
+                    </h2>
+                    <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                  </div>
 
-                        {/* Display the number of lectures completed dynamically */}
-
-                        {/* Progress bar */}
-                        <div className="w-full bg-gray-300 rounded-full h-4">
-                          <div
-                            className="bg-orange-500 h-4 rounded-full"
-                            style={{ width: `${( lecturesCompleted)}%` }} // Dynamic width based on percentage
-                          ></div>
-                        </div>
-
-                        {/* Display completion percentage dynamically */}
-                        <p className="mt-2 text-sm">
-                          {Math.round((lecturesCompleted))}% completed
-                        </p>
-                      </div>
-
-                      <div className="bg-[#161b22] shadow-lg rounded-lg p-6 items-center flex justify-center">
-                        <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
-                          <CircularProgress
-                            label="Productivity"
-                            value={lecturesCompleted}
-                            width="150"
-                            textColor="white"
-                          />
-                        </div>
-                      </div>
+                  <div className="border border-white bg-[#161b22] shadow-lg rounded-lg p-6 flex flex-col items-center">
+                    <h2 className="text-xl font-bold mb-2 text-center text-white">
+                      Analysis
+                    </h2>
+                    <CircularProgress
+                      label="Productivity"
+                      value="100"
+                      width="150"
+                      textColor="white"
+                    />
+                  </div>
 
                   {/* Additional Stats */}
-                  <div className="bg-[#161b22] sm:text-center text-center shadow-lg rounded-lg p-6">
-                        <FontAwesomeIcon
-                          icon={faQuestionCircle}
-                          className="h-12 w-12 text-orange-500 mx-auto mb-4"
-                        />
-                        <h2 className="text-xl mb-2">Questions Solved</h2>
-                        <p className="font-bold text-4xl mb-4">{assignmentsCompleted}</p>
-                        {/* Progress bar */}
-                        <div className="w-full bg-gray-300 rounded-full h-4">
-                          <div
-                            className="bg-orange-500 h-4 rounded-full"
-                            style={{
-                              width: `${(assignmentsCompleted/ 1000) * 100}%`, // Assuming 1000 as a max for demonstration
-                            }}
-                          ></div>
-                        </div>
-                        <p className="mt-2 text-sm">
-                          {((assignmentsCompleted / 1000) * 100).toFixed(0)}% completed
-                        </p>
-                      </div>
+                  <div className="bg-[#161b22] rounded-lg shadow-lg p-6 text-center border border-white">
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      className="h-12 w-12 text-[#ffa657] mx-auto mb-4"
+                    />
+                    <h2 className="text-xl text-[#c9d1d9] mb-2">
+                      Questions Solved
+                    </h2>
+                    <p className="font-bold text-4xl text-[#58a6ff]">890</p>
+                  </div>
 
-                      <div className="bg-[#161b22] rounded-lg shadow-lg p-6 items-center flex justify-center">
-                        <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
-                          <CircularProgress
-                            label="Quiz"
-                            value={consistency.consistency}
-                            width="150"
-                            textColor="white"
-                          />
-                        </div>
-                      </div>
+                  <div className="border border-white bg-[#161b22] rounded-lg shadow-lg p-6 flex flex-col items-center">
+                    <h2 className="text-xl font-bold mb-2 text-center text-white">
+                      Analysis
+                    </h2>
+                    <CircularProgress
+                      label="Quiz"
+                      value="75"
+                      width="150"
+                      textColor="white"
+                    />
+                  </div>
                 </div>
 
                 {/* Right Column: Statistics Component */}
@@ -1019,24 +928,23 @@ useEffect(() => {
                     </tr>
                   </thead>
                   <tbody className="bg-[#161b22] divide-y divide-gray-200">
-                    {/* Mapping over topStudents array to display each student */}
-                    {topStudents.map((student, index) => (
-                      <tr key={student.U_id}>
+                    {/* Dummy users for initial display */}
+                    {Array.from({ length: 10 }, (_, index) => (
+                      <tr key={index}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#ffa657]">
                           {index + 1}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-[#c9d1d9]">
-                          {student.name}
+                          User {index + 1}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-[#58a6ff]">
-                          {student.score}
+                          Score {Math.floor(Math.random() * 1000)}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-
             </div>
 
             {/* Badges and Achievements Section */}

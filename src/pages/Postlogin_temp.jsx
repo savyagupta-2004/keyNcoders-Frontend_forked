@@ -18,7 +18,6 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import { getConsistency } from "../api/postLogin";
 import Spinner from "../components/Spinner";
 import { getModulesCompleted } from "../api/postLogin";
-import { getConsistencyPercentage } from "../api/postLogin";
 import {
   faBug,
   faCodeBranch,
@@ -33,9 +32,6 @@ import PostloginNavbar from "../utilities/PostloginNavbar";
 
 
 const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
-
-  
-
   const settings = {
     infinite: true,
     speed: 500,
@@ -58,26 +54,6 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
   };
   const [modulesCompleted,setModulesCompleted]=useState([]);
   const [loading, setLoading] = useState(false);
-  const [consistency,setconsistancy]=useState([]);
-
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const data = await getConsistencyPercentage();
-        console.log(data);
-        setconsistancy(data);
-
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
-      console.log(consistency)
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
    async function fetchData() {
@@ -154,17 +130,6 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
       // debouncedFetchShowStats.cancel();
     };
   }, [debouncedFetchShowStats]);
-  console.log(userdetails);
-  const lecturesCompleted =
-  userdetails.coursesAccessed && userdetails.coursesAccessed.length > 0
-    ? userdetails.coursesAccessed[0].lecturescompleted
-    : 0;
-
-  const assignmentsCompleted =
-  userdetails.coursesAccessed && userdetails.coursesAccessed.length > 0
-      ? userdetails.coursesAccessed[0].assignmentscompleted
-      : 0;
-
 
   return (
     <>
@@ -238,45 +203,40 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                 </h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 my-5">
-                  {/* {/* {userdetails.coursesAccessed && userdetails.coursesAccessed.length */ userdetails.length  <= 0 ? ( 
+                  {data.length <= 0 ? (
                     <span className="col-span-4 text-center">
                       No data available
                     </span>
-                  ) : ( 
+                  ) : (
                     <>
-
+                      {/* Lectures Watched */}
                       <div className="bg-[#161b22] rounded-lg shadow-lg p-6 sm:text-center text-center">
                         <FontAwesomeIcon
                           icon={faChalkboardTeacher}
                           className="h-12 w-12 text-orange-500 mx-auto mb-4"
                         />
                         <h2 className="text-xl mb-2">Lectures Watched</h2>
-
-                        {/* Display the number of lectures completed dynamically */}
-
+                        <p className="font-bold text-4xl mb-4">890</p>
                         {/* Progress bar */}
                         <div className="w-full bg-gray-300 rounded-full h-4">
                           <div
                             className="bg-orange-500 h-4 rounded-full"
-                            style={{ width: `${( lecturesCompleted)}%` }} // Dynamic width based on percentage
+                            style={{ width: "75%" }} // Adjust this width dynamically if needed
                           ></div>
                         </div>
-
-                        {/* Display completion percentage dynamically */}
-                        <p className="mt-2 text-sm">
-                          {Math.round((lecturesCompleted))}% completed
-                        </p>
+                        <p className="mt-2 text-sm">75% completed</p>{" "}
+                        {/* Adjust percentage dynamically */}
                       </div>
-
-
 
                       {/* Analysis (Circular Progress) */}
                       <div className="bg-[#161b22] shadow-lg rounded-lg p-6 items-center flex justify-center">
                         <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
+                          <h2 className="text-xl font-bold mb-2 text-center">
+                            Analysis
+                          </h2>
                           <CircularProgress
                             label="Productivity"
-                            value={lecturesCompleted}
+                            value="100"
                             width="150"
                             textColor="white"
                           />
@@ -290,34 +250,32 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
                           className="h-12 w-12 text-orange-500 mx-auto mb-4"
                         />
                         <h2 className="text-xl mb-2">Questions Solved</h2>
-                        <p className="font-bold text-4xl mb-4">{assignmentsCompleted}</p>
+                        <p className="font-bold text-4xl mb-4">890</p>
                         {/* Progress bar */}
                         <div className="w-full bg-gray-300 rounded-full h-4">
                           <div
                             className="bg-orange-500 h-4 rounded-full"
-                            style={{
-                              width: `${(assignmentsCompleted/ 1000) * 100}%`, // Assuming 1000 as a max for demonstration
-                            }}
+                            style={{ width: "50%" }} // Adjust this width dynamically if needed
                           ></div>
                         </div>
-                        <p className="mt-2 text-sm">
-                          {((assignmentsCompleted / 1000) * 100).toFixed(0)}% completed
-                        </p>
+                        <p className="mt-2 text-sm">50% completed</p>{" "}
+                        {/* Adjust percentage dynamically */}
                       </div>
 
                       {/* Another Analysis (Circular Progress) */}
                       <div className="bg-[#161b22] rounded-lg shadow-lg p-6 items-center flex justify-center">
                         <div>
-                          <h2 className="text-xl font-bold mb-2 text-center">Analysis</h2>
+                          <h2 className="text-xl font-bold mb-2 text-center">
+                            Analysis
+                          </h2>
                           <CircularProgress
                             label="Quiz"
-                            value={consistency.consistency}
+                            value="75"
                             width="150"
                             textColor="white"
                           />
                         </div>
                       </div>
-
                     </>
                   )}
                 </div>
