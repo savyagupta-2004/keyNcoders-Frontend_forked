@@ -21,6 +21,22 @@ const Sidebar = () => {
     }));
   };
 
+  const handleAddToGoogleCalendar = () => {
+    const eventTitle = "DSA with KeyNcoders"; // Title of the event
+    const eventDescription = ""; // Description of the event
+    const startDate = "20241025"; // Format: YYYYMMDD for a single-day event
+
+    // Construct the Google Calendar URL with title, start date, and description
+    const googleCalendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(
+      eventTitle
+    )}&dates=${startDate}/${startDate}&details=${encodeURIComponent(
+      eventDescription
+    )}`;
+
+    // Redirect to the URL in a new tab
+    window.open(googleCalendarUrl, "_blank");
+  };
+
   const toggleChapter = (chapter) => {
     setExpandedVideos((prev) => ({
       ...prev,
@@ -210,12 +226,24 @@ const Sidebar = () => {
         <div className="flex-grow rounded-lg h-full mb-4">
           <div className="flex items-center lg:h-full h-[50vh] justify-center w-full mb-4 rounded">
             {selectedVideo ? (
-              <ReactPlayer
-                url={selectedVideo}
-                controls={true}
-                width="100%"
-                height="100%"
-              />
+
+              <div className="flex flex-col">
+              <h1 className="text-gray-300 text-2xl font-bold">Stay tune till <span className="text-orange-500">oct 10</span></h1>
+              <button
+                  className="bg-orange-500 mt-3 flex items-center gap-3 text-white py-2 px-4 rounded"
+                  onClick={handleAddToGoogleCalendar}
+                >
+                  <img className="h-9 w-9 rounded-t-md rounded-bl-md rounded-br-2xl bg-white" src="/images/calender_google.png"/> 
+                  Add to Calendar
+                </button>
+              </div>
+              
+              // <ReactPlayer
+              //   url={selectedVideo}
+              //   controls={true}
+              //   width="100%"
+              //   height="100%"
+              // />
             ) : (
               <div className="text-2xl text-gray-400">
                 Select a video to play

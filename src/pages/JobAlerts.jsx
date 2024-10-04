@@ -39,7 +39,7 @@ const JobAlerts = ({ theme, handleThemeSwitch }) => {
       <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
       <div className="grid grid-cols-1 sm:grid-cols-4 ">
         <div className="col-span-1  p-2 flex flex-col gap-5">
-          <div className=" dark:bg-[#232222] bg-[#E6E6E6] pl-4  row-span-1  h-fit mt-16    p-4  rounded-lg shadow-lg">
+          {/* <div className=" dark:bg-[#232222] bg-[#E6E6E6] pl-4  row-span-1  h-fit mt-16    p-4  rounded-lg shadow-lg">
             <div className="flex flex-col gap-4">
               <a
                 href="#"
@@ -72,8 +72,8 @@ const JobAlerts = ({ theme, handleThemeSwitch }) => {
                 Job Seeker Guidance
               </a>
             </div>
-          </div>
-          <div className="dark:bg-[#232222] bg-[#E6E6E6]   row-span-1 h-fit p-8 flex-col flex  rounded-lg shadow-lg sm:max-w-md">
+          </div> */}
+          <div className="dark:bg-[#232222] bg-[#E6E6E6] mt-16  row-span-1 h-fit p-8 flex-col flex  rounded-lg shadow-lg sm:max-w-md">
             <h2 className="text-2xl font-bold mb-4">Suggested Job Searches</h2>
             <div className="flex flex-wrap gap-2">
               {jobs.map((job, index) => (

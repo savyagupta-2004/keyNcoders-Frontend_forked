@@ -204,9 +204,9 @@ const Postlogin_temp = ({ theme, handleThemeSwitch }) => {
               Mentor Connect
             </Link>
 
-            <div className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
+            {/* <div className="bg-orange-500 text-white font-medium rounded-md w-full block text-center p-3 hover:underline hover:decoration-white hover:underline-offset-8">
               <Link to="/user-profile">My Profile</Link>
-            </div>
+            </div> */}
 
             
           </div>

@@ -47,6 +47,22 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
     setCurrentView(view);
   };
 
+  const handleAddToGoogleCalendar = () => {
+    const eventTitle = "DSA with KeyNcoders"; // Title of the event
+    const eventDescription = ""; // Description of the event
+    const startDate = "20241025"; // Format: YYYYMMDD for a single-day event
+
+    // Construct the Google Calendar URL with title, start date, and description
+    const googleCalendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?text=${encodeURIComponent(
+      eventTitle
+    )}&dates=${startDate}/${startDate}&details=${encodeURIComponent(
+      eventDescription
+    )}`;
+
+    // Redirect to the URL in a new tab
+    window.open(googleCalendarUrl, "_blank");
+  };
+
   const editorTheme = theme === "dark" ? "vs-dark" : "vs-light";
 
   const questions = [
@@ -111,17 +127,28 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                 Submission
               </button>
             </div>
-            <div className="dark:text-white text-black">
+            <div className="dark:text-white text-black relative">
               {questions.map((question, index) => (
                 <div key={index} className="space-y-2">
                   {currentView === "description" && (
                     <>
-                      <h1 className="mt-4 text-2xl">
+                      {/* <h1 className="mt-4 text-2xl">
                         {question.num}: {question.name}
                       </h1>
                       <p>{question.des}</p>
                       <h1 className="text-xl">{question.exnum} Example</h1>
-                      <p>{question.exDes}</p>
+                      <p>{question.exDes}</p> */
+                      }
+                      <div className="flex flex-col top-44  absolute left-48 justify-center">
+                        <h1 className="text-gray-300 text-2xl font-bold">Stay tune till <span className="text-orange-500">oct 10</span></h1>
+                        <button
+                            className="bg-orange-500 mt-3 flex items-center gap-3 text-white py-2 w-48 px-4 rounded"
+                            onClick={handleAddToGoogleCalendar}
+                          >
+                            <img className="h-9 w-9 rounded-t-md rounded-bl-md rounded-br-2xl bg-white" src="/images/calender_google.png"/> 
+                            Add to Calendar
+                        </button>
+                      </div>
                     </>
                   )}
                   {currentView === "solution" && (
