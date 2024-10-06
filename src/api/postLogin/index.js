@@ -5,7 +5,6 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 export const getConsistency = async () => {
     try {
         const access_token = localStorage.getItem("token");
-
         if (!access_token) {
             throw new Error("Token not found in localStorage");
         }
@@ -90,10 +89,7 @@ export const getConsistencyPercentage = async () => {
 
 export const getleaderboard = async () => {
     try {
-  
- 
-   
-        const response = await axios.get(`https://knbe.vercel.app/leaderboard`, {
+        const response = await axios.get(`${BASE_URL}/leaderboard`, {
           
         });
        return response.data;

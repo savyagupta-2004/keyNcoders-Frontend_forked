@@ -9,7 +9,7 @@ function Login({ theme, notify }) {
   const { setIsAuthenticated } = useContext(AuthContext);
   const imgRef = useRef();
   const passRef = useRef();
-  const backendUrl = "https://keyncoders-main-backend.vercel.app"; // Change to http
+  const backendUrl =import.meta.env.VITE_BACKEND_URL; // Change to http
 
   const [loading, setLoading] = useState(false);
 
