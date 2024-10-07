@@ -227,23 +227,23 @@ const Sidebar = () => {
           <div className="flex items-center lg:h-full h-[50vh] justify-center w-full mb-4 rounded">
             {selectedVideo ? (
 
-              <div className="flex flex-col">
-              <h1 className="text-gray-300 text-2xl font-bold">Stay tune till <span className="text-orange-500">oct 10</span></h1>
-              <button
-                  className="bg-orange-500 mt-3 flex items-center gap-3 text-white py-2 px-4 rounded"
-                  onClick={handleAddToGoogleCalendar}
-                >
-                  <img className="h-9 w-9 rounded-t-md rounded-bl-md rounded-br-2xl bg-white" src="/images/calender_google.png"/> 
-                  Add to Calendar
-                </button>
-              </div>
+              // <div className="flex flex-col">
+              // <h1 className="text-gray-300 text-2xl font-bold">Stay tune till <span className="text-orange-500">oct 10</span></h1>
+              // <button
+              //     className="bg-orange-500 mt-3 flex items-center gap-3 text-white py-2 px-4 rounded"
+              //     onClick={handleAddToGoogleCalendar}
+              //   >
+              //     <img className="h-9 w-9 rounded-t-md rounded-bl-md rounded-br-2xl bg-white" src="/images/calender_google.png"/> 
+              //     Add to Calendar
+              //   </button>
+              // </div>
               
-              // <ReactPlayer
-              //   url={selectedVideo}
-              //   controls={true}
-              //   width="100%"
-              //   height="100%"
-              // />
+              <ReactPlayer
+                url={selectedVideo}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
             ) : (
               <div className="text-2xl text-gray-400">
                 Select a video to play

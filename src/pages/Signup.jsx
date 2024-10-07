@@ -18,8 +18,7 @@ function Signup({ theme, notify }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const backendUrl = "http://localhost:5000";
-  // const backendUrl = "https://keyncoders-main-backend.vercel.app";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
 
   const handleOtpChange = (element, index) => {
@@ -265,7 +264,7 @@ function Signup({ theme, notify }) {
                   }`}
                 />
                 <span
-                  className="absolute inset-y-4 mt-5 right-0 flex items-center pr-3 cursor-pointer"
+                  className="absolute inset-y-4  mt-5 right-0 flex items-center pr-3 cursor-pointer"
                   onClick={showPass}
                 >
                   <img
@@ -309,6 +308,44 @@ function Signup({ theme, notify }) {
                   <p className="text-red-500 text-xs">Passwords do not match</p>
                 )}
               </div>
+              <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "20px",
+                  }}
+                >
+                  <label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      onChange={(e) => setGender(e.target.value)}
+                      required // Make selection mandatory
+                    />
+                    Male
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      onChange={(e) => setGender(e.target.value)}
+                      required // Make selection mandatory
+                    />
+                    Female
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="others"
+                      onChange={(e) => setGender(e.target.value)}
+                      required // Make selection mandatory
+                    />
+                    Others
+                  </label>
+                </div>
               <button
                 disabled={loading}
                 type="submit"

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import PostloginNavbar from "../utilities/PostloginNavbar";
 
-const BASE_URL = "https://key-n-coder-be-merge.vercel.app/";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const CodeEditor = ({ theme, handleThemeSwitch }) => {
   const [currentView, setCurrentView] = useState("description");
@@ -132,14 +132,14 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                 <div key={index} className="space-y-2">
                   {currentView === "description" && (
                     <>
-                      {/* <h1 className="mt-4 text-2xl">
+                       <h1 className="mt-4 text-2xl">
                         {question.num}: {question.name}
                       </h1>
                       <p>{question.des}</p>
                       <h1 className="text-xl">{question.exnum} Example</h1>
-                      <p>{question.exDes}</p> */
-                      }
-                      <div className="flex flex-col top-44  absolute left-48 justify-center">
+                      <p>{question.exDes}</p> 
+                      
+                      {/* <div className="flex flex-col top-44  absolute left-48 justify-center">
                         <h1 className="text-gray-300 text-2xl font-bold">Stay tune till <span className="text-orange-500">oct 10</span></h1>
                         <button
                             className="bg-orange-500 mt-3 flex items-center gap-3 text-white py-2 w-48 px-4 rounded"
@@ -148,7 +148,7 @@ const CodeEditor = ({ theme, handleThemeSwitch }) => {
                             <img className="h-9 w-9 rounded-t-md rounded-bl-md rounded-br-2xl bg-white" src="/images/calender_google.png"/> 
                             Add to Calendar
                         </button>
-                      </div>
+                      </div> */}
                     </>
                   )}
                   {currentView === "solution" && (

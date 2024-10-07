@@ -1,6 +1,6 @@
 // src/api/login.js
 
-const API_URL = "http://localhost:3001"; // Replace with your actual API URL
+const API_URL =import.meta.env.VITE_BACKEND_URL; // Replace with your actual API URL
 
 export const login = async (email, password) => {
   try {
