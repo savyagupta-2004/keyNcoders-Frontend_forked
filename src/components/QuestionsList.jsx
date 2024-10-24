@@ -11,9 +11,7 @@ const QuestionsList = ({ stepNo, title, questions, theme, moduleIndex, stepIndex
     const toggleVisibility = () => {
       setIsVisible(!isVisible);
     };
-  
-    // Function to load question states from localStorage
-    const loadQuestionsState = () => {
+      const loadQuestionsState = () => {
       const storedState = localStorage.getItem(`questionsState_${moduleIndex}_${stepIndex}`);
       return storedState ? JSON.parse(storedState) : questions.map((question) => ({ ...question, done: false }));
     };

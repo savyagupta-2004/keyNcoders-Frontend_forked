@@ -1,33 +1,39 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaUserCircle } from "react-icons/fa";
 import debounce from "lodash.debounce";
+import Spinner from '../components/Spinner';
 
+import { updateUser } from '../api/userProfile';
 function UpdateProfileModal({ isOpen, onClose }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showStats, setShowstats] = useState(true);
   const [userdetails, setuserdetails] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     college: '',
     yearOfGraduation: 0,
     programmeEnrolled: '',
+    profilePicture: null,
   });
 
-  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file && (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/svg+xml" || file.type === "image/webp")) {
+    if (file && (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/svg+xml")) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSelectedImage(reader.result); // Save the image data URL
+        setSelectedImage(reader.result);
       };
       reader.readAsDataURL(file);
+      setFormData((prev) => ({ ...prev, profilePicture: file }));
     }
   };
 
-  // Fetch and update showStats (optional if needed)
-  const fetchShowStats = async () => {
+  
+   
+    const fetchShowStats = async () => {
     const savedUser = JSON.parse(localStorage.getItem("savedUser"));
     const userId = savedUser._id;
     const token = localStorage.getItem("token");
@@ -69,11 +75,30 @@ function UpdateProfileModal({ isOpen, onClose }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., API call)
-    console.log('Updated Details: ', formData);
-    onClose();
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("phone", formData.phone);
+    formDataToSend.append("college", formData.college);
+    formDataToSend.append("yearOfGraduation", formData.yearOfGraduation);
+    formDataToSend.append("programmeEnrolled", formData.programmeEnrolled);
+
+    if (formData.profilePicture) {
+      formDataToSend.append("profilePicture", formData.profilePicture);
+    }
+
+    try {
+      setLoading(true);
+      await updateUser(formDataToSend);
+      setLoading(false);
+      console.log("Updated Details: ", formData);
+      onClose();
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   if (!isOpen) return null;
@@ -174,9 +199,11 @@ function UpdateProfileModal({ isOpen, onClose }) {
           <div className="flex justify-end mt-4">
             <button
               type="submit"
-              className="bg-orange-500 text-white font-medium py-2 px-4 rounded hover:bg-orange-600"
+              disabled={loading}
+              className="bg-orange-500  text-white font-medium py-2 px-4 rounded hover:bg-orange-600"
             >
-              Update
+              {loading ? <Spinner/>:"Update"}
+            
             </button>
           </div>
         </form>

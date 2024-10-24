@@ -49,11 +49,11 @@ const ActivityGrid = ({ daysActive, monthName }) => {
         className="grid grid-cols-10 gap-1 lg:gap-3 md:gap-3 sm:gap-1 sm:grid-cols-10 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7"
         style={{ width: "90%" }}
       >
-        {daysActive.map((isActive, index) => (
+        {daysActive?.map((isActive, index) => (
           <div
             key={index}
             className={`w-2 h-2 sm:w-2 sm:h-2 md:w-3 md:h-3 lg:w-3 lg:h-3 xl:w-3 xl:h-3 rounded-sm ${
-              isActive ? "bg-green-500" : "bg-gray-700"
+              (isActive=true || "completed") ? "bg-green-500" : "bg-gray-700"
             }`}
             onMouseEnter={() => handleMouseEnter(isActive, index)}
             onMouseLeave={handleMouseLeave}
@@ -61,7 +61,7 @@ const ActivityGrid = ({ daysActive, monthName }) => {
         ))}
       </div>
       <span className="mt-2 text-orange-600 text-sm">
-        {monthName.toUpperCase()}
+        {monthName?.toUpperCase()}
       </span>
       {tooltip.visible && (
         <div className={`activity-tooltip ${tooltip.color}`}>

@@ -52,11 +52,12 @@ const QuestionPage = ({ theme, handleThemeSwitch }) => {
         >
           <PostloginNavbar handleThemeSwitch={handleThemeSwitch} theme={theme} />
           <section className="mt-16 md:mt-24">
-            <QuestionSort />
-            {modules.map((module, moduleIndex) => (
+            <QuestionSort/>
+            
+            {modules?.data?.map((module, moduleIndex) => (
               <div key={module._id}>
                 <div className="flex items-center shadow-md p-4 md:p-6 mb-5 mx-5 rounded-lg justify-between bg-[#E6E6E6] dark:bg-[#232222]">
-                  <h2 className="text-xl font-semibold mb-4">{module.moduleTitle}</h2>
+                  <h2 className="text-xl font-semibold mb-4">{module?.questionTitle}</h2>
                   <span className="flex items-center">
                     <span
                       className="border dark:border-white border-black rounded-md font-semibold text-orange-400 px-[5px] cursor-pointer ml-2"

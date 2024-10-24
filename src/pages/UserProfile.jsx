@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import UpdateProfileModal from "../components/updateUserProfile";
 import { getleaderboard } from "../api/postLogin";
 import { getConsistencyPercentage } from "../api/postLogin";
-
+import { yearConsistency } from "../api/userProfile";
 {/* */}
 
 import {
@@ -39,9 +39,50 @@ const UserProfile = ({ theme, handleThemeSwitch }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [topStudents,setLeaderboard]=useState([]);
   const [consistency,setconsistancy]=useState([]);
+  let  [activities,setActivities]=useState([]);
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+  const [maxStreak, setMaxStreak] = useState(0);
+  const [activeDays, setActiveDays] = useState(0);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const data = await yearConsistency(userId); // Pass userId to the function
+        console.log("activity", data);
+          setActivities(data.yearlyConsistency[0].months || []);
 
+          let localCurrentStreak = 0;
+          let localMaxStreak = 0;
+          let localActiveDays = 0;
+
+          // Calculate active days, current streak, and max streak
+          data.yearlyConsistency[0].months.forEach(month => {
+            month.days.forEach(day => {
+              if (day.status === "completed") {
+                localActiveDays += 1;
+                localCurrentStreak += 1;
+                localMaxStreak = Math.max(localMaxStreak, localCurrentStreak);
+              } else {
+                localCurrentStreak = 0; // Reset streak on "missed" or "pending"
+              }
+            });
+          });
+
+          setActiveDays(localActiveDays);
+          setMaxStreak(localMaxStreak);
+        
+
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+  activities=(Object.keys(activities).length === 0 || activities.length==0)?[]:activities;
 
   const fetchShowStats = async () => {
     const savedUser = JSON.parse(localStorage.getItem("savedUser"));
@@ -184,428 +225,11 @@ useEffect(() => {
   fetchData();
 }, []);
 
-  const activities = [
-    {
-      monthName: "Jan",
-      daysActive: [
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        true,
-        false,
-      ],
-    },
-    {
-      monthName: "Feb",
-      daysActive: [
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-      ],
-    },
-    {
-      monthName: "Mar",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Apr",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "May",
-      daysActive: [
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-      ],
-    },
-    {
-      monthName: "June",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Jully",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Aug",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Sept",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Oct",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Nov",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-    {
-      monthName: "Dec",
-      daysActive: [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-      ],
-    },
-  ];
+const calculateActivityStats = () => {
+}
+
+console.log(activities);
+
 
   const sliderSettings = {
     infinite: true,
@@ -681,32 +305,39 @@ useEffect(() => {
                   <div className="flex flex-col items-center">
                     <span>
                       TOTAL ACTIVE DAYS:{" "}
-                      <span className="text-[#ffa657]">21</span>
+                      <span className="text-[#ffa657]">{activeDays}</span>
                     </span>
                   </div>
                   <div className="flex flex-col items-center">
                     <span>
-                      STREAK: <span className="text-[#ffa657]">15</span>
+                      STREAK: <span className="text-[#ffa657]">{maxStreak}</span>
                     </span>
                   </div>
-                  <div className="flex flex-col items-center">
+                  {/* <div className="flex flex-col items-center">
                     <span>
                       🏆 <span className="text-[#ffa657]">25</span>
                     </span>
-                  </div>
+                  </div> */}
                 </div>
-                {/* Activity Grids */}
-                <div className="grid grid-cols-6 gap-4">
-                  {activities.map((activity, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                      <ActivityGrid
-                        daysActive={activity.daysActive}
-                        monthName={activity.monthName}
-                        boxSize="small"
-                      />
-                    </div>
-                  ))}
-                </div>
+                     {activities.length === 0 && (
+                            <p className="text-white font-bold">Contributions await your participation</p>
+                          )}
+                          {/* Activity Grids */}
+                          {activities !== 0 && (
+                            <div className="grid grid-cols-6 gap-4">
+                              {activities.map((activity, index) => (
+                                <div key={index} className="flex flex-col items-center">
+                                  <ActivityGrid
+                                    daysActive={activity.daysActive}
+                                    monthName={activity.monthName}
+                                    boxSize="small"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                
               </div>
             </div>
 
@@ -764,39 +395,42 @@ useEffect(() => {
 
             {/* My Contributions */}
             <div className="border border-white bg-[#161b22] text-[#c9d1d9] w-1/2 overflow-auto flex flex-col items-center h-fit rounded-xl p-8">
-              <h3 className="text-white font-bold font-roboto lg:text-3xl md:text-2xl sm:text-xl text-xl text-center">
+             <h3 className="text-white font-bold font-roboto lg:text-3xl md:text-2xl sm:text-xl text-xl text-center">
                 My contributions this year
               </h3>
               <div className="flex flex-row justify-center items-center space-x-3 text-lg mb-6">
                 <div className="flex flex-col items-center">
                   <span>
                     TOTAL ACTIVE DAYS:{" "}
-                    <span className="text-[#ffa657]">21</span>
+                    <span className="text-[#ffa657]">{activeDays}</span>
                   </span>
                 </div>
                 <div className="flex flex-col items-center">
                   <span>
-                    STREAK: <span className="text-[#ffa657]">15</span>
-                  </span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span>
-                    🏆 <span className="text-[#ffa657]">25</span>
+                    STREAK: <span className="text-[#ffa657]">{maxStreak}</span>
                   </span>
                 </div>
               </div>
-              {/* Activity Grids */}
-              <div className="grid grid-cols-6 gap-4">
-                {activities.map((activity, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <ActivityGrid
-                      daysActive={activity.daysActive}
-                      monthName={activity.monthName}
-                      boxSize="small"
-                    />
-                  </div>
-                ))}
-              </div>
+              {activities.length === 0 && (
+                <div className="flex justify-center h-72 flex-col items-center">
+                  <p className="text-gray-400 text-center font-bold">
+                    Contributions await your participation
+                  </p>
+                </div>
+              )}
+              {activities.length > 0 && (
+                <div className="grid grid-cols-6 gap-4">
+                  {activities.map((activity, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                      <ActivityGrid
+                        daysActive={activity.days}
+                        monthName={activity.month}
+                        boxSize="small"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* My Details */}
