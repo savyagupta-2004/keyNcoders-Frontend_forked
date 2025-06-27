@@ -47,6 +47,7 @@ const App = () => {
       className: "custom-toast",
     });
   };
+  //savya gupta
 
   useEffect(() => {
     if (theme === "dark") {
@@ -128,12 +129,12 @@ const App = () => {
               <Route
                 path="/user-postlogin"
                 element={
-                  <ProtectedRoute>
-                    <Postlogin_temp
-                      theme={theme}
-                      handleThemeSwitch={handleThemeSwitch}
-                    />
-                  </ProtectedRoute>
+                  // <ProtectedRoute>
+                  <Postlogin_temp
+                    theme={theme}
+                    handleThemeSwitch={handleThemeSwitch}
+                  />
+                  // </ProtectedRoute>
                 }
               />
               <Route
@@ -185,12 +186,9 @@ const App = () => {
               <Route
                 path="/videos"
                 element={
-                  <ProtectedRoute>
-                    <Videos
-                      theme={theme}
-                      handleThemeSwitch={handleThemeSwitch}
-                    />
-                  </ProtectedRoute>
+                  // <ProtectedRoute>
+                  <Videos theme={theme} handleThemeSwitch={handleThemeSwitch} />
+                  // </ProtectedRoute>
                 }
               />
               <Route

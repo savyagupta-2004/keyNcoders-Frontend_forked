@@ -279,7 +279,7 @@ export default function Landing({ theme }) {
                 {/* Aligning image the text adjusts accordingly */}
                 <img
                   loading="lazy"
-                  src="./images/mentor_ayush.jpeg"
+                  src="./images/mentor_ayush.webp"
                   className=" w-full sm:w-44 lg:w-[1024px]  md:w-96 h-auto rounded-xl border-slate-800 mx-auto md:mx-0"
                   alt="Marry"
                 />

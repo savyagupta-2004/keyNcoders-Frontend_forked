@@ -8,6 +8,11 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  faRocket,
+  faArrowLeft,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AboutUs({ handleThemeSwitch, theme }) {
@@ -134,28 +139,33 @@ function AboutUs({ handleThemeSwitch, theme }) {
         </div>
       </section>
       <section className={`bg-[#D9D9D9] dark:bg-[#1a1a1a] h-fit p-10 md:p-20`}>
-        <h1 className=" dark:text-gray-300 font-bold text-[30px] md:text-[40px] text-center ">
-          Meet Our Founder
+        <h1 className="dark:text-gray-300 font-bold text-[30px] md:text-[40px] text-center mb-10">
+          Meet Our Founders
         </h1>
-
-        <div className="flex  flex-col-reverse  md:flex-row items-center md:items-start justify-around">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            <div className="flex mb-4 mt-6 gap-2">
-              <h2 className=" text-[#FF6652] font-semibold text-[20px] md:text-[30px] ">
-                Nitish Kumar Mehta
-                <Link
-                  target="_blank"
-                  to="https://www.linkedin.com/in/nitish-kumar-mehta-427955276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  type="button"
-                >
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className="dark:text-[#B0B8BC] text-black h-5 md:h-6 ml-3"
-                  />
-                </Link>
-              </h2>
-            </div>
-            <p className="dark:text-gray-400 text-justify">
+        <div className="flex flex-col md:flex-row justify-between md:gap-10 relative">
+          {/* First Founder */}
+          <div className="w-full md:w-1/2 flex flex-col items-center mb-10 md:mb-0 transition-transform transform hover:scale-105 duration-300">
+            <h2 className="text-[#FF6652] font-semibold text-[20px] md:text-[30px] text-center mb-2 flex items-center">
+              Nitish Kumar Mehta
+              <Link
+                target="_blank"
+                to="https://www.linkedin.com/in/nitish-kumar-mehta-427955276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                type="button"
+                className="ml-3"
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className="dark:text-[#B0B8BC] text-black h-5 md:h-6"
+                />
+              </Link>
+            </h2>
+            <img
+              width={277}
+              src="/images/founder.webp"
+              alt="Founder"
+              className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mt-6"
+            />
+            <p className="dark:text-gray-400 text-justify mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               Nitish always envisioned an entrepreneurial path, driven by a
               desire to make a difference. Growing up in a tier 2 city, he
               recognized the challenges faced by aspiring tech professionals in
@@ -175,18 +185,79 @@ function AboutUs({ handleThemeSwitch, theme }) {
               colleges, prompting him to create a space where aspiring tech
               enthusiasts could thrive and connect. Through keyNcoders, Nitish
               aims to empower individuals from all walks of life, providing them
-              with the skills and support they need to succeed in
-              the tech industry.
+              with the skills and support they need to succeed in the tech
+              industry.
             </p>
           </div>
-          <img
-            width={277}
-            src="/images/founder.webp"
-            alt="Founder"
-            className="rounded-lg mt-16"
-          />
+
+          {/* Second Founder */}
+          <div className="w-full md:w-1/2 flex flex-col items-center mb-10 md:mb-0 transition-transform transform hover:scale-105 duration-300">
+            <h2 className="text-[#FF6652] font-semibold text-[20px] md:text-[30px] text-center mb-2 flex items-center">
+              Savya Gupta
+              <Link
+                target="_blank"
+                to="https://www.linkedin.com/in/-savyagupta"
+                type="button"
+                className="ml-3"
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className="dark:text-[#B0B8BC] text-black h-5 md:h-6"
+                />
+              </Link>
+            </h2>
+            <img
+              width={277}
+              src="/images/savya.jpg"
+              alt="Founder"
+              className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mt-6"
+            />
+            <p className="dark:text-gray-400 text-justify mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              Savya Gupta embodies a relentless pursuit of growth and
+              innovation, driven by a commitment to empower aspiring tech
+              professionals. Hailing from a tier 2 city, Savya witnessed
+              firsthand the challenges faced by individuals pursuing careers in
+              technology. Many viewed a BCA degree as a mere stepping stone with
+              limited prospects, often leading to a sense of stagnation
+              post-graduation. Savya, however, saw potential where others
+              perceived barriers, asking, “Why should aspirations be confined by
+              conventional norms? Numerous individuals from similar backgrounds
+              have made significant strides in the tech industry, and it is
+              crucial to highlight these pathways.” Recognizing the absence of
+              platforms dedicated to nurturing talent and guiding individuals
+              through the diverse opportunities within the tech sector, Savya
+              envisioned a transformative solution. This vision culminated in
+              the founding of keyNcoders, a pioneering initiative aimed at
+              providing accessible training and mentorship for those eager to
+              enter the tech field, regardless of their financial circumstances.
+              Moreover, Savya identified a significant gap in functional
+              placement support within local colleges. This insight fueled the
+              creation of an environment where aspiring tech enthusiasts could
+              flourish and gain essential skills.
+            </p>
+          </div>
         </div>
+
+        {/* Inline styles */}
+        <style jsx>{`
+          @keyframes climb {
+            0% {
+              top: 0;
+            }
+            50% {
+              top: 350px;
+            }
+            100% {
+              top: 0;
+            }
+          }
+
+          .animate-climb {
+            animation: climb 20s ease-in-out infinite;
+          }
+        `}</style>
       </section>
+
       <section className={` bg-[#D9D9D9] dark:bg-[#1a1a1a]`}>
         <div className="relative">
           <svg

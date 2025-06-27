@@ -18,7 +18,7 @@ const SliderComponent = () => {
   const slides = [
     {
       id: 1,
-      image: "../images/bookbg.jpg", // Update with correct image paths
+      image: "../images/bookbg.webp", // Update with correct image paths
       caption: "Learn new skills with top instructors",
     },
     {
